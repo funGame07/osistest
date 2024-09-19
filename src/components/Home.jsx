@@ -108,12 +108,12 @@ function Home() {
             </Circle>
           </Circle>
 
-          <Box bg={"red"} flexGrow={1} minH={"130px"} maxH={"130px"} 
+          <Box bg={"red"} flexGrow={1} minH={"110px"} maxH={"130px"} 
           rounded={"xl"} pos={"relative"} p={5} bgImage={"visi.png"}
           bgSize={"cover"} bgPos={"center"} bgRepeat={"no-repeat"}
           filter={"brightness(0.7)"} cursor={"pointer"}>
             <Text color={"white"} textShadow={"-2px -2px 20px black"}
-            fontSize={"xl"} fontWeight={"800"} fontFamily={"sans-serif"}
+            fontSize={"lg"} fontWeight={"800"} fontFamily={"sans-serif"}
             pos={"absolute"} w={"63%"} loading="lazy">
               Visi dan Misi Kami
             </Text>
@@ -128,12 +128,12 @@ function Home() {
             </Circle>
           </Circle>
 
-          <Box bg={"red"} flexGrow={1} minH={"130px"} maxH={"130px"} 
+          <Box bg={"red"} flexGrow={1} minH={"110px"} maxH={"130px"} 
           rounded={"xl"} pos={"relative"} p={5} bgImage={"lomba.png"}
           bgSize={"cover"} bgPos={"center"} bgRepeat={"no-repeat"}
           filter={"brightness(0.7)"} cursor={"pointer"}>
             <Text color={"white"} textShadow={"-2px -2px 20px black"}
-            fontSize={"xl"} fontWeight={"800"} fontFamily={"sans-serif"}
+            fontSize={"lg"} fontWeight={"800"} fontFamily={"sans-serif"}
             pos={"absolute"} w={"63%"} loading="lazy">
               Dokumentasi Lomba
             </Text>
@@ -143,9 +143,9 @@ function Home() {
       </Flex>
       
       <Flex h={"60px"} animation={`${dissapear} 6s ease-in infinite`} alignItems={"center"} mt={10} gap={4}>
-        <Image src="sultan.png" maxW={"60px"} maxH={"60px"} rounded={"full"} loading="lazy"/>
+        <Image src="sultan.png" maxW={"40px"} maxH={"40px"} rounded={"full"} loading="lazy"/>
         <FaExchangeAlt size={20}/>
-        <Image src="logoalone.png" maxW={"60px"} maxH={"60px"} loading="lazy"/>
+        <Image src="logoalone.png" maxW={"40px"} maxH={"40px"} loading="lazy"/>
       </Flex>
       
 

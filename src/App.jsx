@@ -18,7 +18,7 @@ function App() {
     const themes = ["barbarian", "archer", "goblin", "giant", "wizard"]
     useEffect(()=>{
         let images = []
-        for(let i = 1; i< 13; i++){
+        for(let i = 1; i< 12; i++){
             images.push(`osis${i}.png`)
         }
         setImg(images)

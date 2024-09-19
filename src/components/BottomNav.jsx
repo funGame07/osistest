@@ -20,11 +20,11 @@ function BottomNav({colorMode}) {
 
   return (
     <Box className='bottom-nav' position={"fixed"} bgGradient={colorMode == "light"? "linear(to-b, gray.200, white)" : "linear(to-b, black, gray.800)"} zIndex={9999}>
-        <Box className='nav' px={{base: 4, lg: 3}} gap={{base: 8, lg: 5}} py={{base: 1, lg:0}} 
+        <Box className='nav' px={{base: 4, lg: 3}} gap={{base: 5, lg: 5}} py={{base: 0.5, lg:0}} display={"flex"} alignItems={"center"} 
         borderRadius={"xl"} fontWeight={900} h={{base: "fit-content", lg: "40px"}} bg={colorMode == "light"? "white" : "black"}>
         <Link to={"/"}>
             <Box display={"flex"} flexDir={"column"} alignItems={"center"}>
-                <GoHome size={31} className='navicon'/>
+                <GoHome size={26} className='navicon'/>
                 <Text fontSize={{base: "13px", lg: "8px"}} lineHeight={{base: 1, lg: 0}}>
                     Home
                 </Text>
@@ -33,18 +33,18 @@ function BottomNav({colorMode}) {
 
         <Link to={"/explore"}>
             <Box display={"flex"} flexDir={"column"} alignItems={"center"}>
-                <GrSearchAdvanced size={31} className='navicon'/>
+                <GrSearchAdvanced size={26} className='navicon'/>
                 <Text fontSize={{base: "13px", lg: "8px"}} lineHeight={{base: 1, lg: 0}}>
                     Explore
                 </Text>
             </Box>
         </Link>
 
-            <CiSquarePlus size={50} className='navicon-mid' cursor={"pointer"}/>
+            <CiSquarePlus size={45} className='navicon-mid' cursor={"pointer"}/>
 
         <Link to={"/voting"}> 
             <Box display={"flex"} flexDir={"column"} alignItems={"center"}>
-                <IoNotificationsOutline size={31} className='navicon'/>
+                <IoNotificationsOutline size={26} className='navicon'/>
                 <Text fontSize={{base: "13px", lg: "8px"}} lineHeight={{base: 1, lg: 0}}>
                     Voting
                 </Text>
@@ -53,7 +53,7 @@ function BottomNav({colorMode}) {
 
         <Link to={"/games"}>
             <Box display={"flex"} flexDir={"column"} alignItems={"center"}>
-                <IoGameControllerOutline size={31} className='navicon'/>
+                <IoGameControllerOutline size={26} className='navicon'/>
                 <Text fontSize={{base: "13px", lg: "8px"}} lineHeight={{base: 1, lg: 0}}>
                     Games
                 </Text>
