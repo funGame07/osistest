@@ -1,0 +1,28 @@
+
+.App{
+  text-align: center;
+  padding-top: 100px;
+}
+
+.grid-container {
+    display: inline-block;
+    margin: 20px;
+    border: 2px solid #444;
+    padding: 10px;
+  }
+  
+  .grid-row {
+    display: flex;
+  }
+  
+  .grid-item {
+    width: 25px;
+    height: 25px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    margin: 1px;
+    font-size: 18px;
+    font-family: monospace;
+  }

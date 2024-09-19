@@ -1,0 +1,19 @@
+
+
+.animate{
+    animation: move 5s ease-in infinite;
+}
+
+@keyframes move {
+    0%{
+        transform: translateY(20px);
+        background: #000;
+    }
+    50%{
+        transform: translateY(-20);
+        background: red;
+    }
+    100%{
+        transform: translateY(-20);
+    }
+}

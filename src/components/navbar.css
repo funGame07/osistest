@@ -1,0 +1,49 @@
+.visit-button{
+    position: relative;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 9px;
+    border-radius: 6px;
+    background-color: teal;
+
+    .visit-icon{
+        position: absolute;
+        left: -1;
+    }
+}
+
+.bottom-nav{
+    position: absolute;
+    width: 100%;
+    height: 56px;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+
+    .nav{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        border: 1px solid black;
+        width: fit-content;
+        top: -12px;
+        box-shadow: -2px -2px 12px rgba(0, 0, 0, 0.304);
+    }
+}
+
+
+@media (min-width: 992px) {
+    .bottom-nav{
+        height: 37px;
+        .navicon{
+            max-width: 20px;
+        }
+        .navicon-mid{
+            max-width: 37px;
+            max-height: 37px;
+
+        }
+    }
+}
