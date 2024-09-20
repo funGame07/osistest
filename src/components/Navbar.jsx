@@ -58,7 +58,7 @@ function Navbar({colorMode, toggleColorMode}) {
                 <Text fontWeight={600} fontSize={{base: "10px", lg: "7px"}}>SMA SWASTA SULTAN AGUNG</Text>
             </Box>
             <Button leftIcon={<MdOutlinePushPin style={{transform: "rotate(-45deg)", width: "12px"} } />} 
-            colorScheme='blue' variant='solid' h={{base: "21px", lg: "19px"}} px={{base: 2, lg: 1}} display={"flex"} alignItems={"center"}
+            colorScheme={"blue"} variant='solid' h={{base: "21px", lg: "19px"}} px={{base: 2, lg: 1}} display={"flex"} alignItems={"center"}
             onClick={onOpen} >
                 <Text fontSize={{base: "10px", lg: "7px"}} placeSelf={"center"} >Visit</Text>
             </Button>

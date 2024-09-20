@@ -27,8 +27,9 @@ function App() {
 
   return (
     <Box minH={"100vh"} maxH={"100vh"}>
-      <Navbar colorMode={colorMode} toggleColorMode={toggleColorMode}/>
+
       <imageOsis.Provider value={{img, themes, colorMode}}>
+      <Navbar colorMode={colorMode} toggleColorMode={toggleColorMode}/>
         <Routes>
           <Route path="/login" element={<Login />}/>
           <Route path="/" element={<Home />}/>

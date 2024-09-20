@@ -16,9 +16,9 @@ function Carousel() {
     const {img, themes, colorMode} = useContext(imageOsis)
 
   return (
-    <Box className="container" maxW={{base:"100%", lg:"70%"}} px={"0%"} h={{base: "580px", lg:"420px"}}>
+    <Box className="container" maxW={{base:"100%", lg:"70%"}} px={"0%"} h={{base: "530px", lg:"420px"}}>
       <Swiper
-        style={{display:"flex", padding: "0 0px"}}
+        style={{display:"flex", padding: "60px 0px"}}
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
@@ -50,8 +50,8 @@ function Content({img, mode, colorMode}){
     return (
         <div className="wrapper">
             <Box className={`clash-card ${mode}`}
-            boxShadow={`-1px 15px 30px -12px ${colorMode =="light"? "black" : "brown"}`} 
-            w={{base: "250px", lg: "201px"}}>
+            boxShadow={`-1px 15px 30px -12px ${colorMode =="light"? "black" : "gray.100"}`} 
+            w={{base: "250px", lg: "201px"}} >
             <Box className={`clash-card__image clash-card__image--${mode}`} 
             height={{base: "155px", lg: "154px"}}
             mb={{base: "35px", lg: "23px"}} display={"flex"} justifyContent={"center"}>
@@ -94,11 +94,11 @@ function Content({img, mode, colorMode}){
                 display={"flex"} flexDir={"column"}>
                     <Flex className="stat" gap={"10px"} >
                         <Box maxW={{base: "30", lg: "20px"}} maxH={"20px"} justifyContent={"start"}>
-                            <BsInstagram size={"100%"} style={{background: "linear-gradient(45deg, red, red, blue)", borderRadius: "5%"}}/>
+                            <BsInstagram size={"80%"} style={{background: "linear-gradient(45deg, red, red, blue)", borderRadius: "30%"}}/>
                         </Box>
                         <Link to={"/"} fontSize={{base:"sm", lg: "10px"}} bgGradient={"linear(to-br, red, blue.800)"} bgClip={"text"}>@ellbrtt</Link>
                     </Flex>
-                    <Text mt={{base: "15px", lg:"6.5px"}}
+                    <Text mt={{base: "10px", lg:"6.5px"}}
                     fontSize={{base:"10px", lg: "8px"}} className='stat-value'>Follow my Instagram</Text>
                 </Box>
 

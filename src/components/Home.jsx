@@ -52,15 +52,15 @@ function Home() {
   `
 
   return(
-    <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "8%"}} pb={"100px"}>
+    <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "8%"}} pb={"70px"}>
     
-      <Flex pt={"40"} flexDir={"column"} alignItems={"center"} gap={3}>
+      <Flex pt={"120px"} flexDir={"column"} alignItems={"center"} gap={3}>
         <Image src="osis.png" rounded={"full"} 
-        maxW={{base: "250px", lg: "150px"}}/>
-        <Text fontSize={{base: "2xl", lg: "xl"}} fontWeight={"800"}>
+        maxW={{base: "170px", lg: "150px"}}/>
+        <Text fontSize={{base: "xl", lg: "xl"}} fontWeight={"800"}>
           SELAMAT DATANG
         </Text>
-        <Text textAlign={"center"} maxW={"55%"} fontSize={{base: "18px", lg: "12px"}} fontWeight={"600"}>
+        <Text textAlign={"center"} maxW={"55%"} fontSize={{base: "15px", lg: "12px"}} fontWeight={"600"}>
           di website OSIS Sultan Agung
           nimati berbagai fitur yang telah disediakan diwebsite ini.
         </Text>
@@ -100,7 +100,7 @@ function Home() {
         </Flex>
 
           {/* others */}
-      <Flex gap={10} flexDir={'column'} minW={"full"}>
+      <Flex gap={4} flexDir={'column'} minW={"full"}>
         <Flex width={"full"} px={5} gap={5}>
           <Circle bg={"teal"} size={"50px"}>
             <Circle border={`4px solid ${colorMode == "light" ? "white": "black"}`} size={"40px"}>
@@ -142,7 +142,7 @@ function Home() {
         </Flex>
       </Flex>
       
-      <Flex h={"60px"} animation={`${dissapear} 6s ease-in infinite`} alignItems={"center"} mt={10} gap={4}>
+      <Flex h={"60px"} animation={`${dissapear} 6s ease-in infinite`} alignItems={"center"} mt={5} gap={4}>
         <Image src="sultan.png" maxW={"40px"} maxH={"40px"} rounded={"full"} loading="lazy"/>
         <FaExchangeAlt size={20}/>
         <Image src="logoalone.png" maxW={"40px"} maxH={"40px"} loading="lazy"/>
