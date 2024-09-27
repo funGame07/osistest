@@ -10,7 +10,7 @@ import {
 import { FcRules } from "react-icons/fc";
 
 
-function YesGames() {
+function YesEvent() {
   return (
     <Flex p={5} pt={8} flexDir={{base: "column"}} gap={{base: 8}} pos={"relative"} alignItems={"center"} minH={"fit-content"}>
         <Text fontSize={{base: "3xl", lg: "3xl"}} fontWeight={600} letterSpacing={1} fontFamily={"fantasy"} style={{transform: "rotate(-5deg)"}}
@@ -77,4 +77,4 @@ function YesGames() {
   )
 }
 
-export default YesGames
+export default YesEvent

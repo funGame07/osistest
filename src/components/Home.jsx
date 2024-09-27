@@ -16,7 +16,7 @@ import Carousel from "./Carousel";
 import { useContext } from "react";
 import { imageOsis } from "../App";
 
-//  import "./home.css"
+import "./home.css"
 
 function Home() {
   const {colorMode} = useContext(imageOsis)
@@ -33,43 +33,24 @@ function Home() {
     }
   `
 
-  const move = keyframes`
-    0%{
-      transform: translateY(-5px);
-    }
-    25%{
-      transform: translateY(20px);
-    }
-    60%{
-      transform: translateY(33px);
-    }
-    80%{
-      transform: translateY(20px);
-    }
-    100%{
-      transform: translateY(-5px);
-    }
-  `
-
   return(
     <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "8%"}} pb={"70px"}>
     
       <Flex pt={"120px"} flexDir={"column"} alignItems={"center"} gap={3}>
-        <Image src="osis.png" rounded={"full"} 
-        maxW={{base: "170px", lg: "150px"}}/>
-        <Text fontSize={{base: "xl", lg: "xl"}} fontWeight={"800"}>
-          SELAMAT DATANG
+        <Image src="logoosis.png" rounded={"full"} 
+        maxW={{base: "250px", lg: "250px"}}/>
+        <Text className="font-link" fontSize={{base: "2xl", lg: "3xl"}} fontWeight={"800"}>
+          OSIS Sultan Agung
         </Text>
-        <Text textAlign={"center"} maxW={"55%"} fontSize={{base: "15px", lg: "12px"}} fontWeight={"600"}>
-          di website OSIS Sultan Agung
-          nimati berbagai fitur yang telah disediakan diwebsite ini.
+        <Text className="font-link" textAlign={"center"} maxW={"55%"} fontSize={{base: "15px", lg: "12px"}} fontWeight={"600"}>
+          Jelajahi dunia OSIS Sultan Agung! Temukan beragam fitur menarik dan aktifkan petualanganmu bersama kami.        
         </Text>
         <Text fontSize={{base: "sm", lg: "10px"}} fontWeight={"500"}>
         Selamat Mengeksplore
         </Text>
-        <Link w={"40%"} mt={5} display={"flex"} justifyContent={"center"}>
-          <Button colorScheme="teal"  w={{base: "100%", lg: "80%"}} h={{base:"40px", lg: "30px"}}>
-              Explore
+        <Link to={"/explore"} w={"40%"} mt={5} display={"flex"} justifyContent={"center"}>
+          <Button className="font-link" colorScheme="teal"  w={{base: "100%", lg: "80%"}} h={{base:"40px", lg: "40px"}}>
+            Explore
           </Button>
         </Link>
         
@@ -79,7 +60,7 @@ function Home() {
         <Box flexGrow={1} bg={colorMode == "light" ? "#241a0e" : "gray.100"}>
           <StackDivider borderColor='gray.200' width={"full"} minH={"2px"}/>
         </Box>
-        <Text fontSize={{base: "lg", lg:"sm"}} fontWeight={700}>Anggota</Text>
+        <Text className="font-link" fontSize={{base: "lg", lg:"sm"}} fontWeight={700}>Anggota</Text>
         <Box flexGrow={1} bg={colorMode == "light" ? "#241a0e" : "gray.100"}>
           <StackDivider borderColor='gray.200' width={"full"} minH={"2px"}/>
         </Box>
@@ -93,7 +74,7 @@ function Home() {
           <Box flexGrow={1} bg={colorMode == "light" ? "#241a0e" : "gray.100"}>
             <StackDivider borderColor='gray.200' width={"full"} minH={"2px"}/>
           </Box>
-          <Text fontSize={{base: "lg", lg:"sm"}} fontWeight={700}>Others</Text>
+          <Text className="font-link" fontSize={{base: "lg", lg:"sm"}} fontWeight={700}>Others</Text>
           <Box flexGrow={1} bg={colorMode == "light" ? "#241a0e" : "gray.100"}>
             <StackDivider borderColor='gray.200' width={"full"} minH={"2px"}/>
           </Box>
@@ -145,7 +126,7 @@ function Home() {
       <Flex h={"60px"} animation={`${dissapear} 6s ease-in infinite`} alignItems={"center"} mt={5} gap={4}>
         <Image src="sultan.png" maxW={"40px"} maxH={"40px"} rounded={"full"} loading="lazy"/>
         <FaExchangeAlt size={20}/>
-        <Image src="logoalone.png" maxW={"40px"} maxH={"40px"} loading="lazy"/>
+        <Image src="logoosis.png" maxW={"50px"} maxH={"50px"} loading="lazy"/>
       </Flex>
       
 
