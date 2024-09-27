@@ -10,14 +10,15 @@ import Hexa from "./components/Hexa"
 import { useColorMode } from "@chakra-ui/react"
 import { useState, useEffect, createContext } from "react"
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import { ChakraProvider } from '@chakra-ui/react'
 
 export const imageOsis = createContext()
 
 function App() {
   const handle = useFullScreenHandle()
+  const [isFs, setIsFs] = useState(false)
   const {colorMode, toggleColorMode} = useColorMode()
   const [img, setImg] = useState([])
-  const [isFs, setIsFs] = useState(false)
     const themes = ["barbarian", "archer", "goblin", "giant", "wizard"]
     useEffect(()=>{
         let images = []
@@ -25,7 +26,6 @@ function App() {
             images.push(`osis${i}.png`)
         }
         setImg(images)
-        console.log("hii")
     }, [])
 
   const provider = {
@@ -40,21 +40,23 @@ function App() {
 
   return (
     <FullScreen handle={handle}>
-      <Box minH={"100vh"} maxH={"100vh"}>
-        <imageOsis.Provider value={provider}>
-        <Navbar/>
-          <Routes>
-            <Route path="/login" element={<Login />}/>
-            <Route path="/" element={<Home />}/>
-            <Route path="/event" element={<Event />}/>
-            <Route path="/explore" element={<Square />}/>
-            <Route path="/voting" element={<Hexa />}/>
-          </Routes>
-        </imageOsis.Provider>
-        
-        <BottomNav colorMode={colorMode}/>
-      </Box>
-    </FullScreen>
+      <ChakraProvider>
+        <Box minH={"100vh"} maxH={"100vh"}>
+          <imageOsis.Provider value={provider}>
+          <Navbar/>
+            <Routes>
+              <Route path="/login" element={<Login />}/>
+              <Route path="/" element={<Home />}/>
+              <Route path="/event" element={<Event />}/>
+              <Route path="/explore" element={<Square />}/>
+              <Route path="/voting" element={<Hexa />}/>
+            </Routes>
+            <BottomNav colorMode={colorMode}/>
+          </imageOsis.Provider>
+        </Box>
+      </ChakraProvider>
+    
+  </FullScreen>
   )
 }
 
