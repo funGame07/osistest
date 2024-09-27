@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import NoGames from './NoGames';
-import YesGames from './YesGames';
+import NoEvent from './NoEvent';
+import YesEvent from './YesEvent';
 import { 
     Box,
     Text,
@@ -12,14 +12,14 @@ import {
 import { FcRules } from "react-icons/fc";
 
 
-function Games() {
+function Event() {
     const [game, setGame] = useState(true)
 
   return (
     <Box py={20}>
-        {game? <YesGames /> : < NoGames/>}
+        {game? <YesEvent /> : < NoEvent/>}
     </Box>
   )
 }
 
-export default Games
+export default Event

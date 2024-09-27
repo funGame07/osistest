@@ -21,7 +21,7 @@ import {
     ModalBody,
   } from '@chakra-ui/react'
 import { useContext } from 'react';
-import { imageOsis } from '../App';
+import { imageOsis } from '../../App';
 import { image } from 'framer-motion/client';
 
 function VisitModal({isOpen, onOpen, onClose}) {
@@ -35,7 +35,7 @@ function VisitModal({isOpen, onOpen, onClose}) {
               <ModalContent>
                 <Flex alignItems={"center"} gap={1} p={2}>
                   <IoIosArrowBack size={"25px"} onClick={onClose} cursor={"pointer"}/>
-                  <Image src={colorMode == "light" ? "logo.png" : "logo2.png"} maxW={"20"}/>
+                  <Image src={colorMode == "light" ? "logoosis-black.png" : "logoosis-white.png"} maxW={"20"}/>
                 </Flex>
                 <ModalBody display={"flex"} flexDir={"column"} gap={2}>
                 <Box h={"180px"} w={"100%"} bgImage={"school.png"} bgSize={"cover"} border={"1px solid gray"} rounded={"lg"}>

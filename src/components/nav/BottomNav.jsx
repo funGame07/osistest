@@ -10,7 +10,7 @@ import { GoHome } from "react-icons/go";
 import { CiSquarePlus } from "react-icons/ci";
 import { GrSearchAdvanced } from "react-icons/gr";
 import { IoNotificationsOutline } from "react-icons/io5";
-import { IoGameControllerOutline } from "react-icons/io5";
+import { HiOutlineTrophy } from "react-icons/hi2";
 
 
 function BottomNav({colorMode}) {
@@ -20,7 +20,7 @@ function BottomNav({colorMode}) {
 
   return (
     <Box className='bottom-nav' position={"fixed"} bgGradient={colorMode == "light"? "linear(to-b, gray.100, white)" : "linear(to-b, black, gray.800)"} zIndex={9999}>
-        <Box className='nav' px={{base: 4, lg: 3}} gap={{base: 7, lg: 5}} py={{base: 0.5, lg:0}} display={"flex"} alignItems={"center"}
+        <Box className='nav' px={{base: 4, lg: 3}} gap={{base: 7, lg: 5}} py={{base: 0.5, lg:1}} display={"flex"} alignItems={{base: "center", lg: "start"}}
         borderRadius={"xl"} fontWeight={900} h={{base: "fit-content", lg: "40px"}} bgGradient={colorMode == "light"? "linear(to-r, gray.100, white, gray.100)" : "linear(to-r, black, gray.800, black)"}>
         <Link to={"/"}>
             <Box display={"flex"} flexDir={"column"} alignItems={"center"}>
@@ -33,7 +33,7 @@ function BottomNav({colorMode}) {
 
         <Link to={"/explore"}>
             <Box display={"flex"} flexDir={"column"} alignItems={"center"}>
-                <GrSearchAdvanced size={23} className='navicon'/>
+                <GrSearchAdvanced size={23} className='navicon' />
                 <Text fontSize={{base: "13px", lg: "8px"}} lineHeight={{base: 1, lg: 0}}>
                     Explore
                 </Text>
@@ -51,11 +51,11 @@ function BottomNav({colorMode}) {
             </Box>
         </Link>
 
-        <Link to={"/games"}>
+        <Link to={"/event"}>
             <Box display={"flex"} flexDir={"column"} alignItems={"center"}>
-                <IoGameControllerOutline size={23} className='navicon'/>
+                <HiOutlineTrophy size={23} className='navicon'/>
                 <Text fontSize={{base: "13px", lg: "8px"}} lineHeight={{base: 1, lg: 0}}>
-                    Games
+                    Event
                 </Text>
             </Box>
         </Link>

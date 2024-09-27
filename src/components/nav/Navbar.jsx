@@ -8,22 +8,28 @@ import {
     Button,
     useDisclosure
 } from '@chakra-ui/react'
-import { useColorMode, useColorModeValue } from '@chakra-ui/react'
 import { useCookies } from 'react-cookie'
 import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom'
 import "./navbar.css"
-import { FiMoon } from "react-icons/fi";
+import { FiMoon, FiSun } from "react-icons/fi";
 import { RxDividerVertical } from "react-icons/rx";
 import { MdOutlinePushPin } from "react-icons/md";
-import { useState, createContext } from 'react';
-import Modals from './VisitModal';
+import { RxEnterFullScreen, RxExitFullScreen } from "react-icons/rx";
+import { useState, useContext } from 'react';
+import Modals from '../modal/VisitModal';
+
+import { imageOsis } from '../../App'
 
 
-function Navbar({colorMode, toggleColorMode}) { 
+function Navbar() { 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [cookies] = useCookies(["name"]);
-    
+    const {colorMode, toggleColorMode, handle, isFs, setIsFs} = useContext(imageOsis)
+    function screenHandle(){
+        setIsFs(!isFs)
+        isFs ? handle.enter(): handle.exit()
+    }
 
     const setCookieHandler = (name) => {
         Cookies.set("name", name, { path: "/" });
@@ -36,14 +42,18 @@ function Navbar({colorMode, toggleColorMode}) {
   return (
     <Box pos={"fixed"} w={"full"} zIndex={9999}>
         <Flex px={2} py={{base: 1, lg: "1px"}} bg={"#241a0e"} color={"white"}>
-            <Image src='logo2.png' maxH={{base:9, lg: 6}}/>
+            <Image src='logoosis-white.png' maxH={{base:8, lg: 8}}/>
             <Flex alignItems={"center"} flexGrow={1} justifyContent={"end"}>
-
-                    <FiMoon opacity={0.7} onClick={toggleColorMode} cursor={"pointer"}/>
-  
+                {isFs ? <RxEnterFullScreen opacity={0.7} onClick={screenHandle} cursor={"pointer"}/>:
+                        <RxExitFullScreen opacity={0.7} onClick={screenHandle} cursor={"pointer"} />}
                 <RxDividerVertical size={21} opacity={0.7}/>
+
+                {colorMode == "light" ? <FiMoon opacity={0.7} onClick={toggleColorMode} cursor={"pointer"}/>:
+                                        <FiSun opacity={0.7} onClick={toggleColorMode} cursor={"pointer"} />}
+                <RxDividerVertical size={21} opacity={0.7}/>
+
                 <Link to={"/login"}>
-                    <Image src='osis.png' maxW={{base:8, lg: 6}} maxH={{base:6}} 
+                    <Image src='logoosis.png' maxW={{base:8, lg: 6}} maxH={{base:6}} 
                     borderRadius={"lg"} border={"1px solid black"} onClick={auth}/>
                 </Link>
                 
