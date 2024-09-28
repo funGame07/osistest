@@ -34,18 +34,18 @@ function Login() {
 
   return (
     <Box display={"flex"} flexDir={"column"} alignItems={"center"} 
-    justifyContent={"center"} px={0} gap={3}
+    justifyContent={"center"} px={0} gap={3} pt={{base: 20, lg: 0}}
     position="absolute"
       top="45%"
       left="50%"
       transform="translate(-50%, -50%)">
-      <Text fontSize={"6xl"} fontFamily={"sans-serif"} fontWeight={800} bgClip={"text"} bgGradient={'linear(to-l, #7928CA, #FF0080)'}>
+      <Text fontSize={{base: "4xl", lg: "6xl"}} fontFamily={"sans-serif"} fontWeight={800} bgClip={"text"} bgGradient={'linear(to-r, #39240b, brown)'}>
         Login
       </Text>
-      <Text textAlign={"center"} fontSize={"lg"}>
+      <Text textAlign={"center"} fontSize={"lg"} opacity={0.7}>
         Untuk mengikuti acara dan berita terbaru dari OSIS
       </Text>
-      <Image src="logoalone.png" maxW={140}/>
+      <Image src="logoosis.png" maxW={160}/>
       <InputGroup>
         <InputLeftElement pointerEvents='none'>
           <FaRegUser />
@@ -56,10 +56,10 @@ function Login() {
         <InputLeftElement pointerEvents='none'>
           <FaRegUser />
         </InputLeftElement>
-        <Input type='tel' placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
+        <Input type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
       </InputGroup>
 
-      <Button type='submit' mt={5} onClick={userLogin}>
+      <Button type='submit' colorScheme='orange' mt={5} onClick={userLogin} fontWeight={700}>
         Login
       </Button>
     </Box>

@@ -6,7 +6,7 @@ import {
     Image
  } from '@chakra-ui/react'
 
-function NoGames() {
+function NoEvent() {
   return (
     <Box>
         <Flex justifyContent={"center"} flexDir={"column"} alignItems={"center"} p={5} pt={8} gap={3}>
@@ -32,4 +32,4 @@ function NoGames() {
   )
 }
 
-export default NoGames
+export default NoEvent
