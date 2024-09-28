@@ -29,7 +29,7 @@ function VisitModal({isOpen, onOpen, onClose}) {
     return (
           <>
       
-            <Modal isOpen={isOpen} onClose={onClose} isCentered size={"sm"} zIndex={99999999999}>
+            <Modal isOpen={isOpen} onClose={onClose} isCentered size={"sm"}>
               <ModalOverlay />
               <ModalContent>
                 <Flex alignItems={"center"} gap={1} p={2}>
