@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from "react-icons/io";
 import { SlLocationPin } from "react-icons/sl";
 import { FaBusAlt } from "react-icons/fa";
-import "./modal.css"
 import {
     Box,
     Button,
