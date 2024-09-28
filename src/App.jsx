@@ -10,9 +10,8 @@ import Hexa from "./components/Hexa"
 import { useColorMode } from "@chakra-ui/react"
 import { useState, useEffect, createContext } from "react"
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
-import { ChakraProvider } from '@chakra-ui/react'
 
-export const imageOsis = createContext()
+export const osis = createContext()
 
 function App() {
   const handle = useFullScreenHandle()
@@ -28,6 +27,11 @@ function App() {
         setImg(images)
     }, [])
 
+    function toggleFs(){
+      const element = document.getElementById("fullscreen")
+      document.fullscreenElement ? document.exitFullscreen() : element.requestFullscreen()
+    }
+
   const provider = {
     img,
     themes,
@@ -35,14 +39,14 @@ function App() {
     isFs,
     setIsFs,
     handle,
-    toggleColorMode
+    toggleColorMode,
+    toggleFs
   }
 
   return (
-    <FullScreen handle={handle}>
-      <ChakraProvider>
-        <Box minH={"100vh"} maxH={"100vh"}>
-          <imageOsis.Provider value={provider}>
+    // <FullScreen handle={handle}>
+        <Box minH={"100vh"} maxH={"100vh"} id="fullscreen" overflowY={"auto"}>
+          <osis.Provider value={provider}>
           <Navbar/>
             <Routes>
               <Route path="/login" element={<Login />}/>
@@ -52,11 +56,10 @@ function App() {
               <Route path="/voting" element={<Hexa />}/>
             </Routes>
             <BottomNav colorMode={colorMode}/>
-          </imageOsis.Provider>
+          </osis.Provider>
         </Box>
-      </ChakraProvider>
     
-  </FullScreen>
+  // </FullScreen>
   )
 }
 

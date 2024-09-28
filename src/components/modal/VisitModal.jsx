@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from "react-icons/io";
 import { SlLocationPin } from "react-icons/sl";
 import { FaBusAlt } from "react-icons/fa";
-
+import "./modal.css"
 import {
     Box,
     Button,
@@ -21,16 +21,15 @@ import {
     ModalBody,
   } from '@chakra-ui/react'
 import { useContext } from 'react';
-import { imageOsis } from '../../App';
-import { image } from 'framer-motion/client';
+import { osis } from '../../App';
 
 function VisitModal({isOpen, onOpen, onClose}) {
-  const {colorMode} = useContext(imageOsis) 
+  const {colorMode} = useContext(osis) 
 
     return (
           <>
       
-            <Modal isOpen={isOpen} onClose={onClose} isCentered size={"sm"}>
+            <Modal isOpen={isOpen} onClose={onClose} isCentered size={"sm"} zIndex={99999999999}>
               <ModalOverlay />
               <ModalContent>
                 <Flex alignItems={"center"} gap={1} p={2}>

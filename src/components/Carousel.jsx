@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Box, Image, Text, Link, Flex } from '@chakra-ui/react';
-import { imageOsis } from '../App';
+import { osis } from '../App';
 import "./carousel.scss"
 
 import 'swiper/css';
@@ -13,7 +13,7 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import { BsInstagram } from "react-icons/bs";
 
 function Carousel() {
-    const {img, themes, colorMode} = useContext(imageOsis)
+    const {img, themes, colorMode} = useContext(osis)
 
   return (
     <Box className="container" maxW={{base:"100%", lg:"70%"}} px={"0%"} h={{base: "530px", lg:"420px"}}>

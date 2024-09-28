@@ -3,13 +3,7 @@ import NoEvent from './NoEvent';
 import YesEvent from './YesEvent';
 import { 
     Box,
-    Text,
-    Flex,
-    AspectRatio,
-    Image,
-    Button
 } from '@chakra-ui/react'
-import { FcRules } from "react-icons/fc";
 
 
 function Event() {

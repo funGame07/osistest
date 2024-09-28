@@ -19,13 +19,13 @@ import { RxEnterFullScreen, RxExitFullScreen } from "react-icons/rx";
 import { useState, useContext } from 'react';
 import Modals from '../modal/VisitModal';
 
-import { imageOsis } from '../../App'
+import { osis } from '../../App'
 
 
 function Navbar() { 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [cookies] = useCookies(["name"]);
-    const {colorMode, toggleColorMode, handle, isFs, setIsFs} = useContext(imageOsis)
+    const {colorMode, toggleColorMode, handle, isFs, setIsFs, toggleFs} = useContext(osis)
     function screenHandle(){
         setIsFs(!isFs)
         isFs ? handle.enter(): handle.exit()
@@ -44,8 +44,8 @@ function Navbar() {
         <Flex px={2} py={{base: 1, lg: "1px"}} bg={"#241a0e"} color={"white"}>
             <Image src='logoosis-white.png' maxH={{base:8, lg: 8}}/>
             <Flex alignItems={"center"} flexGrow={1} justifyContent={"end"}>
-                {isFs ? <RxEnterFullScreen opacity={0.7} onClick={screenHandle} cursor={"pointer"}/>:
-                        <RxExitFullScreen opacity={0.7} onClick={screenHandle} cursor={"pointer"} />}
+                {isFs ? <RxEnterFullScreen opacity={0.7} onClick={toggleFs} cursor={"pointer"}/>:
+                        <RxExitFullScreen opacity={0.7} onClick={toggleFs} cursor={"pointer"} />}
                 <RxDividerVertical size={21} opacity={0.7}/>
 
                 {colorMode == "light" ? <FiMoon opacity={0.7} onClick={toggleColorMode} cursor={"pointer"}/>:

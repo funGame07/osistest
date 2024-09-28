@@ -14,12 +14,12 @@ import {
  import { FaExchangeAlt } from "react-icons/fa";
 import Carousel from "./Carousel";
 import { useContext } from "react";
-import { imageOsis } from "../App";
+import { osis } from "../App";
 
 import "./home.css"
 
 function Home() {
-  const {colorMode} = useContext(imageOsis)
+  const {colorMode} = useContext(osis)
 
   const dissapear = keyframes`
     0%{
