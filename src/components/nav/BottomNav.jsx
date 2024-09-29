@@ -40,7 +40,9 @@ function BottomNav({colorMode}) {
             </Box>
         </Link>
 
+        <Link to={"/admin"}>
             <CiSquarePlus size={40} className='navicon-mid' cursor={"pointer"}/>
+        </Link>
 
         <Link to={"/voting"}> 
             <Box display={"flex"} flexDir={"column"} alignItems={"center"}>

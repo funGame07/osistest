@@ -1,4 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
+.font-link {
+  font-family: "Roboto Slab", serif;
+}
 
 $border-radius-size: 14px;
 $barbarian: #EC9B3B;
@@ -113,7 +116,6 @@ body {
 }
 
 .clash-card__unit-name {
-  color: black;
   font-weight: 900;
 }
 

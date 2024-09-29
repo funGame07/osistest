@@ -13,7 +13,7 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import { BsInstagram } from "react-icons/bs";
 
 function Carousel() {
-    const {img, themes, colorMode} = useContext(osis)
+    const {osisUser, themes, colorMode} = useContext(osis)
 
   return (
     <Box className="container" maxW={{base:"100%", lg:"70%"}} px={"0%"} h={{base: "530px", lg:"420px"}}>
@@ -35,9 +35,9 @@ function Carousel() {
         modules={[EffectCoverflow, Pagination, Navigation]}
         >
             {
-                img.map((image, idx) =>{
-                    return <SwiperSlide className="swipercardsss" key={idx} >
-                                <Content mode={themes[Math.round(Math.random()*4)]} img={image} colorMode={colorMode}/>
+                osisUser.map((data, id) =>{
+                    return <SwiperSlide className="swipercardsss" key={id} >
+                                <Content mode={"wizard"} img={"osis2.png"} colorMode={colorMode}/>
                             </SwiperSlide>
                 })
             }
@@ -51,27 +51,29 @@ function Content({img, mode, colorMode}){
         <div className="wrapper">
             <Box className={`clash-card ${mode}`}
             boxShadow={`-1px 15px 30px -12px ${colorMode =="light"? "black" : "gray.100"}`} 
-            w={{base: "250px", lg: "201px"}} >
+            w={{base: "250px", lg: "201px"}} bg={colorMode == "light" ? "white" : "gray.900"}>
             <Box className={`clash-card__image clash-card__image--${mode}`} 
             height={{base: "155px", lg: "154px"}}
-            mb={{base: "35px", lg: "23px"}} display={"flex"} justifyContent={"center"}>
+            mb={{base: "35px", lg: "23px"}} display={"flex"} justifyContent={"center"}
+            >
                 <Image src={img? img: `https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/${mode}.png`} h={"130%"} top={-10} loading='lazy'/>
             </Box>
             <Box className={`clash-card__level clash-card__level--${mode}`}
                 fontSize={{base: "12px", lg: "8px"}}
                 mb={{base:"3px", lg:"2px"}}
+            
                 >
                     Ketua Osis
             </Box>
-            <Box className="clash-card__unit-name"
+            <Box className="clash-card__unit-name font-link"
                 fontSize={{base: "26px", lg: "17px"}} 
                 mb={{base: "0px", lg: "3px"}}>
                     Nico
             </Box>
             <Box className="clash-card__unit-description"
-            mb={{base: "5px", lg: "6px"}}
+            mb={{base: "9px", lg: "8px"}}
             fontSize={{base:"sm", lg:"10px"}}
-            color={"black"}>
+            >
                 Halo, saya bendahara Osis tahun 2024/2025. Tugas saya menjaga uang kas OSIS 
             </Box>
 

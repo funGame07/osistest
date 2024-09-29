@@ -1,5 +1,4 @@
 import React from 'react'
-import { useRef } from 'react'
 import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from "react-icons/io";
 import { SlLocationPin } from "react-icons/sl";
@@ -22,7 +21,7 @@ import {
 import { useContext } from 'react';
 import { osis } from '../../App';
 
-function VisitModal({isOpen, onOpen, onClose}) {
+function VisitModal({isOpen, onOpen, onClose}){
   const {colorMode} = useContext(osis) 
 
     return (

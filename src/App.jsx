@@ -1,31 +1,52 @@
 import {Routes, Route } from "react-router-dom"
 import Home from "./components/Home"
-import Login from "./components/Login"
+import Login from "./components/Pages/Login"
 import Navbar from "./components/nav/Navbar"
 import BottomNav from "./components/nav/BottomNav"
 import Event from "./components/event/Event"
-import { Box } from "@chakra-ui/react"
+import { Box, resolveStyleConfig } from "@chakra-ui/react"
 import Square from "./components/Square"
 import Hexa from "./components/Hexa"
 import { useColorMode } from "@chakra-ui/react"
 import { useState, useEffect, createContext } from "react"
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import Admin from "./components/Admin"
+import Cookies from "js-cookie"
 
 export const osis = createContext()
 
 function App() {
-  const handle = useFullScreenHandle()
-  const [isFs, setIsFs] = useState(false)
+  const [isAuth, setIsAuth] = useState(false)
   const {colorMode, toggleColorMode} = useColorMode()
-  const [img, setImg] = useState([])
-    const themes = ["barbarian", "archer", "goblin", "giant", "wizard"]
-    useEffect(()=>{
-        let images = []
-        for(let i = 1; i< 12; i++){
-            images.push(`osis${i}.png`)
-        }
-        setImg(images)
-    }, [])
+  const themes = ["barbarian", "archer", "goblin", "giant", "wizard"]
+  const [osisUser, setOsisUser] = useState(["ss", "ss", "ss"])
+
+  async function isAuthFromDB(){
+    const response = await fetch("http://localhost:3000/api/auth/auth",{
+        method: "GET",
+        credentials: "include"
+    })
+    const data = await response.json()
+    if(data.success){
+        Cookies.set("auth", data.userId, {expires: 60})
+        setIsAuth(true)
+        return true
+    }else{
+        Cookies.remove("auth")
+        setIsAuth(false)
+        return false
+    }
+}
+
+  useEffect(()=>{
+    fetch("http://localhost:3000/api/osis")
+      .then((res) => res.json())
+      .then((data) => {
+        setOsisUser(data.data)
+      })
+      .catch((err) => console.log(err.message))
+    
+    isAuthFromDB()
+  }, [])
 
     function toggleFs(){
       const element = document.getElementById("fullscreen")
@@ -33,33 +54,31 @@ function App() {
     }
 
   const provider = {
-    img,
     themes,
     colorMode,
-    isFs,
-    setIsFs,
-    handle,
     toggleColorMode,
-    toggleFs
+    toggleFs,
+    osisUser,
+    isAuth,
+    setIsAuth,
+    isAuthFromDB
   }
 
   return (
-    // <FullScreen handle={handle}>
-        <Box minH={"100vh"} maxH={"100vh"} id="fullscreen" overflowY={"auto"}>
-          <osis.Provider value={provider}>
-          <Navbar/>
-            <Routes>
-              <Route path="/login" element={<Login />}/>
-              <Route path="/" element={<Home />}/>
-              <Route path="/event" element={<Event />}/>
-              <Route path="/explore" element={<Square />}/>
-              <Route path="/voting" element={<Hexa />}/>
-            </Routes>
-            <BottomNav colorMode={colorMode}/>
-          </osis.Provider>
-        </Box>
-    
-  // </FullScreen>
+    <Box minH={"100vh"} maxH={"100vh"} id="fullscreen" overflowY={"auto"} bg={colorMode == "light" ? "#EAEAEA" :"gray.900"}>
+      <osis.Provider value={provider}>
+      <Navbar/>
+        <Routes>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/" element={<Home />}/>
+          <Route path="/admin" element={<Admin />}/>
+          <Route path="/event" element={<Event />}/>
+          <Route path="/explore" element={<Square />}/>
+          <Route path="/voting" element={<Hexa />}/>
+        </Routes>
+        <BottomNav colorMode={colorMode}/>
+      </osis.Provider>
+    </Box>
   )
 }
 

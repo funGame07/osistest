@@ -5,8 +5,6 @@ import {
   Image,
   Circle,
   keyframes,
-  Wrap,
-  WrapItem,
   StackDivider,
   Button,
   Link
