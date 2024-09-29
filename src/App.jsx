@@ -73,8 +73,8 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/admin" element={<Admin />}/>
           <Route path="/event" element={<Event />}/>
-          <Route path="/explore" element={<Square />}/>
-          <Route path="/voting" element={<Hexa />}/>
+          {/* <Route path="/explore" element={<Square />}/> */}
+          {/* <Route path="/voting" element={<Hexa />}/> */}
         </Routes>
         <BottomNav colorMode={colorMode}/>
       </osis.Provider>

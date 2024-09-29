@@ -75,7 +75,7 @@ function Login() {
         },
         duration: 2000
       }),
-      loading: { title: 'Loading', description: "Tunggu sebentar", position: "top"},
+      loading: { title: 'Loading', description: "Tunggu sebentar", position: "top", isClosable: true},
     })
   }
 
