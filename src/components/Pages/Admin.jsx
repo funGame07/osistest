@@ -26,6 +26,7 @@ import Question from "./AdminPage/Question";
 import { MdArrowBackIos } from "react-icons/md";
 import { osis } from "../../App";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 function Admin() {
     const {setShowBottomNavbar} = useContext(osis)
@@ -90,10 +91,13 @@ function Admin() {
                         </MenuGroup>
 
                         <MenuDivider />
-
-                        <MenuItem icon={< MdArrowBackIos />} command='⌘' as={"a"} href="/">
-                            Back
-                        </MenuItem>
+                        
+                        <Link to={"/"}>
+                            <MenuItem icon={< MdArrowBackIos />} command='⌘' as={"a"} href="/">
+                                Back
+                            </MenuItem>
+                        </Link>
+                        
                     </MenuList>
 
                 </Menu>
