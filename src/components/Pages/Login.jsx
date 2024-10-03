@@ -16,7 +16,7 @@ import {
  import { osis } from '../../App';
 
 function Login() {
-  const {isAuthFromDB} = useContext(osis)
+  const {isAuthFromDB, colorMode} = useContext(osis)
   const [isLoading, setIsLoading] = useState(false)
   const [nis, setNis] = useState("")
   const [password, setPassword] = useState("")
@@ -86,7 +86,7 @@ function Login() {
       top="45%"
       left="50%"
       transform="translate(-50%, -50%)">
-      <Text className='font-link' fontSize={{base: "4xl", lg: "6xl"}} fontWeight={800} bgClip={"text"} bgGradient={'linear(to-r, #39240b, brown)'}>
+      <Text className='font-link' fontSize={{base: "4xl", lg: "6xl"}} fontWeight={800} bgClip={"text"} bgGradient={'linear(to-r, #39240b, yellow)'}>
         Login
       </Text>
       <Text className='font-link' textAlign={"center"} fontSize={"lg"} opacity={0.7}>
@@ -106,7 +106,7 @@ function Login() {
         <Input type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
       </InputGroup>
 
-      <Button colorScheme='teal' mt={5} 
+      <Button bgColor={colorMode== "light"? "teal" : "#e2d000"} colorScheme={colorMode== "light"? "teal" : "yellow"} mt={5} 
       onClick={userLogin} fontWeight={700} isLoading={isLoading} loadingText='Submitting'>
         Login
       </Button>
