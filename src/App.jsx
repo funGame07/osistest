@@ -4,12 +4,10 @@ import Login from "./components/Pages/Login"
 import Navbar from "./components/nav/Navbar"
 import BottomNav from "./components/nav/BottomNav"
 import Event from "./components/event/Event"
-import { Box, resolveStyleConfig } from "@chakra-ui/react"
-import Square from "./components/Square"
-import Hexa from "./components/Hexa"
+import { Box } from "@chakra-ui/react"
 import { useColorMode } from "@chakra-ui/react"
 import { useState, useEffect, createContext } from "react"
-import Admin from "./components/Admin"
+import Admin from "./components/Pages/Admin"
 import Cookies from "js-cookie"
 
 export const osis = createContext()
@@ -18,7 +16,8 @@ function App() {
   const [isAuth, setIsAuth] = useState(false)
   const {colorMode, toggleColorMode} = useColorMode()
   const themes = ["barbarian", "archer", "goblin", "giant", "wizard"]
-  const [osisUser, setOsisUser] = useState(["ss", "ss", "ss"])
+  const [osisUser, setOsisUser] = useState([])
+  const [showBottomNavbar, setShowBottomNavbar] = useState(true)
 
   async function isAuthFromDB(){
     const response = await fetch("http://localhost:3000/api/auth/auth",{
@@ -61,7 +60,9 @@ function App() {
     osisUser,
     isAuth,
     setIsAuth,
-    isAuthFromDB
+    isAuthFromDB,
+    showBottomNavbar,
+    setShowBottomNavbar
   }
 
   return (
@@ -76,7 +77,7 @@ function App() {
           {/* <Route path="/explore" element={<Square />}/> */}
           {/* <Route path="/voting" element={<Hexa />}/> */}
         </Routes>
-        <BottomNav colorMode={colorMode}/>
+        <BottomNav/>
       </osis.Provider>
     </Box>
   )
