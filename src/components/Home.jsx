@@ -7,7 +7,6 @@ import {
   keyframes,
   StackDivider,
   Button,
-  Link,
   Popover,
   PopoverTrigger,
   PopoverBody,
@@ -15,6 +14,7 @@ import {
   PopoverHeader,
   PopoverCloseButton
  } from "@chakra-ui/react"
+ import { Link } from "react-router-dom";
  import { FaExchangeAlt } from "react-icons/fa";
 import Carousel from "./Carousel";
 import { useContext } from "react";
@@ -24,7 +24,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import "./home.css"
 
 function Home() {
-  const {colorMode} = useContext(osis)
+  const {userOsis, colorMode} = useContext(osis)
 
   const dissapear = keyframes`
     0%{
@@ -38,26 +38,30 @@ function Home() {
     }
   `
 
+
   return(
     <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "8%"}} pb={"70px"}>
     
-      <Flex pt={"120px"} flexDir={"column"} alignItems={"center"} gap={3}>
-        <Image src="logoosis.png" rounded={"full"} 
-        maxW={{base: "250px", lg: "250px"}}/>
-        <Text className="font-link" fontSize={{base: "2xl", lg: "3xl"}} fontWeight={"800"}>
-          OSIS Sultan Agung
-        </Text>
-        <Text className="font-link" textAlign={"center"} maxW={"55%"} fontSize={{base: "15px", lg: "12px"}} fontWeight={"600"}>
-          Jelajahi dunia OSIS Sultan Agung! Temukan beragam fitur menarik dan aktifkan petualanganmu bersama kami.        
-        </Text>
-        <Text fontSize={{base: "sm", lg: "10px"}} fontWeight={"500"}>
-        Selamat Mengeksplore
-        </Text>
-        <Link to={"/explore"} w={"40%"} mt={5} display={"flex"} justifyContent={"center"}>
-          <Button className="font-link" colorScheme="teal"  w={{base: "100%", lg: "80%"}} h={{base:"40px", lg: "40px"}}>
-            Explore
-          </Button>
-        </Link>
+      <Flex pt={"120px"} flexDir={{base: "column", lg: "row"}} alignItems={"center"} gap={{base: 3, lg:1}}>
+        <Image src="logoosis.png" rounded={"full"} order={{base: 0, lg: 1}}
+        maxW={{base: "250px", lg: "450px"}}/>
+        <Flex flexDir={"column"} alignItems={"center"} >
+          <Text className="font-link" w={"101%"} color={colorMode == "light" ? "": "#e2d000"} fontSize={{base: "2xl", lg: "6xl"}} fontWeight={"700"} textAlign={"center"}>
+            OSIS SULTAN AGUNG
+          </Text>
+          <Text className="font-link" opacity={0.9} textAlign={"center"} maxW={{base: "55%", lg: "80%"}} fontSize={{base: "15px", lg: "3xl"}} fontWeight={"600"}>
+            Jelajahi dunia OSIS Sultan Agung! Temukan beragam fitur menarik dan aktifkan petualanganmu bersama kami.        
+          </Text>
+          <Text fontSize={{base: "sm", lg: "lg"}} fontWeight={"400"} opacity={0.8}>
+          Selamat Mengeksplore
+          </Text>
+          <Link to={"/explore"} style={{width: "60%"}}>
+            <Button className="font-link" mt={7} bgColor={colorMode== "light"? "black" : "#e2d000"} colorScheme={colorMode== "light"? "whiteAlpha" : "yellow"} w={{base: "100%", lg: "100%"}}>
+              Explore
+            </Button>
+          </Link>
+        </Flex>
+        
         
       </Flex>
 
@@ -68,11 +72,13 @@ function Home() {
       <Division text={"Lainnya"} colorMode={colorMode} pt={9}/>
 
           {/* others */}
-      <Flex gap={4} flexDir={'column'} minW={"full"}>
-        <Flex width={"full"} px={5} gap={5}>
-          <Circle bg={"teal"} size={"50px"}>
-            <Circle border={`4px solid ${colorMode == "light" ? "white": "black"}`} size={"40px"}>
-              <Text fontWeight={700} color={"white"} textAlign={"center"}>01</Text>
+      <Flex gap={2} flexDir={{base: "column", lg: "row"}} minW={"full"}>
+        <Flex width={"full"} px={5} gap={1}>
+          <Circle bg={"teal"} size={"45px"}>
+            <Circle border={`4px solid ${colorMode == "light" ? "white": "black"}`} size={"5em"}>
+              <Circle border={`3px solid ${colorMode == "light" ? "white": "black"}`} size={"35px"}>
+                <Text fontWeight={700} color={"white"} textAlign={"center"}>01</Text>
+              </Circle>
             </Circle>
           </Circle>
           <Popover placement="top-end">
@@ -113,10 +119,12 @@ function Home() {
           </Popover>
         </Flex>
 
-        <Flex width={"full"} px={5} gap={5}>
-          <Circle bg={"teal"} size={"50px"}>
-            <Circle border={`4px solid ${colorMode == "light" ? "white": "black"}`} size={"40px"}>
-              <Text fontWeight={700} textAlign={"center"} color={"white"}>02</Text>
+        <Flex width={"full"} px={5} gap={1}>
+          <Circle bg={"teal"} size={"45px"}>
+            <Circle border={`4px solid ${colorMode == "light" ? "white": "black"}`} size={"5em"}>
+              <Circle border={`3px solid ${colorMode == "light" ? "white": "black"}`} size={"35px"}>
+                <Text fontWeight={700} color={"white"} textAlign={"center"}>02</Text>
+              </Circle>
             </Circle>
           </Circle>
 
@@ -131,7 +139,7 @@ function Home() {
                 pos={"absolute"} w={"63%"} loading="lazy">
                   Dokumentasi Lomba
                 </Text>
-                <Text color={"white"} pos={"absolute"} bottom={3} fontWeight={600} letterSpacing={2}>Yuk disimak!</Text>
+                <Text color={"white"} pos={"absolute"} bottom={3} fontWeight={600} letterSpacing={2}>Yuk ditengok!</Text>
             </Box>
             </PopoverTrigger>
             <PopoverContent border={"2px solid teal"}>
