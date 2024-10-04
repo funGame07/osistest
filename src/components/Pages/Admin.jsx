@@ -26,7 +26,7 @@ import Question from "./AdminPage/Question";
 import { MdArrowBackIos } from "react-icons/md";
 import { osis } from "../../App";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import Dashboard from "./AdminPage/Dashboard";
 
 function Admin() {
     const {setShowBottomNavbar} = useContext(osis)
@@ -34,8 +34,8 @@ function Admin() {
     setShowBottomNavbar(false)
 
     return(
-        <Box mt={20} minH={"100vh"} px={2}  display={"flex"}>
-            <Box pos={"fixed"} zIndex={999}>
+        <Box mt={20}>
+            <Box zIndex={999} mx={1}>
                 <Menu>
                     <MenuButton
                         colorScheme="yellow"
@@ -49,17 +49,8 @@ function Admin() {
                             <MenuItem icon={<MdDashboard />} command='⌘'>
                                 Dashboard
                             </MenuItem>
-                            <MenuItem icon={<FaBook />} command='⌘'>
-                                Mata Pelajaran
-                            </MenuItem>
-                            <MenuItem icon={<FaRegCircleQuestion />} command='⌘'>
-                                Pertanyaan
-                            </MenuItem>
                             <MenuItem icon={<MdRestartAlt />} command='⌘'>
                                 Testing
-                            </MenuItem>
-                            <MenuItem icon={<VscRunAll />} command='⌘'>
-                                Mulai Quiz
                             </MenuItem>
                         </MenuGroup>
 
@@ -91,19 +82,16 @@ function Admin() {
                         </MenuGroup>
 
                         <MenuDivider />
-                        
-                        <Link to={"/"}>
-                            <MenuItem icon={< MdArrowBackIos />} command='⌘' as={"a"} href="/">
-                                Back
-                            </MenuItem>
-                        </Link>
-                        
+
+                        <MenuItem icon={< MdArrowBackIos />} command='⌘' as={"a"} href="/">
+                            Back
+                        </MenuItem>
                     </MenuList>
 
                 </Menu>
             </Box>
-            <Box m={"auto"}>
-                <Question />
+            <Box w={"full"}>
+                <Dashboard />
             </Box>
         </Box>
     )

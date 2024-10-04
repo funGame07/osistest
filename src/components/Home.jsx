@@ -12,7 +12,9 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverHeader,
-  PopoverCloseButton
+  PopoverCloseButton,
+  UnorderedList,
+  ListItem
  } from "@chakra-ui/react"
  import { Link } from "react-router-dom";
  import { FaExchangeAlt } from "react-icons/fa";
@@ -42,7 +44,8 @@ function Home() {
   return(
     <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "8%"}} pb={"70px"}>
     
-      <Flex pt={"120px"} flexDir={{base: "column", lg: "row"}} alignItems={"center"} gap={{base: 3, lg:1}}>
+      <Flex pt={{base: "120px", lg: "0"}} minH={{lg: "100vh"}} flexDir={{base: "column", lg: "row"}} 
+      alignItems={"center"} gap={{base: 3, lg:1}}>
         <Image src="logoosis.png" rounded={"full"} order={{base: 0, lg: 1}}
         maxW={{base: "250px", lg: "450px"}}/>
         <Flex flexDir={"column"} alignItems={"center"} >
@@ -72,7 +75,7 @@ function Home() {
       <Division text={"Lainnya"} colorMode={colorMode} pt={9}/>
 
           {/* others */}
-      <Flex gap={2} flexDir={{base: "column", lg: "row"}} minW={"full"}>
+      <Flex gap={3} flexDir={{base: "column", lg: "row"}} minW={"full"}>
         <Flex width={"full"} px={5} gap={1}>
           <Circle bg={"teal"} size={"45px"}>
             <Circle border={`4px solid ${colorMode == "light" ? "white": "black"}`} size={"5em"}>
@@ -86,7 +89,8 @@ function Home() {
               <Box bg={"red"} flexGrow={1} minH={"110px"} maxH={"130px"} 
               rounded={"xl"} pos={"relative"} p={5} bgImage={"visi.png"}
               bgSize={"cover"} bgPos={"center"} bgRepeat={"no-repeat"}
-              filter={"brightness(0.7)"} cursor={"pointer"}>
+              filter={"brightness(0.7)"} cursor={"pointer"} 
+              boxShadow={`2px 2px 1px 1px ${colorMode == "light"? "black" : "gray"}`}>
                 <Text color={"white"} textShadow={"-2px -2px 20px black"}
                 fontSize={"lg"} fontWeight={"800"} fontFamily={"sans-serif"}
                 pos={"absolute"} w={"63%"} loading="lazy">
@@ -95,7 +99,7 @@ function Home() {
                 <Text color={"white"} pos={"absolute"} bottom={3} fontWeight={600} letterSpacing={2}>Yuk disimak!</Text>
             </Box>
             </PopoverTrigger>
-            <PopoverContent border={"2px solid teal"}>
+            <PopoverContent border={"1px solid teal"}>
               <PopoverHeader height={"55px"}>
                 <PopoverCloseButton size={40} left={-200}>
                   <IoIosArrowBack size={"25px"} cursor={"pointer"}/>
@@ -103,17 +107,18 @@ function Home() {
                 </PopoverCloseButton>
               </PopoverHeader>
               <PopoverBody>
-                <Division text={"Visi"} colorMode={colorMode} pt={0} py={1}/>
-                <Text className="font-link" fontSize={"sm"}>1. blablablablablablabalbl</Text>
-                <Text className="font-link" fontSize={"sm"}>2. xixixixixixixixiixxixi</Text>
-                <Text className="font-link" fontSize={"sm"}>3. blablablablablablabalbl</Text>
-                <Text className="font-link" fontSize={"sm"}>4. xixixixixixixixiixxixi</Text>
-                <Text className="font-link" fontSize={"sm"}>5. blablablablablablabalbl</Text>
-                <Text className="font-link" fontSize={"sm"}>6. xixixixixixixixiixxixi</Text>
+                <Division text={"VISI"} colorMode={colorMode} pt={0} py={1}/>
+                  <UnorderedList px={3}>
+                    <ListItem>idjaiodnauiwdwdun</ListItem>
+                    <ListItem>idjaiodnauiwdwdun</ListItem>
+                    <ListItem>idjaiodnauiwdwdun</ListItem>
+                  </UnorderedList>
 
-                <Division text={"Misi"} colorMode={colorMode} pt={7} py={0}/>
-                <Text className="font-link" fontSize={"sm"}>1. blablablablablablabalbl</Text>
-                <Text className="font-link" fontSize={"sm"}>2. xixixixixixixixiixxixi</Text>
+                <Division text={"MISI"} colorMode={colorMode} pt={7} py={0}/>
+                  <UnorderedList px={3}>
+                    <ListItem>idjaiodnauiwdwdun</ListItem>
+                    <ListItem>idjaiodnauiwdwdun</ListItem>
+                  </UnorderedList>
               </PopoverBody>
             </PopoverContent>
           </Popover>
@@ -133,7 +138,8 @@ function Home() {
               <Box bg={"red"} flexGrow={1} minH={"110px"} maxH={"130px"} 
               rounded={"xl"} pos={"relative"} p={5} bgImage={"lomba.png"}
               bgSize={"cover"} bgPos={"center"} bgRepeat={"no-repeat"}
-              filter={"brightness(0.7)"} cursor={"pointer"}>
+              filter={"brightness(0.7)"} cursor={"pointer"} 
+              boxShadow={`2px 2px 1px 1px ${colorMode == "light"? "black" : "gray"}`}>
                 <Text color={"white"} textShadow={"-2px -2px 20px black"}
                 fontSize={"lg"} fontWeight={"800"} fontFamily={"sans-serif"}
                 pos={"absolute"} w={"63%"} loading="lazy">
@@ -142,7 +148,7 @@ function Home() {
                 <Text color={"white"} pos={"absolute"} bottom={3} fontWeight={600} letterSpacing={2}>Yuk ditengok!</Text>
             </Box>
             </PopoverTrigger>
-            <PopoverContent border={"2px solid teal"}>
+            <PopoverContent border={"1px solid teal"}>
               <PopoverHeader height={"55px"}>
                 <PopoverCloseButton size={40} left={-200}>
                   <IoIosArrowBack size={"25px"} cursor={"pointer"}/>

@@ -37,7 +37,16 @@ function Carousel() {
             {
                 osisUser.map((data, id) =>{
                     return <SwiperSlide className="swipercardsss" key={id} >
-                                <Content mode={"wizard"} img={"osis2.png"} colorMode={colorMode}/>
+                                <Content 
+                                    mode={"wizard"} 
+                                    img={"osis2.png"} 
+                                    colorMode={colorMode} 
+                                    // name={data.name} 
+                                    // role={data.role} 
+                                    // division={data.division} 
+                                    // username={data.social[1]}
+                                    // link={data.social[0]}
+                                />
                             </SwiperSlide>
                 })
             }
@@ -46,7 +55,9 @@ function Carousel() {
   );
 }
 
-function Content({img, mode, colorMode}){
+
+
+function Content({img, mode, colorMode, name="Unknown", role="Unknown", division="Unknown", username="Unknown", link="https://www.instagram.com/"}){
     return (
         <div className="wrapper">
             <Box className={`clash-card ${mode}`}
@@ -63,18 +74,18 @@ function Content({img, mode, colorMode}){
                 mb={{base:"3px", lg:"2px"}}
             
                 >
-                    Ketua Osis
+                    {role}
             </Box>
             <Box className="clash-card__unit-name font-link"
                 fontSize={{base: "26px", lg: "17px"}} 
                 mb={{base: "0px", lg: "3px"}}>
-                    Nico
+                    {name}
             </Box>
             <Box className="clash-card__unit-description"
             mb={{base: "9px", lg: "8px"}}
             fontSize={{base:"sm", lg:"10px"}}
             >
-                Halo, saya bendahara Osis tahun 2024/2025. Tugas saya menjaga uang kas OSIS 
+                {division}
             </Box>
 
             <div className={`clash-card__unit-stats clash-card__unit-stats--${mode} clearfix`}>
@@ -84,10 +95,10 @@ function Content({img, mode, colorMode}){
                     <Box className="stat"
                     fontSize={{base: "24px", lg: '16px'}}
                     mb={{base: "6px", lg: "6px"}}>
-                        <Image src="osis.png" rounded={"full"} maxW={"60%"}/>
+                        <Image src="logoosis.png" rounded={"full"} maxW={"70%"}/>
                     </Box>
                     <Box className="stat-value"
-                    fontSize={{base: "10px", lg: "8px"}}>Anggota</Box>
+                    fontSize={{base: "10px", lg: "8px"}}>{role}</Box>
                 </Box>
 
                 <Box className="two-third no-border"
@@ -98,7 +109,7 @@ function Content({img, mode, colorMode}){
                         <Box maxW={{base: "30", lg: "20px"}} maxH={"20px"} justifyContent={"start"}>
                             <BsInstagram size={"80%"} style={{background: "linear-gradient(45deg, red, red, blue)", borderRadius: "30%"}}/>
                         </Box>
-                        <Link to={"/"} fontSize={{base:"sm", lg: "10px"}} bgGradient={"linear(to-br, red, blue.800)"} bgClip={"text"}>@ellbrtt</Link>
+                        <Link href={link} fontSize={{base:"sm", lg: "10px"}} bgGradient={"linear(to-br, red, blue.800)"} bgClip={"text"}>@{username}</Link>
                     </Flex>
                     <Text mt={{base: "10px", lg:"6.5px"}}
                     fontSize={{base:"10px", lg: "8px"}} className='stat-value'>Follow my Instagram</Text>
