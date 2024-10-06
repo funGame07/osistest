@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import { Box, Image, Text, Link, Flex } from '@chakra-ui/react';
-import { Box, VStack, Image, Text, Button, Link, Flex } from '@chakra-ui/react';
+import { Box, VStack, Image, Text, Button, Link, Flex, Heading, AspectRatio, AbsoluteCenter } from '@chakra-ui/react';
 
 import { osis } from '../../App';
 import "./carousel.scss"
@@ -15,12 +14,41 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import { BsInstagram } from "react-icons/bs";
 
 function Carousel() {
-    const {osisUser, themes, colorMode} = useContext(osis)
+  const strukturOrganisasi = useRef(null)
+  const [showStrukturOrganisasi, setShowStrukturOrganisasi] = useState(false)
+  const {osisUser, colorMode} = useContext(osis)
+
+  useEffect(()=>{
+    function handleOutsideClick(e){
+      if(strukturOrganisasi.current && !strukturOrganisasi.current.contains(e.target)){
+        setShowStrukturOrganisasi(false)
+      }else{
+        setShowStrukturOrganisasi(false)
+      }
+    }
+    document.addEventListener("mousedown", handleOutsideClick, true)
+    return () => document.removeEventListener("mousedown", handleOutsideClick, true)
+  }, [strukturOrganisasi])
 
   return (
-    <Box className="container" maxW={{base:"100%", lg:"80%"}} px={"0%"} h={{base: "470px", lg:"450px"}}>
+    <Box className="container" mt={20} display={{lg:"flex"}} maxW={{base:"100%", lg:"100%"}} h={{base: "670px", lg:"450px"}} gap={3}>
+      <Flex w={{base: "100%", lg: "60%"}} flexDir={"column"} gap={{base:4, lg: 2}} pos={"relative"}>
+        <Heading fontSize={"2xl"} textAlign={"center"} className='font-link'>
+          STRUKTUR ORGANISASI
+        </Heading> 
+        <AspectRatio ratio={2/1.15} w={"95%"} placeSelf={"center"} rounded={"2xl"} boxShadow='0 0 20px rgba(66, 153, 225, 0.3)' overflowX={"auto"}>
+          <Image src='strukturorganisasi.png' objectFit={"initial"} rounded={"2xl"} _hover={{filter: "auto", brightness: "0.7"}} onClick={()=> setShowStrukturOrganisasi(true)}/>        
+        </AspectRatio>
+      </Flex>
+
+      <AbsoluteCenter pos={"absolute"} w={"85%"} m={'auto'} rounded={"2xl"} overflow={"hidden"} ref={strukturOrganisasi} zIndex={999} display={{base: "none", lg: showStrukturOrganisasi? "block" : "none"}}>
+          <Image src='strukturorganisasi.png' objectFit={"cover"} w={"full"} h={"full"}/>
+      </AbsoluteCenter>
+      {/* <Heading fontSize={"2xl"} textAlign={"center"} display={{base: "block", lg:"none"}} mt={10}>
+        ANGGOTA
+      </Heading> */}
       <Swiper
-        style={{display:"flex", padding: "60px 0px"}}
+        className='swiper-container'
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
@@ -62,7 +90,7 @@ function Carousel() {
 function Content({img, mode, colorMode, name="Unknown", role="Unknown", division="Unknown", username="Unknown", link="https://www.instagram.com/"}){
     return (
         <Box
-      width={{base: "260px", lg: "240px"}}
+      width={{base: "230px", lg: "240px"}}
       height={{base: "410px",lg:"384px"}}
       bg={colorMode == "light" ? "gray.100" : "gray.800"}
       borderRadius="xl"

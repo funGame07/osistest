@@ -15,7 +15,6 @@ export const osis = createContext()
 function App() {
   const [isAuth, setIsAuth] = useState(false)
   const {colorMode, toggleColorMode} = useColorMode()
-  const themes = ["barbarian", "archer", "goblin", "giant", "wizard"]
   const [osisUser, setOsisUser] = useState(["x", "s","x", "s","x", "s","x", "s","x", "s"])
   const [showBottomNavbar, setShowBottomNavbar] = useState(true)
 
@@ -53,7 +52,6 @@ function App() {
     }
 
   const provider = {
-    themes,
     colorMode,
     toggleColorMode,
     toggleFs,
