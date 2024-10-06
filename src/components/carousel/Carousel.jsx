@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Box, Image, Text, Link, Flex } from '@chakra-ui/react';
+// import { Box, Image, Text, Link, Flex } from '@chakra-ui/react';
+import { Box, VStack, Image, Text, Button, Link, Flex } from '@chakra-ui/react';
+
 import { osis } from '../../App';
 import "./carousel.scss"
 
@@ -16,7 +18,7 @@ function Carousel() {
     const {osisUser, themes, colorMode} = useContext(osis)
 
   return (
-    <Box className="container" maxW={{base:"100%", lg:"70%"}} px={"0%"} h={{base: "490px", lg:"420px"}}>
+    <Box className="container" maxW={{base:"100%", lg:"80%"}} px={"0%"} h={{base: "470px", lg:"450px"}}>
       <Swiper
         style={{display:"flex", padding: "60px 0px"}}
         effect={'coverflow'}
@@ -27,9 +29,9 @@ function Carousel() {
         lazyPreloadPrevNext={true}
         coverflowEffect={{
           rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 4.5,
+          stretch: -5,
+          depth: 160,
+          modifier: 3,
         }}
         pagination={{ el: '.swiper-pagination', clickable: true }}
         modules={[EffectCoverflow, Pagination, Navigation]}
@@ -59,66 +61,71 @@ function Carousel() {
 
 function Content({img, mode, colorMode, name="Unknown", role="Unknown", division="Unknown", username="Unknown", link="https://www.instagram.com/"}){
     return (
-        <div className="wrapper">
-            <Box className={`clash-card ${mode}`}
-            boxShadow={`-1px 15px 30px -12px ${colorMode =="light"? "black" : "gray.100"}`} 
-            w={{base: "230px", lg: "201px"}} bg={colorMode == "light" ? "white" : "gray.900"}>
-            <Box className={`clash-card__image clash-card__image--${mode}`} 
-            height={{base: "155px", lg: "154px"}}
-            mb={{base: "35px", lg: "23px"}} display={"flex"} justifyContent={"center"}
-            >
-                <Image src={img? img: `https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/${mode}.png`} h={"130%"} top={-10} loading='lazy'/>
-            </Box>
-            <Box className={`clash-card__level clash-card__level--${mode}`}
-                fontSize={{base: "12px", lg: "8px"}}
-                mb={{base:"3px", lg:"2px"}}
-            
-                >
-                    {role}
-            </Box>
-            <Box className="clash-card__unit-name font-link"
-                fontSize={{base: "26px", lg: "17px"}} 
-                mb={{base: "0px", lg: "3px"}}>
-                    {name}
-            </Box>
-            <Box className="clash-card__unit-description"
-            mb={{base: "9px", lg: "8px"}}
-            fontSize={{base:"sm", lg:"10px"}}
-            >
-                {division}
-            </Box>
-
-            <div className={`clash-card__unit-stats clash-card__unit-stats--${mode} clearfix`}>
-                <Box className="one-third"
-                py={{base:"8px", lg: "7px"}}
-                px={{base: "15px", lg: "10px"}}>
-                    <Box className="stat"
-                    fontSize={{base: "24px", lg: '16px'}}
-                    mb={{base: "6px", lg: "6px"}}>
-                        <Image src="logoosis.png" rounded={"full"} maxW={"75%"}/>
-                    </Box>
-                    <Box className="stat-value"
-                    fontSize={{base: "8px", lg: "8px"}}>{role}</Box>
-                </Box>
-
-                <Box className="two-third no-border"
-                py={{base:"10px", lg: "11px"}}
-                px={{base: "15px", lg: "10px"}}
-                display={"flex"} flexDir={"column"}>
-                    <Flex className="stat">
-                        <Box maxW={{base: "30", lg: "20px"}} maxH={"20px"} justifyContent={"start"}>
-                            <BsInstagram size={"70%"} style={{background: "linear-gradient(45deg, red, red, blue)", borderRadius: "30%"}}/>
-                        </Box>
-                        <Link href={link} fontSize={{base:"10px", lg: "10px"}} bgGradient={"linear(to-br, red, blue.800)"} bgClip={"text"}>@{username}</Link>
-                    </Flex>
-                    <Text mt={{base: "10px", lg:"6.5px"}}
-                    fontSize={{base:"8px", lg: "8px"}} className='stat-value'>Follow my Instagram</Text>
-                </Box>
-
-            </div>
-
-            </Box>
-        </div>
+        <Box
+      width={{base: "260px", lg: "240px"}}
+      height={{base: "410px",lg:"384px"}}
+      bg={colorMode == "light" ? "gray.100" : "gray.800"}
+      borderRadius="xl"
+      overflow="hidden"
+      boxShadow='0 0 20px rgba(66, 153, 225, 0.3)'
+      transition="all 0.3s"
+      _hover={{ boxShadow: '0 0 20px rgba(66, 153, 225, 0.7)' }}
+    >
+      <Box position="relative" height="66%">
+        <Image src="JEEVAN.png" alt="Profile" objectFit="cover" w="100%" h="100%" />
+        <Box
+          position="absolute"
+          inset="0"
+          bgGradient="linear(to-t, gray.900, rgba(26, 32, 44, 0.7),rgba(26, 32, 44, 0.5), transparent, transparent)"
+        />
+        <VStack
+          position="absolute"
+          bottom="0"
+          left="0"
+          right="0"
+          p="4"
+          align="flex-start"
+          spacing="1"
+        >
+          <Text color="gray.100" fontSize="xl" fontWeight="bold">
+            Unknown
+          </Text>
+          <Text color="gray.400" fontSize="sm">
+            OSIS Member
+          </Text>
+        </VStack>
+      </Box>
+      <VStack p="4" height="34%" justifyContent="space-between" bg="gray.900">
+        <Text color="gray.400" fontSize="xs" w="100%">
+          Active participant in school organizations
+        </Text>
+        <Flex justifyContent="space-between" w="100%" alignItems="center">
+          <Button
+            size="xs"
+            colorScheme='blue'
+            variant={"outline"}
+            borderRadius="full"
+            fontSize={"9px"}
+            px={3}
+          >
+            UNKNOWN
+          </Button>
+          <Link
+            href="https://instagram.com/"
+            isExternal
+            display="flex"
+            alignItems="center"
+            color="pink.400"
+            _hover={{ color: 'pink.300' }}
+            fontSize="xs"
+            fontWeight="semibold"
+          >
+            <Box as={BsInstagram} size={16} mr="1" />
+            @Unknown
+          </Link>
+        </Flex>
+      </VStack>
+    </Box>
     )
 }
 
