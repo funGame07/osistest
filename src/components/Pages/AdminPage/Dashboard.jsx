@@ -26,7 +26,7 @@ function Dashboard() {
   return (
     <Box w={"full"}>
         <Box display={"flex"} gap={2}>
-            <Tabs w={"full"} defaultIndex={1}>
+            <Tabs w={"full"}>
               <TabList pl={"18px"}>
                 <Tab fontWeight={"600"}>ALL</Tab>
                 <Tab fontWeight={"600"}>COURSES</Tab>

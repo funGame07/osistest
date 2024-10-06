@@ -28,7 +28,7 @@ import CreateQuestion from './CreateQuestion';
 
 function Courses() {
     const [createMapel, setCreateMapel] = useState(false)
-    const [createQuestion, setCreateQuestion] = useState(true)
+    const [createQuestion, setCreateQuestion] = useState(false)
 
     const steps = [
         { title: 'Pertama', description: 'Buat mata pelajaran dulu' },
