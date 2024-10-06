@@ -36,7 +36,7 @@ body {
   display: inline-block;
   border: 1px solid rgb(244, 244, 244);
   margin: auto;
-  border-radius: $border-radius-size + 5;
+  border-radius: $border-radius-size ;
   position: relative;
   text-align: center;
   // box-shadow: -1px 15px 30px -12px black;
@@ -165,8 +165,7 @@ body {
 
 .clash-card__unit-stats {
   
-  color: white;
-  
+  color: white;  
   font-weight: 700;
   border-bottom-left-radius: $border-radius-size;
   border-bottom-right-radius: $border-radius-size;
@@ -222,7 +221,7 @@ body {
 }
 
 .swipercardsss{
-  width: 250px !important;
+  width: 230px !important;
 }
 
 @media (min-width: 992px){

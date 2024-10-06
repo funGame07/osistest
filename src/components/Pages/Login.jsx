@@ -81,12 +81,12 @@ function Login() {
 
   return (
     <Box display={"flex"} flexDir={"column"} alignItems={"center"} 
-    justifyContent={"center"} px={0} gap={3} pt={{base: 20, lg: 0}}
+    justifyContent={"center"} px={0} gap={3} pt={{base: 20, lg: 10}}
     position="absolute"
       top="45%"
       left="50%"
       transform="translate(-50%, -50%)">
-      <Text className='font-link' fontSize={{base: "4xl", lg: "6xl"}} fontWeight={800} bgClip={"text"} bgGradient={'linear(to-r, #39240b, yellow)'}>
+      <Text className='font-link' fontSize={{base: "4xl", lg: "6xl"}} fontWeight={800} color={colorMode == "light" ? "teal.600" : "#e2d000"}>
         Login
       </Text>
       <Text className='font-link' textAlign={"center"} fontSize={"lg"} opacity={0.7}>
@@ -107,7 +107,7 @@ function Login() {
       </InputGroup>
 
       <Button bgColor={colorMode== "light"? "teal" : "#e2d000"} colorScheme={colorMode== "light"? "teal" : "yellow"} mt={5} 
-      onClick={userLogin} fontWeight={700} isLoading={isLoading} loadingText='Submitting'>
+      onClick={userLogin} fontWeight={700} px={10} rounded={"2xl"} isLoading={isLoading} loadingText='Submitting'>
         Login
       </Button>
     </Box>

@@ -21,7 +21,7 @@
     bottom: 0;
     display: flex;
     justify-content: center;
-    border-top: 1px solid rgb(172, 172, 172);
+    /* border-top: 1px solid rgb(172, 172, 172); */
 
     .nav{
         position: absolute;

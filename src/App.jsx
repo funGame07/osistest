@@ -1,5 +1,5 @@
 import {Routes, Route } from "react-router-dom"
-import Home from "./components/Home"
+import Home from "./components/Pages/Home"
 import Login from "./components/Pages/Login"
 import Navbar from "./components/nav/Navbar"
 import BottomNav from "./components/nav/BottomNav"
@@ -16,7 +16,7 @@ function App() {
   const [isAuth, setIsAuth] = useState(false)
   const {colorMode, toggleColorMode} = useColorMode()
   const themes = ["barbarian", "archer", "goblin", "giant", "wizard"]
-  const [osisUser, setOsisUser] = useState([])
+  const [osisUser, setOsisUser] = useState(["x", "s","x", "s","x", "s","x", "s","x", "s"])
   const [showBottomNavbar, setShowBottomNavbar] = useState(true)
 
   async function isAuthFromDB(){

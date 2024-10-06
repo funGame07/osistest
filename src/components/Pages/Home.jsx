@@ -18,9 +18,9 @@ import {
  } from "@chakra-ui/react"
  import { Link } from "react-router-dom";
  import { FaExchangeAlt } from "react-icons/fa";
-import Carousel from "./Carousel";
+import Carousel from "../carousel/Carousel";
 import { useContext } from "react";
-import { osis } from "../App";
+import { osis } from "../../App";
 import { IoIosArrowBack } from "react-icons/io";
 
 import "./home.css"

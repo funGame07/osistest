@@ -31,10 +31,10 @@ import Dashboard from "./AdminPage/Dashboard";
 function Admin() {
     const {setShowBottomNavbar} = useContext(osis)
 
-    setShowBottomNavbar(false)
+    setShowBottomNavbar(true)
 
     return(
-        <Box mt={20}>
+        <Box py={20}>
             <Box zIndex={999} mx={1}>
                 <Menu>
                     <MenuButton

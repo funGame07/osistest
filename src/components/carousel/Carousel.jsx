@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Box, Image, Text, Link, Flex } from '@chakra-ui/react';
-import { osis } from '../App';
+import { osis } from '../../App';
 import "./carousel.scss"
 
 import 'swiper/css';
@@ -16,7 +16,7 @@ function Carousel() {
     const {osisUser, themes, colorMode} = useContext(osis)
 
   return (
-    <Box className="container" maxW={{base:"100%", lg:"70%"}} px={"0%"} h={{base: "530px", lg:"420px"}}>
+    <Box className="container" maxW={{base:"100%", lg:"70%"}} px={"0%"} h={{base: "490px", lg:"420px"}}>
       <Swiper
         style={{display:"flex", padding: "60px 0px"}}
         effect={'coverflow'}
@@ -62,7 +62,7 @@ function Content({img, mode, colorMode, name="Unknown", role="Unknown", division
         <div className="wrapper">
             <Box className={`clash-card ${mode}`}
             boxShadow={`-1px 15px 30px -12px ${colorMode =="light"? "black" : "gray.100"}`} 
-            w={{base: "250px", lg: "201px"}} bg={colorMode == "light" ? "white" : "gray.900"}>
+            w={{base: "230px", lg: "201px"}} bg={colorMode == "light" ? "white" : "gray.900"}>
             <Box className={`clash-card__image clash-card__image--${mode}`} 
             height={{base: "155px", lg: "154px"}}
             mb={{base: "35px", lg: "23px"}} display={"flex"} justifyContent={"center"}
@@ -95,24 +95,24 @@ function Content({img, mode, colorMode, name="Unknown", role="Unknown", division
                     <Box className="stat"
                     fontSize={{base: "24px", lg: '16px'}}
                     mb={{base: "6px", lg: "6px"}}>
-                        <Image src="logoosis.png" rounded={"full"} maxW={"70%"}/>
+                        <Image src="logoosis.png" rounded={"full"} maxW={"75%"}/>
                     </Box>
                     <Box className="stat-value"
-                    fontSize={{base: "10px", lg: "8px"}}>{role}</Box>
+                    fontSize={{base: "8px", lg: "8px"}}>{role}</Box>
                 </Box>
 
                 <Box className="two-third no-border"
                 py={{base:"10px", lg: "11px"}}
                 px={{base: "15px", lg: "10px"}}
                 display={"flex"} flexDir={"column"}>
-                    <Flex className="stat" gap={"10px"} >
+                    <Flex className="stat">
                         <Box maxW={{base: "30", lg: "20px"}} maxH={"20px"} justifyContent={"start"}>
-                            <BsInstagram size={"80%"} style={{background: "linear-gradient(45deg, red, red, blue)", borderRadius: "30%"}}/>
+                            <BsInstagram size={"70%"} style={{background: "linear-gradient(45deg, red, red, blue)", borderRadius: "30%"}}/>
                         </Box>
-                        <Link href={link} fontSize={{base:"sm", lg: "10px"}} bgGradient={"linear(to-br, red, blue.800)"} bgClip={"text"}>@{username}</Link>
+                        <Link href={link} fontSize={{base:"10px", lg: "10px"}} bgGradient={"linear(to-br, red, blue.800)"} bgClip={"text"}>@{username}</Link>
                     </Flex>
                     <Text mt={{base: "10px", lg:"6.5px"}}
-                    fontSize={{base:"10px", lg: "8px"}} className='stat-value'>Follow my Instagram</Text>
+                    fontSize={{base:"8px", lg: "8px"}} className='stat-value'>Follow my Instagram</Text>
                 </Box>
 
             </div>
