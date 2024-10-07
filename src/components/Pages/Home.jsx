@@ -46,7 +46,7 @@ function Home() {
 
 
   return(
-    <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "6%"}} pos={"relative"}>
+    <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "6%"}} pos={"relative"} overflow={"hidden"}>
       <Image src="schoolbg.png" pos={"absolute"} w={"full"} objectFit={"cover"} h={"100vh"} filter={"auto"} brightness={"0.4"}/>
     
       <Flex pt={{base: "120px", lg: "0"}} minH={"100vh"} flexDir={{base: "column", lg: "row"}} color={"white"}
@@ -104,9 +104,9 @@ function Home() {
         </Box>
       </Flex>
 
-      {/* <Division text={""} colorMode={colorMode}/> */}
 
-      <Flex w={"full"} flexDir={"column"} textAlign={"start"} px={5} bg={colorMode == "light" ? "white" : "black"} mt={10} py={5} pb={"5em"} gap={4}>        <Flex flexDir={"column"} gap={1}>
+      <Flex w={{base: "full", lg: "100%"}} flexDir={"column"} textAlign={"start"} px={5} bg={colorMode == "light" ? "white" : "black"} mt={10} py={5} pb={"5em"} gap={4}>        
+        <Flex flexDir={"column"} gap={1}>
           <Text className="font-link" fontSize={"lg"} fontWeight={"800"}>HUBUNGI KAMI</Text>
           <Link style={{display: "flex", alignItems: "center", gap:"1em"}}>
             <Box as={IoMailOutline} size={"21px"} color={colorMode == "dark"? "blue.600": "blue.700"}/>
@@ -115,9 +115,13 @@ function Home() {
         </Flex>
         <Flex flexDir={"column"} gap={2}>
           <Text className="font-link" fontSize={"lg"} fontWeight={"800"}>IKUTI KAMI</Text>
-          <Link style={{display: "flex", alignItems: "center", gap:"1em"}}>
+          <Link to={"https://www.instagram.com/smassa24.25/"} style={{display: "flex", alignItems: "center", gap:"1em"}}>
             <Box as={BsInstagram} size={"20px"} color={colorMode == "dark"? "blue.600": "blue.700"}/>
             @smassa24.25
+          </Link>
+          <Link to={"https://www.instagram.com/smassultanagung.psa/"} style={{display: "flex", alignItems: "center", gap:"1em"}}>
+            <Box as={BsInstagram} size={"20px"} color={colorMode == "dark"? "blue.600": "blue.700"}/>
+            @smassultanagung.psa
           </Link>
         </Flex>
 
@@ -128,112 +132,6 @@ function Home() {
           <Image src="logoosis.png" maxW={"40px"} maxH={"40px"}/>
         </Flex>
       </Flex>
-      
-
-
-
-
-
-
-      {/* <Division text={"Lainnya"} colorMode={colorMode} pt={9}/> */}
-
-          {/* others */}
-      {/* <Flex gap={3} flexDir={{base: "column", lg: "row"}} minW={"full"}>
-        <Flex width={"full"} px={5} gap={1}>
-          <Circle bg={"teal"} size={"45px"}>
-            <Circle border={`4px solid ${colorMode == "light" ? "white": "black"}`} size={"5em"}>
-              <Circle border={`3px solid ${colorMode == "light" ? "white": "black"}`} size={"35px"}>
-                <Text fontWeight={700} color={"white"} textAlign={"center"}>01</Text>
-              </Circle>
-            </Circle>
-          </Circle>
-          <Popover placement="top-end">
-            <PopoverTrigger>
-              <Box bg={"red"} flexGrow={1} minH={"110px"} maxH={"130px"} 
-              rounded={"xl"} pos={"relative"} p={5} bgImage={"visi.png"}
-              bgSize={"cover"} bgPos={"center"} bgRepeat={"no-repeat"}
-              filter={"brightness(0.7)"} cursor={"pointer"} 
-              boxShadow={`2px 2px 1px 1px ${colorMode == "light"? "black" : "gray"}`}>
-                <Text color={"white"} textShadow={"-2px -2px 20px black"}
-                fontSize={"lg"} fontWeight={"800"} fontFamily={"sans-serif"}
-                pos={"absolute"} w={"63%"} loading="lazy">
-                  Visi dan Misi Kami
-                </Text>
-                <Text color={"white"} pos={"absolute"} bottom={3} fontWeight={600} letterSpacing={2}>Yuk disimak!</Text>
-            </Box>
-            </PopoverTrigger>
-            <PopoverContent border={"1px solid teal"}>
-              <PopoverHeader height={"55px"}>
-                <PopoverCloseButton size={40} left={-200}>
-                  <IoIosArrowBack size={"25px"} cursor={"pointer"}/>
-                  <Image src={colorMode == "light" ? "logoosis-black.png" : "logoosis-white.png"} maxW={"20"}/>
-                </PopoverCloseButton>
-              </PopoverHeader>
-              <PopoverBody>
-                <Division text={"VISI"} colorMode={colorMode} pt={0} py={1}/>
-                  <UnorderedList px={3}>
-                    <ListItem>idjaiodnauiwdwdun</ListItem>
-                    <ListItem>idjaiodnauiwdwdun</ListItem>
-                    <ListItem>idjaiodnauiwdwdun</ListItem>
-                  </UnorderedList>
-
-                <Division text={"MISI"} colorMode={colorMode} pt={7} py={0}/>
-                  <UnorderedList px={3}>
-                    <ListItem>idjaiodnauiwdwdun</ListItem>
-                    <ListItem>idjaiodnauiwdwdun</ListItem>
-                  </UnorderedList>
-              </PopoverBody>
-            </PopoverContent>
-          </Popover>
-        </Flex>
-
-        <Flex width={"full"} px={5} gap={1}>
-          <Circle bg={"teal"} size={"45px"}>
-            <Circle border={`4px solid ${colorMode == "light" ? "white": "black"}`} size={"5em"}>
-              <Circle border={`3px solid ${colorMode == "light" ? "white": "black"}`} size={"35px"}>
-                <Text fontWeight={700} color={"white"} textAlign={"center"}>02</Text>
-              </Circle>
-            </Circle>
-          </Circle>
-
-          <Popover placement="top-end">
-            <PopoverTrigger>
-              <Box bg={"red"} flexGrow={1} minH={"110px"} maxH={"130px"} 
-              rounded={"xl"} pos={"relative"} p={5} bgImage={"lomba.png"}
-              bgSize={"cover"} bgPos={"center"} bgRepeat={"no-repeat"}
-              filter={"brightness(0.7)"} cursor={"pointer"} 
-              boxShadow={`2px 2px 1px 1px ${colorMode == "light"? "black" : "gray"}`}>
-                <Text color={"white"} textShadow={"-2px -2px 20px black"}
-                fontSize={"lg"} fontWeight={"800"} fontFamily={"sans-serif"}
-                pos={"absolute"} w={"63%"} loading="lazy">
-                  Dokumentasi Lomba
-                </Text>
-                <Text color={"white"} pos={"absolute"} bottom={3} fontWeight={600} letterSpacing={2}>Yuk ditengok!</Text>
-            </Box>
-            </PopoverTrigger>
-            <PopoverContent border={"1px solid teal"}>
-              <PopoverHeader height={"55px"}>
-                <PopoverCloseButton size={40} left={-200}>
-                  <IoIosArrowBack size={"25px"} cursor={"pointer"}/>
-                  <Image src={colorMode == "light" ? "logoosis-black.png" : "logoosis-white.png"} maxW={"20"}/>
-                </PopoverCloseButton>
-              </PopoverHeader>
-              <PopoverBody>
-                
-                
-              </PopoverBody>
-            </PopoverContent>
-          </Popover>
-        </Flex>
-      </Flex>
-      
-      <Flex h={"60px"} animation={`${dissapear} 6s ease-in infinite`} alignItems={"center"} mt={5} gap={4}>
-        <Image src="sultan.png" maxW={"40px"} maxH={"40px"} rounded={"full"} loading="lazy"/>
-        <FaExchangeAlt size={20}/>
-        <Image src="logoosis.png" maxW={"50px"} maxH={"50px"} loading="lazy"/>
-      </Flex> */}
-      
-
     </Box>
   )
 }

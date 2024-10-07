@@ -14,6 +14,8 @@ import {
  import Cookies from 'js-cookie';
  import "./../../index.css"
  import { osis } from '../../App';
+ import { RiLockPasswordLine } from "react-icons/ri";
+
 
 function Login() {
   const {isAuthFromDB, colorMode} = useContext(osis)
@@ -80,33 +82,31 @@ function Login() {
   }
 
   return (
-    <Box display={"flex"} flexDir={"column"} alignItems={"center"} 
-    justifyContent={"center"} px={0} gap={3} pt={{base: 20, lg: 10}}
-    position="absolute"
-      top="45%"
-      left="50%"
-      transform="translate(-50%, -50%)">
-      <Text className='font-link' fontSize={{base: "4xl", lg: "6xl"}} fontWeight={800} color={colorMode == "light" ? "teal.600" : "#e2d000"}>
+    <Box display={"flex"} flexDir={"column"} alignItems={"center"} w={{base: "80%" , lg:"40%"}} mx={"auto"} mt={40} border={"1px solid rgba(66, 153, 225, 0.5)"} boxShadow={"0 0 20px rgba(66, 153, 225, 0.5)"}
+    justifyContent={"center"} px={0} gap={3} py={{base: 20, lg: "7em"}} pos={"relative"} rounded={"3xl"} bg={colorMode == "light"? "white": "black"}>
+        <Image src="logoosis.png" maxW={120} minH={110} pos={"absolute"} top={"-4em"} boxShadow={"-0px 15px 10px -8px rgba(66, 153, 225, 0.5)"} rounded={"full"}/>
+
+      <Text  fontSize={{base: "4xl", lg: "4xl"}} fontWeight={800} color={"rgba(66, 120, 225,0.8)"}>
         Login
       </Text>
-      <Text className='font-link' textAlign={"center"} fontSize={"lg"} opacity={0.7}>
+      <Text className='font-link' textAlign={"center"} fontSize={"sm"} opacity={0.6} w={"70%"}>
         Untuk mengikuti acara dan berita terbaru dari OSIS
       </Text>
-      <Image src="logoosis.png" maxW={160}/>
-      <InputGroup>
+      
+      <InputGroup w={"70%"}>
         <InputLeftElement pointerEvents='none'>
           <FaRegUser />
         </InputLeftElement>
         <Input type='tel' placeholder='NIS' onChange={(e) => setNis(e.target.value)}/>
       </InputGroup>
-      <InputGroup>
+      <InputGroup w={"70%"}>
         <InputLeftElement pointerEvents='none'>
-          <FaRegUser />
+          <RiLockPasswordLine />
         </InputLeftElement>
         <Input type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
       </InputGroup>
 
-      <Button bgColor={colorMode== "light"? "teal" : "#e2d000"} colorScheme={colorMode== "light"? "teal" : "yellow"} mt={5} 
+      <Button  colorScheme={"blue"} mt={5} variant={"outline"} bgColor={"rgba(66, 153, 225, 0.4)"}
       onClick={userLogin} fontWeight={700} px={10} rounded={"2xl"} isLoading={isLoading} loadingText='Submitting'>
         Login
       </Button>

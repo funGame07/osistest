@@ -18,75 +18,16 @@ import { FiMoon, FiSun } from "react-icons/fi";
 import { RxDividerVertical } from "react-icons/rx";
 import { MdOutlinePushPin } from "react-icons/md";
 import { RxEnterFullScreen, RxExitFullScreen } from "react-icons/rx";
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import Modals from '../modal/VisitModal';
 import { osis } from '../../App'
-
+import AuthPopover from './AuthPopover';
 
 
 function Navbar() { 
-    const [isLoading, setIsLoading] = useState(false)
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const {colorMode, toggleColorMode, toggleFs, isAuth, setIsAuth} = useContext(osis)
-    const toast = useToast()
-    function isAuthFromCookie(){
-        const isAuthToken = Cookies.get("auth")
-        if (isAuthToken != "undefined" && isAuthToken ) return setIsAuth(true)
-        return setIsAuth(false)
-    }
+    const {colorMode, toggleColorMode, toggleFs} = useContext(osis)
 
-    async function handleLogout(){
-        const toastPromise = new Promise(async (resolve, reject) => {
-            setIsLoading(true)
-            try {
-                const res = await fetch("http://localhost:3000/api/auth/logout",{
-                    method: "GET",
-                    credentials: "include"
-                })
-                const data = await res.json()
-                if(data.success){
-                    Cookies.remove("auth")
-                    setIsAuth(false)
-                    setIsLoading(false)
-                    resolve(data.message)
-
-                }else{
-                    Cookies.remove("auth")
-                    setIsAuth(false)
-                    reject(data.message)
-                }
-            } catch (error) {
-                reject(data.message)
-            } finally{
-                useNavigate('/login')
-                setIsLoading(false)
-            }
-        })
-
-        toast.promise(toastPromise, {
-            success: value => ({ 
-              title: 'Success', 
-              description: value,
-              isClosable: true,
-              position: 'top',
-              containerStyle: {
-                zIndex: 9999
-              },
-              duration: 2000
-            }),
-            error: value => ({ 
-              title: 'Oops!', 
-              description: value,
-              isClosable: true,
-              position: 'top',
-              containerStyle: {
-                zIndex: 9999
-              },
-              duration: 2000
-            }),
-            loading: { title: 'Loading', description: "Tunggu sebentar", position: "top", isClosable: true},
-        })
-    }
 
   return (
     <Box pos={"fixed"} w={"full"} zIndex={1000}>
@@ -101,22 +42,7 @@ function Navbar() {
                                         <FiSun opacity={0.7} onClick={toggleColorMode} cursor={"pointer"} />}
                 <RxDividerVertical size={21} opacity={0.7}/>
 
-                <Popover>
-                <PopoverTrigger>
-                    <Image src='logoosis.png' maxW={{base:8, lg: 6}} maxH={{base:6}} 
-                    borderRadius={"lg"} border={"1px solid black"} onClick={isAuthFromCookie}/>
-                </PopoverTrigger>
-                <PopoverContent bgGradient="linear(to-r, cyan, transparent)" border={"1px solid black"}>
-                    <Link to={!isAuth? "/login": "/"}>
-                        <Button isLoading={isLoading} fontWeight='700' colorScheme="blackAlpha" 
-                        variant={"solid"} w={"full"} onClick={isAuth? handleLogout : null}>
-                            {!isAuth ? "Login" : "Logout"}
-                        </Button>
-                    </Link>
-                    
-                    <PopoverArrow />
-                </PopoverContent>
-                </Popover>
+            <AuthPopover />
                 
             </Flex>
         </Flex>
