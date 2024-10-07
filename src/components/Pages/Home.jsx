@@ -83,7 +83,7 @@ function Home() {
 
       <Division text={""} colorMode={colorMode}/>
 
-      <Flex flexDir={{base: "column", lg:"row"}} w={"100%"} gap={{base: 0, lg: 10}} mt={{base: 10, lg: "5em"}} justifyContent={"space-between"} pb={10}>
+      <Flex flexDir={{base: "column", lg:"row"}} w={"100%"} gap={{base: 0, lg: 10}} mt={{base: 10, lg: "5em"}} justifyContent={"space-between"} pb={10} h={"fit-content"}>
         <Flex w={{base:"90%", lg:"60%"}}  placeSelf={"start"} roundedRight={{base:"80%", lg:"full"}} px={5} flexDir={"column"} pb={{base: 20, lg: 3}}
           border={"1px solid rgba(66, 153, 225, 0.5)"} borderStart={"none"} boxShadow={"0 0 20px rgba(66, 153, 225, 0.2)"} justifyContent={"center"}>
             <Heading lineHeight={"90px"}>VISI</Heading>
@@ -105,7 +105,7 @@ function Home() {
             </UnorderedList>
           </Flex>
 
-        <Box w={{base:0, lg: "40%"}} display={{base: "none", lg:"block"}} h={"full"} rounded={"3xl"} p={4}
+        <Box w={{base:0, lg: "40%"}} display={{base: "none", lg:"block"}} h={"780px"} rounded={"3xl"} p={4}
         boxShadow={"0 0 20px rgba(66, 153, 225, 0.1)"} border={"1px solid rgba(66, 153, 225, 0.1)"}>
           fsfef
         </Box>
