@@ -26,7 +26,8 @@ function BottomNav() {
 
   return (
     <Box className='bottom-nav' position={"fixed"} 
-    bg={{base: colorMode == "light"? "#EAEAEA" : "gray.900", lg: "transparent"}} 
+    // bg={{base: colorMode == "light"? "#EAEAEA" : "gray.900", lg: "transparent"}}
+    bg={"transparent"} 
     zIndex={9999} 
     display={{base: showBottomNavbar ? "" : "none", lg: ""}}
     >

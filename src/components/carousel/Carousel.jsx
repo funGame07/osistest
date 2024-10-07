@@ -31,18 +31,18 @@ function Carousel() {
   }, [strukturOrganisasi])
 
   return (
-    <Box className="container" mt={20} display={{lg:"flex"}} maxW={{base:"100%", lg:"100%"}} h={"fit-content"} gap={3}>
+    <Box className="container" mt={20} display={"flex"} flexDir={{base:"column", lg: "row"}} maxW={{base:"100%", lg:"100%"}} h={"fit-content"} gap={{base:5, lg:3}}>
       <Flex w={{base: "100%", lg: "60%"}} flexDir={"column"} gap={{base:4, lg: 2}} pos={"relative"}>
         <Heading fontSize={"2xl"} textAlign={"center"} className='font-link'>
           STRUKTUR ORGANISASI
         </Heading> 
         <AspectRatio ratio={2/1.15} w={"95%"} placeSelf={"center"} rounded={"2xl"} boxShadow='0 0 20px rgba(66, 153, 225, 0.3)' overflowX={"auto"}>
-          <Image src='strukturorganisasi.png' objectFit={"initial"} rounded={"2xl"} _hover={{filter: "auto", brightness: "0.7"}} onClick={()=> setShowStrukturOrganisasi(true)}/>        
+          <Image src='strukturorganisasi.png' objectFit={"initial"} rounded={"2xl"} filter={"auto"} brightness={0.9} _hover={{brightness: "0.7"}}  onClick={()=> setShowStrukturOrganisasi(true)}/>        
         </AspectRatio>
       </Flex>
 
       <AbsoluteCenter pos={"absolute"} w={"85%"} m={'auto'} rounded={"2xl"} overflow={"hidden"} ref={strukturOrganisasi} zIndex={999} display={{base: "none", lg: showStrukturOrganisasi? "block" : "none"}}>
-          <Image src='strukturorganisasi.png' objectFit={"cover"} w={"full"} h={"full"}/>
+          <Image src='strukturorganisasi.png' objectFit={"cover"} w={"full"} h={"full"} filter={"auto"} brightness={0.8}/>
       </AbsoluteCenter>
       {/* <Heading fontSize={"2xl"} textAlign={"center"} display={{base: "block", lg:"none"}} mt={10}>
         ANGGOTA
@@ -87,15 +87,15 @@ function Carousel() {
 
 
 
-function Content({img, mode, colorMode, name="Unknown", role="Unknown", division="Unknown", username="Unknown", link="https://www.instagram.com/"}){
+function Content({img, colorMode, name="Unknown", role="Unknown", division="Active participant in school organizations", username="Unknown", link="https://www.instagram.com/"}){
     return (
         <Box
       width={{base: "230px", lg: "240px"}}
       height={{base: "410px",lg:"384px"}}
-      bg={colorMode == "light" ? "gray.100" : "gray.800"}
+      bg={colorMode == "light" ? "gray.200" : "gray.800"}
       borderRadius="xl"
       overflow="hidden"
-      boxShadow='0 0 20px rgba(66, 153, 225, 0.3)'
+      boxShadow='0 0 20px rgba(66, 153, 225, 0.5)'
       transition="all 0.3s"
       _hover={{ boxShadow: '0 0 20px rgba(66, 153, 225, 0.7)' }}
     >
@@ -116,16 +116,16 @@ function Content({img, mode, colorMode, name="Unknown", role="Unknown", division
           spacing="1"
         >
           <Text color="gray.100" fontSize="xl" fontWeight="bold">
-            Unknown
+            {name}
           </Text>
           <Text color="gray.400" fontSize="sm">
-            OSIS Member
+            {role}
           </Text>
         </VStack>
       </Box>
       <VStack p="4" height="34%" justifyContent="space-between" bg="gray.900">
         <Text color="gray.400" fontSize="xs" w="100%">
-          Active participant in school organizations
+          {division}
         </Text>
         <Flex justifyContent="space-between" w="100%" alignItems="center">
           <Button
@@ -136,10 +136,10 @@ function Content({img, mode, colorMode, name="Unknown", role="Unknown", division
             fontSize={"9px"}
             px={3}
           >
-            UNKNOWN
+            {role}
           </Button>
           <Link
-            href="https://instagram.com/"
+            href={link}
             isExternal
             display="flex"
             alignItems="center"
@@ -149,7 +149,7 @@ function Content({img, mode, colorMode, name="Unknown", role="Unknown", division
             fontWeight="semibold"
           >
             <Box as={BsInstagram} size={16} mr="1" />
-            @Unknown
+            @{username}
           </Link>
         </Flex>
       </VStack>

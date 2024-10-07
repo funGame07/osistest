@@ -15,6 +15,7 @@ import {
   PopoverCloseButton,
   UnorderedList,
   ListItem,
+  Heading,
   AbsoluteCenter
  } from "@chakra-ui/react"
  import { Link } from "react-router-dom";
@@ -48,7 +49,7 @@ function Home() {
     
       <Flex pt={{base: "120px", lg: "0"}} minH={"100vh"} flexDir={{base: "column", lg: "row"}} color={"white"}
       alignItems={"center"} gap={{base: 3, lg:1}} pos={"relative"} minW={"full"}>
-        <Box order={{base: 0, lg: 1}} display={"flex"} flexDir={"column"} justifyContent={"center"} alignItems={"center"} h="230px" my={5} mx={"auto"} w={{base: "full" , lg: "50%"}} pos={"relative"}> 
+        <Box order={{base: 0, lg: 1}} display={"flex"} flexDir={"column"} justifyContent={"center"} alignItems={"center"} h="230px" my={5} mx={"auto"} w={{base: "full" ,sm: "40%", lg: "50%"}} pos={"relative"}> 
           <Image src="sultanagung.png" rounded={"full"} maxW={{base: "230px", lg: "420px"}}transform={"rotate(13deg)"} pos={"absolute"} top={{base:"-2em", lg: "-6em"}} left={{base: "2em"}}/>
           <Image src="sultanagung2.png" rounded={"full"} maxW={{base: "230px", lg: "420px"}} transform={"rotate(-10deg)"} pos={"absolute"} top={{base: "5em", lg: "7em"}} right={{base: "1em"}} zIndex={10}/>
         </Box>
@@ -57,7 +58,7 @@ function Home() {
           <Text fontSize={{base: "xs", lg: "sm"}} fontWeight={"400"} opacity={0.8}>
             OSIS SMA #The best
           </Text>
-          <Text className="font-link" w={"100%"} fontSize={{base: "2xl", lg: "5xl"}} fontWeight={"800"} textAlign={{base:"center", lg: "start"}} lineHeight={1}>
+          <Text className="font-link" w={"100%"} fontSize={{base: "2xl", lg: "6xl"}} fontWeight={"800"} textAlign={{base:"center", lg: "start"}} lineHeight={1}>
             OSIS SULTAN AGUNG
           </Text>
           <Text className="font-link" opacity={0.9} textAlign={{base:"center", lg:"start"}} maxW={{base: "55%", lg: "80%"}} fontSize={{base: "15px", lg: "sm"}} fontWeight={"600"}>
@@ -79,6 +80,26 @@ function Home() {
       {/* <Division text={"Anggota"} colorMode={colorMode} pt={9}/> */}
       
       <Carousel />
+
+      <Flex flexDir={{base: "column", lg:"row"}} w={"100%"} gap={{base: 0, lg: 10}}>
+        <Box w={"90%"} h={"500px"} placeSelf={"start"} roundedRight={"full"} mt={{base: 10, lg: "5em"}} px={5}
+          border={"1px solid rgba(66, 153, 225, 0.5)"} borderStart={"none"} boxShadow={"0 0 20px rgba(66, 153, 225, 0.2)"}>
+            <Heading lineHeight={2}>VISI</Heading>
+            <Text>Menjadi pemimpin dalam inovasi teknologi yang berkelanjutan, menciptakan solusi yang berdampak positif bagi masyarakat dan lingkungan.</Text>
+          </Box>
+
+          <Box w={"90%"} h={"500px"} placeSelf={"end"} roundedLeft={"full"} mt={{base: 10, lg: "5em"}} px={5}
+          border={"1px solid rgba(66, 153, 225, 0.5)"} borderEnd={"none"} boxShadow={"0 0 20px rgba(66, 153, 225, 0.2)"}>
+            <Heading lineHeight={2}>VISI</Heading>
+          </Box>
+
+      </Flex>
+      
+
+
+
+
+
 
       <Division text={"Lainnya"} colorMode={colorMode} pt={9}/>
 
