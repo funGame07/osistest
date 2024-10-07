@@ -12,7 +12,6 @@ import {
  import { useToast } from '@chakra-ui/react'
  import { useNavigate } from 'react-router-dom';
  import Cookies from 'js-cookie';
- import "./../../index.css"
  import { osis } from '../../App';
  import { RiLockPasswordLine } from "react-icons/ri";
 
@@ -89,7 +88,7 @@ function Login() {
       <Text  fontSize={{base: "4xl", lg: "4xl"}} fontWeight={800} color={"rgba(66, 120, 225,0.8)"}>
         Login
       </Text>
-      <Text className='font-link' textAlign={"center"} fontSize={"sm"} opacity={0.6} w={"70%"}>
+      <Text textAlign={"center"} fontSize={"sm"} opacity={0.6} w={"70%"}>
         Untuk mengikuti acara dan berita terbaru dari OSIS
       </Text>
       

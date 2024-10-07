@@ -1,4 +1,7 @@
+// ### Import package from node_modules
 import React from 'react'
+
+// ### Import package from chakra ui
 import { 
     Box,
     Text,

@@ -84,21 +84,28 @@ function Home() {
       <Division text={""} colorMode={colorMode}/>
 
       <Flex flexDir={{base: "column", lg:"row"}} w={"100%"} gap={{base: 0, lg: 10}} mt={{base: 10, lg: "5em"}} justifyContent={"space-between"} pb={10}>
-        <Flex w={{base:"90%", lg:"55%"}} h={"500px"} placeSelf={"start"} roundedRight={"full"} px={5} flexDir={"column"}pb={3}
+        <Flex w={{base:"90%", lg:"60%"}}  placeSelf={"start"} roundedRight={{base:"80%", lg:"full"}} px={5} flexDir={"column"} pb={{base: 20, lg: 3}}
           border={"1px solid rgba(66, 153, 225, 0.5)"} borderStart={"none"} boxShadow={"0 0 20px rgba(66, 153, 225, 0.2)"} justifyContent={"center"}>
-            <Heading lineHeight={2}>VISI</Heading>
-            <Text w={{base: "70%", lg:"80%"}} fontSize={{lg: "lg"}}>Menjadi pemimpin dalam inovasi teknologi yang berkelanjutan, menciptakan solusi yang berdampak positif bagi masyarakat dan lingkungan.</Text>
+            <Heading lineHeight={"90px"}>VISI</Heading>
+            <Text w={{base: "70%", lg:"80%"}} fontSize={{lg: "lg"}}>
+              Menjadikan OSIS SMA Swasta Sultan Agung sebagai wadah yang menampung seluruh aspirasi dan kreatif bagi siswa 
+              yang berintegritas, religius, berkarakter, inovatif, dan berprestasi. Kami berkomitmen untuk memberikan dampak 
+              positif di lingkungan sekolah dan masyarakat, dan juga mendorong kesadaran sosial dan tanggung jawab lingkungan sekitar.
+            </Text>
 
-            <Heading lineHeight={2}>MISI</Heading>
+            <Heading lineHeight={"90px"}>MISI</Heading>
             <UnorderedList fontSize={{lg: "lg"}}>
-              <ListItem w={{base: "75%", lg:"80%"}}>menciptakan solusi yang berdampak positif bagi masyarakat dan lingkungan.</ListItem>
-              <ListItem w={{base: "75%", lg:"80%"}}>Menjadi pemimpin dalam inovasi teknologi yang berkelanjutan.</ListItem>
-              <ListItem w={{base: "75%", lg:"80%"}}>menciptakan positif bagi masyarakat dan lingkungan.</ListItem>
-              <ListItem w={{base: "75%", lg:"80%"}}>Menjadi pemimpin dalam inovasi teknologi yang berkelanjutan.</ListItem>
+              <ListItem w={{base: "75%", lg:"80%"}}>Menyelenggarakan berbagai kegiatan guna meningkatkan dan mengembangkan bakat, minat dan keterampilan prestasi siswa dari segi akademik maupun non akademik.</ListItem>
+              <ListItem w={{base: "75%", lg:"80%"}}>Meneruskan dan Mengembangkan program kerja OSIS dan membangun lingkungan sekolah yang sehat dan bersih.</ListItem>
+              <ListItem w={{base: "75%", lg:"80%"}}>Menyelenggarakan festival seni dan budaya, termasuk pameran karya siswa dan pentas seni.</ListItem>
+              <ListItem w={{base: "75%", lg:"80%"}}>Memperkuat solidaritas dan kebersamaan antar siswa dengan menyelenggarakan acara peringatan hari besar nasional yang melibatkan partisipasi seluruh siswa.</ListItem>
+              <ListItem w={{base: "75%", lg:"80%"}}>Mendukung kegiatan sosial dan kemanusiaan, mengorganisir kegiatan amal seperti bakti sosial.</ListItem>
+              <ListItem w={{base: "75%", lg:"80%"}}>Berkomitmen untuk menjalin kerjasama yang baik dengan berbagai pihak, baik antar sekolah maupun dengan pihak luar, guna meningkatkan prestasi sesuai dengan perkembangan teknologi.</ListItem>
+
             </UnorderedList>
           </Flex>
 
-        <Box w={{base:0, lg: "40%"}} display={{base: "none", lg:"block"}} h={"500px"} rounded={"3xl"} p={4}
+        <Box w={{base:0, lg: "40%"}} display={{base: "none", lg:"block"}} h={"full"} rounded={"3xl"} p={4}
         boxShadow={"0 0 20px rgba(66, 153, 225, 0.1)"} border={"1px solid rgba(66, 153, 225, 0.1)"}>
           fsfef
         </Box>

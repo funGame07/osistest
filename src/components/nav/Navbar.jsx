@@ -1,3 +1,7 @@
+// ### Import package from node_modules
+import React, { useContext } from 'react';
+
+// ### Import package from chakra ui
 import { 
     Box, 
     Image, 
@@ -5,29 +9,26 @@ import {
     Text, 
     Button,
     useDisclosure,
-    Popover,
-    PopoverArrow,
-    PopoverContent,
-    PopoverTrigger,
-    useToast
 } from '@chakra-ui/react'
-import Cookies from 'js-cookie'
-import { Link, useNavigate } from 'react-router-dom'
 import "./navbar.css"
+
+// ### Import icons from node_modules
 import { FiMoon, FiSun } from "react-icons/fi";
 import { RxDividerVertical } from "react-icons/rx";
 import { MdOutlinePushPin } from "react-icons/md";
 import { RxEnterFullScreen, RxExitFullScreen } from "react-icons/rx";
-import { useState, useContext, useEffect, useRef } from 'react';
-import Modals from '../modal/VisitModal';
+
+// import context osis from App.jsx
 import { osis } from '../../App'
+
+// import coomponent from components/nav
+import Modals from '../modal/VisitModal';
 import AuthPopover from './AuthPopover';
 
-
 function Navbar() { 
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    // Declaration Hooks
     const {colorMode, toggleColorMode, toggleFs} = useContext(osis)
-
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <Box pos={"fixed"} w={"full"} zIndex={1000}>

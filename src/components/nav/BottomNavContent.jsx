@@ -1,20 +1,30 @@
+// ### Import package from node_modules
+import React, { useContext }from 'react'
+import { Link } from 'react-router-dom';
+
+// ### Import package from chakra ui
 import { 
     Box,
-    Text,
-    Button
+    Text
  } from '@chakra-ui/react'
-import { Link } from 'react-router-dom';
-import "./navbar.css"
-import React, { useContext }from 'react'
+
+// ### Import icons from node_modules
 import { GoHome } from "react-icons/go";
 import { CiSquarePlus } from "react-icons/ci";
 import { GrSearchAdvanced } from "react-icons/gr";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { HiOutlineTrophy } from "react-icons/hi2";
+
+// import context osis from App.jsx
 import { osis } from '../../App';
 
+// import style
+import "./navbar.css"
+
 function BottomNavContent() {
+    // Declaration Hooks
     const {colorMode, showBottomNavbar, setShowBottomNavbar} = useContext(osis)
+    
   return (
     <Box className='nav' px={{base: 4, lg: 3}} gap={{base: 7, lg: 5}} py={{base: 0.5, lg:1}}  alignItems={{base: "center", lg: "start"}} display={{base: "flex", lg: "none"}}
         rounded={"3xl"} fontWeight={900} h={{base: "fit-content", lg: "40px"}} bgGradient={colorMode == "light"? "linear(to-r, gray.100, white, gray.100)" : "linear(to-r, black, gray.800, black)"}>

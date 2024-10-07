@@ -1,5 +1,10 @@
+// ### Import package from node_modules
 import React, { useRef, useState, useContext } from 'react'
-import { Popover,
+import { Link } from 'react-router-dom'
+
+// ### Import package from chakra ui
+import { 
+    Popover,
     PopoverTrigger,
     Image,
     PopoverContent,
@@ -11,15 +16,18 @@ import { Popover,
     Flex,
     Text
  } from '@chakra-ui/react'
- import { Link } from 'react-router-dom'
+
  import Cookies from 'js-cookie'
+
+// import context osis from App.jsx
 import { osis } from '../../App'
 
 function AuthPopover() {
-    const [isLoading, setIsLoading] = useState(false)
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    // Declaration Hooks
     const {colorMode, isAuth, setIsAuth} = useContext(osis)
+    const [isLoading, setIsLoading] = useState(false)
     const authRef = useRef(null)
+    const { isOpen, onOpen, onClose } = useDisclosure()
     const toast = useToast()
 
     function isAuthFromCookie(){

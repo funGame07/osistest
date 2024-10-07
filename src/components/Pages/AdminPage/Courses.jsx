@@ -1,7 +1,9 @@
+// ### Import package from node_modules
 import React, {useState} from 'react'
+
+// ### Import package from chakra ui
 import { 
     Box,
-    Flex,
     Step,
     StepDescription,
     StepIcon,
@@ -20,16 +22,22 @@ import {
     Button,
     Text
  } from '@chakra-ui/react'
+
+//  import icons 
  import { IoIosAddCircleOutline } from "react-icons/io";
+
+ // ### Import pages from components/event
  import ShowMapel from './ShowMapel';
  import CreateMapel from './CreateMapel';
 import CreateQuestion from './CreateQuestion';
 
 
 function Courses() {
+    // Declaration Hooks
     const [createMapel, setCreateMapel] = useState(false)
     const [createQuestion, setCreateQuestion] = useState(false)
 
+    // How to make Quiz Steps
     const steps = [
         { title: 'Pertama', description: 'Buat mata pelajaran dulu' },
         { title: 'Kedua', description: 'Klik tambah soal' },
@@ -41,6 +49,7 @@ function Courses() {
         index: -1,
         count: steps.length,
       })
+
   return (
     <>
     <Accordion allowToggle>

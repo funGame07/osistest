@@ -1,56 +1,48 @@
-import {Routes, Route } from "react-router-dom"
-import Home from "./components/Pages/Home"
-import Login from "./components/Pages/Login"
-import Navbar from "./components/nav/Navbar"
-import BottomNav from "./components/nav/BottomNav"
-import Event from "./components/event/Event"
-import { Box } from "@chakra-ui/react"
-import { useColorMode } from "@chakra-ui/react"
+// ### Import package from node_modules
 import { useState, useEffect, createContext } from "react"
-import Admin from "./components/Pages/Admin"
+import {Routes, Route } from "react-router-dom"
 import Cookies from "js-cookie"
 
+// ### Import package from chakra ui
+import { useColorMode, Box } from "@chakra-ui/react"
+
+// ### Import pages from component
+import Home from "./components/Pages/Home"
+import Login from "./components/Pages/Login"
+import Admin from "./components/Pages/Admin"
+import Navbar from "./components/nav/Navbar"
+import BottomNav from "./components/nav/BottomNav"
+
+// ### Import library from libs
+import { isAuthFromDB, toggleFs } from "../lib/libs.js"
+
+// ### Create Context
 export const osis = createContext()
 
+// ### App template
 function App() {
-  const [isAuth, setIsAuth] = useState(false)
-  const {colorMode, toggleColorMode} = useColorMode()
-  const [osisUser, setOsisUser] = useState(["x", "s","x", "s","x", "s","x", "s","x", "s"])
-  const [showBottomNavbar, setShowBottomNavbar] = useState(true)
+  // ## Declaration hooks
+  const [isAuth, setIsAuth] = useState(false) // used to navbar, event, voting
+  const [showBottomNavbar, setShowBottomNavbar] = useState(true) // used when quiz begins
+  const [osisUser, setOsisUser] = useState(["x", "s","x", "s","x", "s","x", "s","x", "s"]) // used for carousel 
+  const {colorMode, toggleColorMode} = useColorMode() // used for color mode in navbar
 
-  async function isAuthFromDB(){
-    const response = await fetch("http://localhost:3000/api/auth/auth",{
-        method: "GET",
-        credentials: "include"
-    })
-    const data = await response.json()
-    if(data.success){
-        Cookies.set("auth", data.userId, {expires: 60})
-        setIsAuth(true)
-        return true
-    }else{
-        Cookies.remove("auth")
-        setIsAuth(false)
-        return false
-    }
-}
-
+  // ## component mount once : user
   useEffect(()=>{
+    // # fetch data from API OSIS
     fetch("http://localhost:3000/api/osis")
+      // catch respons json
       .then((res) => res.json())
+      // catch data object
       .then((data) => {
-        setOsisUser(data.data)
+        setOsisUser(data.data) // catch data OSIS
       })
-      .catch((err) => console.log(err.message))
+      .catch((err) => console.log(err.message)) // see if there is any errors
     
-    isAuthFromDB()
+    setIsAuth(isAuthFromDB(Cookies, "http://localhost:3000/api/auth/auth")) // set authentication to cookies
   }, [])
 
-    function toggleFs(){
-      const element = document.getElementById("fullscreen")
-      document.fullscreenElement ? document.exitFullscreen() : element.requestFullscreen()
-    }
-
+  // ## create provider
   const provider = {
     colorMode,
     toggleColorMode,
@@ -66,7 +58,7 @@ function App() {
   return (
     <Box minH={"100vh"} maxH={"100vh"} id="fullscreen" overflowY={"auto"} bg={colorMode == "light" ? "#EAEAEA" :"gray.900"}>
       <osis.Provider value={provider}>
-      <Navbar/>
+      <Navbar/> 
         <Routes>
           <Route path="/login" element={<Login />}/>
           <Route path="/" element={<Home />}/>

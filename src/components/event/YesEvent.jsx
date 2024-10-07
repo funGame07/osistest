@@ -1,4 +1,15 @@
+// ### Import package from node_modules
 import React, {useContext} from 'react'
+
+// ### Import icons from node_modules
+import { LuRocket } from "react-icons/lu";
+import { IoPeopleOutline, IoWarningOutline } from "react-icons/io5";
+import { FaRegStar, FaRegThumbsUp } from "react-icons/fa6";
+import { GoGift } from "react-icons/go";
+import { TbNumber1Small, TbNumber2Small, TbNumber3Small } from "react-icons/tb";
+import { BsFire } from "react-icons/bs";
+
+// ### Import package from chakra ui
 import { 
     Text,
     Flex,
@@ -9,20 +20,21 @@ import {
     keyframes,
     Heading
 } from '@chakra-ui/react'
-import { LuRocket } from "react-icons/lu";
-import { IoPeopleOutline, IoWarningOutline } from "react-icons/io5";
-import { FaRegStar } from "react-icons/fa6";
-import { GoGift } from "react-icons/go";
-import { TbNumber1Small, TbNumber2Small, TbNumber3Small } from "react-icons/tb";
-import { BsFire } from "react-icons/bs";
-import { FaRegThumbsUp } from "react-icons/fa6";
 
+
+// Import styles event
 import "./event.css"
-import { FcRules } from "react-icons/fc";
+
+// import context osis from App.jsx
 import { osis } from '../../App';
 
 
 function YesEvent() {
+    // Declaration Hooks
+    const {colorMode} = useContext(osis)
+    const cardBg = colorMode =="light"? "white": "black"
+    
+    // Animation for main title
     const fade = keyframes`
     0%{
         opacity: 1
@@ -34,8 +46,6 @@ function YesEvent() {
         opacity: 1
     }
     `
-    const {colorMode} = useContext(osis)
-    const cardBg = colorMode =="light"? "white": "black"
 
   return (
     <Flex px={2} pb={5} pt={8} flexDir={{base: "column"}} gap={{base: 5}} pos={"relative"} alignItems={"center"} minH={"fit-content"}>

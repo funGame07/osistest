@@ -1,34 +1,51 @@
+// ### Import package from node_modules
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Box, VStack, Image, Text, Button, Link, Flex, Heading, AspectRatio, AbsoluteCenter } from '@chakra-ui/react';
+import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 
-import { osis } from '../../App';
+// ### Import icons from node_modules
+import { BsInstagram } from "react-icons/bs";
+
+// ### Import package from chakra ui
+import { 
+  Box, 
+  VStack, 
+  Image, 
+  Text, 
+  Button, 
+  Link, 
+  Flex, 
+  Heading, 
+  AspectRatio, 
+  AbsoluteCenter
+ } from '@chakra-ui/react';
+
+// ### Import styles carousel
 import "./carousel.scss"
-
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
-import { BsInstagram } from "react-icons/bs";
 
+// ### Import library from libs
+import { handleOutsideClick } from '../../../lib/libs';
+
+// import context osis from App.jsx
+import { osis } from '../../App';
+
+// ### Template Carousel
 function Carousel() {
-  const strukturOrganisasi = useRef(null)
-  const [showStrukturOrganisasi, setShowStrukturOrganisasi] = useState(false)
-  const {osisUser, colorMode} = useContext(osis)
+  // ## Declaration hooks
+  const {osisUser, colorMode} = useContext(osis) // context from osis
+  const [showStructureOrg, setShowStructureOrg] = useState(false) // toogle the image 
+  const structureOrg = useRef(null) // use reference for structureorg image
 
+  // ## component mount once : structure organization image
   useEffect(()=>{
-    function handleOutsideClick(e){
-      if(strukturOrganisasi.current && !strukturOrganisasi.current.contains(e.target)){
-        setShowStrukturOrganisasi(false)
-      }else{
-        setShowStrukturOrganisasi(false)
-      }
-    }
-    document.addEventListener("mousedown", handleOutsideClick, true)
+    document.addEventListener("mousedown", (e)=> handleOutsideClick(e, structureOrg, setShowStructureOrg), true) 
     return () => document.removeEventListener("mousedown", handleOutsideClick, true)
-  }, [strukturOrganisasi])
+  }, [structureOrg])
 
   return (
     <Box className="container" mt={20} display={"flex"} flexDir={{base:"column", lg: "row"}} maxW={{base:"100%", lg:"100%"}} h={"fit-content"} gap={{base:5, lg:3}}>
@@ -37,16 +54,14 @@ function Carousel() {
           STRUKTUR ORGANISASI
         </Heading> 
         <AspectRatio ratio={2/1.15} w={"95%"} placeSelf={"center"} rounded={"2xl"} boxShadow='0 0 20px rgba(66, 153, 225, 0.3)' overflowX={"auto"}>
-          <Image src='strukturorganisasi.png' objectFit={"initial"} rounded={"2xl"} filter={"auto"} brightness={0.9} _hover={{brightness: "0.7"}}  onClick={()=> setShowStrukturOrganisasi(true)}/>        
+          <Image src='structureorg.png' objectFit={"initial"} rounded={"2xl"} filter={"auto"} brightness={0.9} _hover={{brightness: "0.7"}}  onClick={()=> setShowStructureOrg(true)}/>        
         </AspectRatio>
       </Flex>
 
-      <AbsoluteCenter pos={"absolute"} w={"85%"} m={'auto'} rounded={"2xl"} overflow={"hidden"} ref={strukturOrganisasi} zIndex={999} display={{base: "none", lg: showStrukturOrganisasi? "block" : "none"}}>
-          <Image src='strukturorganisasi.png' objectFit={"cover"} w={"full"} h={"full"} filter={"auto"} brightness={0.8}/>
+      <AbsoluteCenter pos={"absolute"} w={"85%"} m={'auto'} rounded={"2xl"} overflow={"hidden"} ref={structureOrg} zIndex={999} display={{base: "none", lg: showStructureOrg? "block" : "none"}}>
+          <Image src='structureorg.png' objectFit={"cover"} w={"full"} h={"full"} filter={"auto"} brightness={0.8}/>
       </AbsoluteCenter>
-      {/* <Heading fontSize={"2xl"} textAlign={"center"} display={{base: "block", lg:"none"}} mt={10}>
-        ANGGOTA
-      </Heading> */}
+
       <Swiper
         className='swiper-container'
         effect={'coverflow'}

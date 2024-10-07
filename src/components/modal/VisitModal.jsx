@@ -1,33 +1,37 @@
-import React from 'react'
+// ### Import package from node_modules
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import { IoIosArrowBack } from "react-icons/io";
-import { SlLocationPin } from "react-icons/sl";
-import { FaBusAlt } from "react-icons/fa";
+
+// ### Import package from chakra ui
 import {
     Box,
     Button,
     Image,
     Flex,
-    Text
-  } from '@chakra-ui/react'
-
-  import {
+    Text,
     Modal,
     ModalOverlay,
     ModalContent,
     ModalFooter,
     ModalBody,
   } from '@chakra-ui/react'
-import { useContext } from 'react';
+
+// ### Import icons from node_modules
+import { IoIosArrowBack } from "react-icons/io";
+import { SlLocationPin } from "react-icons/sl";
+import { FaBusAlt } from "react-icons/fa";
+
+// import osis context from App.jsx
 import { osis } from '../../App';
 
 function VisitModal({isOpen, onOpen, onClose}){
+  // Declaration Hooks
   const {colorMode} = useContext(osis) 
 
     return (
           <>
       
-            <Modal isOpen={isOpen} onClose={onClose} isCentered size={"sm"}>
+            <Modal isOpen={isOpen} onOpen={onOpen} onClose={onClose} isCentered size={"sm"}>
               <ModalOverlay />
               <ModalContent>
                 <Flex alignItems={"center"} gap={1} p={2}>
