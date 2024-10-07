@@ -31,7 +31,7 @@ function Carousel() {
   }, [strukturOrganisasi])
 
   return (
-    <Box className="container" mt={20} display={{lg:"flex"}} maxW={{base:"100%", lg:"100%"}} h={{base: "670px", lg:"450px"}} gap={3}>
+    <Box className="container" mt={20} display={{lg:"flex"}} maxW={{base:"100%", lg:"100%"}} h={"fit-content"} gap={3}>
       <Flex w={{base: "100%", lg: "60%"}} flexDir={"column"} gap={{base:4, lg: 2}} pos={"relative"}>
         <Heading fontSize={"2xl"} textAlign={"center"} className='font-link'>
           STRUKTUR ORGANISASI
