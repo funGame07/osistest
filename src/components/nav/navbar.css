@@ -14,6 +14,10 @@
     }
 }
 
+.authpopover{
+    width: 200px !important; 
+}
+
 .bottom-nav{
     position: absolute;
     width: 100%;
@@ -48,5 +52,9 @@
             max-height: 30px;
             
         }
+    }
+
+    .authpopover{
+        width: 300px;
     }
 }

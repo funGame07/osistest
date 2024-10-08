@@ -19,6 +19,9 @@ import {
 
  import Cookies from 'js-cookie'
 
+//  import style
+import "./navbar.css"
+
 // import context osis from App.jsx
 import { osis } from '../../App'
 
@@ -99,7 +102,7 @@ function AuthPopover() {
         <Image src='logoosis.png' maxW={{base:8, lg: 6}} maxH={{base:6}} 
         borderRadius={"lg"} border={"1px solid black"} onClick={isAuthFromCookie}/>
     </PopoverTrigger>
-    <PopoverContent >
+    <PopoverContent className='authpopover'>
         <Flex w={"full"} p={2} flexDir={"column"} gap={3}>
             <Box color={colorMode == "light" ? "black" : "white"}>
                 <Text fontSize={"lg"} fontWeight={"700"}>{isAuth? "Elbert Austen" : "Guest"}</Text>
