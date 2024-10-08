@@ -25,20 +25,22 @@ import "./navbar.css"
 // import context osis from App.jsx
 import { osis } from '../../App'
 
+// import library from libs
+import { isAuthFromCookie } from '../../../lib/libs.js'
+
 function AuthPopover() {
     // Declaration Hooks
-    const {colorMode, isAuth, setIsAuth} = useContext(osis)
-    const [isLoading, setIsLoading] = useState(false)
+    const {colorMode, isAuth, setIsAuth} = useContext(osis) // context from osis
+    const [isLoading, setIsLoading] = useState(false) // loading
     const authRef = useRef(null)
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const toast = useToast()
+    const toast = useToast() // toast
 
-    function isAuthFromCookie(){
-        const isAuthToken = Cookies.get("auth")
-        if (isAuthToken != "undefined" && isAuthToken ) return setIsAuth(true)
-        return setIsAuth(false)
+    // check authentication
+    function checkIsAuth(){
+        isAuthFromCookie("auth", setIsAuth, Cookies) // get function from libs
     }
-
+    
     async function handleLogout(){
         const toastPromise = new Promise(async (resolve, reject) => {
             setIsLoading(true)
@@ -101,7 +103,7 @@ function AuthPopover() {
         >
     <PopoverTrigger>
         <Image src='logoosis.png' maxW={{base:8, lg: 6}} maxH={{base:6}} 
-        borderRadius={"lg"} border={"1px solid black"} onClick={isAuthFromCookie}/>
+        borderRadius={"lg"} border={"1px solid black"} onClick={checkIsAuth}/>
     </PopoverTrigger>
     <PopoverContent className='authpopover'>
         <Flex w={"full"} p={2} flexDir={"column"} gap={3}>
