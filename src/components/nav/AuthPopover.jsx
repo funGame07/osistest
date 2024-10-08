@@ -97,7 +97,8 @@ function AuthPopover() {
         onOpen={onOpen}
         isOpen={isOpen}
         onClose={onClose}
-        initialFocusRef={authRef}>
+        initialFocusRef={authRef}
+        >
     <PopoverTrigger>
         <Image src='logoosis.png' maxW={{base:8, lg: 6}} maxH={{base:6}} 
         borderRadius={"lg"} border={"1px solid black"} onClick={isAuthFromCookie}/>
@@ -105,12 +106,12 @@ function AuthPopover() {
     <PopoverContent className='authpopover'>
         <Flex w={"full"} p={2} flexDir={"column"} gap={3}>
             <Box color={colorMode == "light" ? "black" : "white"}>
-                <Text fontSize={"lg"} fontWeight={"700"}>{isAuth? "Elbert Austen" : "Guest"}</Text>
-                <Text>NIS: {isAuth? "2409001" : "_______"}</Text>
+                <Text fontSize={{base: "sm", lg: "lg"}} fontWeight={"700"}>{isAuth? "Elbert Austen" : "Guest"}</Text>
+                <Text fontSize={{base:"xs", lg:"md"}}>NIS: {isAuth? "2409001" : "_______"}</Text>
             </Box>
 
             <Link to={!isAuth? "/login": "/"}>
-            <Button isLoading={isLoading} fontWeight='700' colorScheme="blue" size={"sm"}
+            <Button isLoading={isLoading} fontSize={{base: "sm", lg: "md"}} fontWeight='700' colorScheme="blue" size={{base:"xs", lg: "sm"}}
             variant={"outline"} w={"50%"} onClick={isAuth? handleLogout : onClose} rounded={"full"}>
                 {!isAuth ? "Login" : "Logout"}
             </Button>
