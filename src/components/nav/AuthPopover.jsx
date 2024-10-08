@@ -102,13 +102,13 @@ function AuthPopover() {
     <PopoverContent >
         <Flex w={"full"} p={2} flexDir={"column"} gap={3}>
             <Box color={colorMode == "light" ? "black" : "white"}>
-                <Text fontSize={"lg"} fontWeight={"700"}>ELBERT AUSTEN</Text>
-                <Text>NIS: 24090001</Text>
+                <Text fontSize={"lg"} fontWeight={"700"}>{isAuth? "Elbert Austen" : "Guest"}</Text>
+                <Text>NIS: {isAuth? "2409001" : "_______"}</Text>
             </Box>
 
             <Link to={!isAuth? "/login": "/"}>
             <Button isLoading={isLoading} fontWeight='700' colorScheme="blue" size={"sm"}
-            variant={"outline"} w={"50%"} onClick={isAuth? handleLogout : null} rounded={"full"}>
+            variant={"outline"} w={"50%"} onClick={isAuth? handleLogout : onClose} rounded={"full"}>
                 {!isAuth ? "Login" : "Logout"}
             </Button>
         </Link>

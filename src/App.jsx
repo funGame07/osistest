@@ -12,6 +12,7 @@ import Login from "./components/Pages/Login"
 import Admin from "./components/Pages/Admin"
 import Navbar from "./components/nav/Navbar"
 import BottomNav from "./components/nav/BottomNav"
+import Event from "./components/event/Event.jsx"
 
 // ### Import library from libs
 import { isAuthFromDB, toggleFs } from "../lib/libs.js"
