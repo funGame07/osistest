@@ -12,8 +12,10 @@ import {
 import { GoHome } from "react-icons/go";
 import { CiSquarePlus } from "react-icons/ci";
 import { GrSearchAdvanced } from "react-icons/gr";
-import { IoNotificationsOutline } from "react-icons/io5";
 import { HiOutlineTrophy } from "react-icons/hi2";
+import { MdHowToVote } from "react-icons/md";
+import { MdOutlineHowToVote } from "react-icons/md";
+
 
 // import context osis from App.jsx
 import { osis } from '../../App';
@@ -52,7 +54,7 @@ function BottomNavContent() {
 
         <Link to={"/voting"}> 
             <Box display={"flex"} flexDir={"column"} alignItems={"center"}>
-                <IoNotificationsOutline size={23} className='navicon'/>
+                <MdOutlineHowToVote size={23} className='navicon'/>
                 <Text fontSize={{base: "13px", lg: "8px"}} lineHeight={{base: 1, lg: 0}}>
                     Voting
                 </Text>

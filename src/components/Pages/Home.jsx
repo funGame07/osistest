@@ -106,7 +106,7 @@ function Home() {
           </Flex>
 
         <Box w={{base:0, lg: "40%"}} display={{base: "none", lg:"block"}} h={"780px"} rounded={"3xl"} p={4}
-        boxShadow={"0 0 20px rgba(66, 153, 225, 0.1)"} border={"1px solid rgba(66, 153, 225, 0.1)"}>
+        boxShadow={"0 0 20px rgba(66, 153, 225, 0.2)"} border={"1px solid rgba(66, 153, 225, 0.1)"}>
           fsfef
         </Box>
       </Flex>
