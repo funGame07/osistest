@@ -25,7 +25,7 @@ function App() {
   // ## Declaration hooks
   const [isAuth, setIsAuth] = useState(false) // used to navbar, event, voting
   const [showBottomNavbar, setShowBottomNavbar] = useState(true) // used when quiz begins
-  const [osisUser, setOsisUser] = useState(["x", "s","x", "s","x", "s","x", "s","x", "s"]) // used for carousel 
+  const [osisUser, setOsisUser] = useState(["quizbg2.png", "testosis3.jpg", "testosis2.jpg", "testosis1.jpg", "testosis4.jpg", "testosis5.jpg", "testosis11.jpg"]) // used for carousel 
   const {colorMode, toggleColorMode} = useColorMode() // used for color mode in navbar
 
   // ## component mount once : user

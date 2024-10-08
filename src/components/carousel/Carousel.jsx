@@ -48,7 +48,7 @@ function Carousel() {
   }, [structureOrg])
 
   return (
-    <Box className="container" mt={20} display={"flex"} flexDir={{base:"column", lg: "row"}} maxW={{base:"100%", lg:"100%"}} h={"fit-content"} gap={{base:5, lg:3}}>
+    <Box className="container" pos={"relative"} mt={20} display={"flex"} flexDir={{base:"column", lg: "row"}} maxW={{base:"100%", lg:"100%"}} h={"fit-content"} gap={{base:5, lg:3}}>
       <Flex w={{base: "100%", lg: "60%"}} flexDir={"column"} gap={{base:4, lg: 2}} pos={"relative"}>
         <Heading fontSize={"2xl"} textAlign={"center"} className='font-link'>
           STRUKTUR ORGANISASI
@@ -58,8 +58,8 @@ function Carousel() {
         </AspectRatio>
       </Flex>
 
-      <AbsoluteCenter pos={"absolute"} w={"85%"} m={'auto'} rounded={"2xl"} overflow={"hidden"} ref={structureOrg} zIndex={999} display={{base: "none", lg: showStructureOrg? "block" : "none"}}>
-          <Image src='structureorg.png' objectFit={"cover"} w={"full"} h={"full"} filter={"auto"} brightness={0.8}/>
+      <AbsoluteCenter pos={"absolute"} top={"50%"} w={"85%"} m={'auto'} rounded={"2xl"} overflow={"hidden"} ref={structureOrg} zIndex={999} display={{base: "none", lg: showStructureOrg? "block" : "none"}}>
+          <Image src='structureorg.png' objectFit={"cover"} w={"full"} h={"full"} filter={"auto"} brightness={0.9} border={"1px solid black"}/>
       </AbsoluteCenter>
 
       <Swiper
@@ -82,10 +82,9 @@ function Carousel() {
             {
                 osisUser.map((data, id) =>{
                     return <SwiperSlide className="swipercardsss" key={id} >
-                                <Content 
-                                    mode={"wizard"} 
-                                    img={"osis2.png"} 
+                                <Content  
                                     colorMode={colorMode} 
+                                    img={data}
                                     // name={data.name} 
                                     // role={data.role} 
                                     // division={data.division} 
@@ -102,7 +101,7 @@ function Carousel() {
 
 
 
-function Content({img, colorMode, name="Unknown", role="Unknown", division="Active participant in school organizations", username="Unknown", link="https://www.instagram.com/"}){
+function Content({img="quizbg2.png", colorMode, name="Unknown", role="Unknown", division="Active participant in school organizations", username="Unknown", link="https://www.instagram.com/"}){
     return (
         <Box
       width={{base: "230px", lg: "240px"}}
@@ -115,7 +114,7 @@ function Content({img, colorMode, name="Unknown", role="Unknown", division="Acti
       _hover={{ boxShadow: '0 0 20px rgba(66, 153, 225, 0.7)' }}
     >
       <Box position="relative" height="66%">
-        <Image src="JEEVAN.png" alt="Profile" objectFit="cover" w="100%" h="100%" />
+        <Image src={img} alt="Profile" objectFit="cover" w="100%" h="100%" />
         <Box
           position="absolute"
           inset="0"
