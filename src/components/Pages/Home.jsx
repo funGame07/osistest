@@ -181,11 +181,11 @@ function ListKegiatan({text, date}){
     <Flex alignItems={"center"} justifyContent={"space-between"} fontSize={"md"}>
       <Flex alignItems={"center"} gap={2} w={"60%"}>
         <Box as={isCompleted ? isOnTask? GoDotFill : IoMdCheckboxOutline : MdSettings} color={isCompleted? isOnTask? "yellow.500" : "green.500" : "gray.600"}/>
-        <ListItem>{text}</ListItem>
+        <ListItem>{isCompleted ? isOnTask? text : <s>{text}</s> : text}</ListItem>
       </Flex>
       <RxDividerVertical opacity={0.3} size={20}/>
       <Box w={"40%"}>
-        <Text textAlign={"start"}>{dateToDisplay}</Text>
+        <Text textAlign={"start"}> {isCompleted ? isOnTask? dateToDisplay : <s>{dateToDisplay}</s> : dateToDisplay}</Text>
       </Box>
         
     </Flex>
