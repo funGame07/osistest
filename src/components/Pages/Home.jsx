@@ -170,8 +170,6 @@ function ListKegiatan({text, date}){
   const pastDate = new Date(date)
   const dateToDisplay = pastDate.toLocaleDateString('in-IN', options)
 
-  // const isCompleted = now.getTime() >  pastDate.getTime()
-
   now = now.toLocaleDateString("en-EN", options)
   date = pastDate.toLocaleDateString('en-EN', options)
   const isOnTask = now == date

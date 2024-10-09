@@ -12,7 +12,7 @@ import {
   FormHelperText,
   Image
  } from '@chakra-ui/react'
- import { osis } from '../../../App'
+ import { osis } from '../../../../App'
  import { AiOutlinePicture } from "react-icons/ai";
  import Mapel from './Mapel';
 

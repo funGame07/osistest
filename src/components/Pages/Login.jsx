@@ -96,7 +96,7 @@ function Login() {
         <InputLeftElement pointerEvents='none'>
           <FaRegUser />
         </InputLeftElement>
-        <Input type='tel' placeholder='NIS' onChange={(e) => setNis(e.target.value)}/>
+        <Input type='number' placeholder='NIS' onChange={(e) => setNis(e.target.value)}/>
       </InputGroup>
       <InputGroup w={"70%"}>
         <InputLeftElement pointerEvents='none'>

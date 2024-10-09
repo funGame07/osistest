@@ -1,5 +1,5 @@
 // ### Import package from node_modules
-import React, {useState} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 
 // ### Import package from chakra ui
 import { 
@@ -29,13 +29,12 @@ import {
  // ### Import pages from components/event
  import ShowMapel from './ShowMapel';
  import CreateMapel from './CreateMapel';
-import CreateQuestion from './CreateQuestion';
-
+import { quizContext } from '../Dashboard';
 
 function Courses() {
     // Declaration Hooks
-    const [createMapel, setCreateMapel] = useState(false)
-    const [createQuestion, setCreateQuestion] = useState(false)
+    const {createMapel, createQuestion, setCreateMapel, setCreateQuestion, inAll, setInAll} = useContext(quizContext)
+
 
     // How to make Quiz Steps
     const steps = [
@@ -89,12 +88,8 @@ function Courses() {
         rounded={"full"} fontSize={"10px"} size={"sm"} onClick={()=> setCreateMapel(true)}>
             <Text fontSize={"10px"}>Buat Mata Pelajaran</Text>
         </Button>
-        {createMapel? <CreateMapel setCreateMapel={setCreateMapel} />:<ShowMapel />}
-        <Button leftIcon={<IoIosAddCircleOutline size={15}/>} colorScheme='blue' variant={"outline"} mb={3} 
-        rounded={"full"} fontSize={"10px"} size={"sm"} onClick={()=> setCreateQuestion(true)}>
-            <Text fontSize={"10px"}>Buat Pertanyaan</Text>
-        </Button>
-        {createQuestion? <CreateQuestion setCreateQuestion={setCreateQuestion} />:<div />}
+        <ShowMapel />
+        {createMapel? <CreateMapel setCreateMapel={setCreateMapel} />: <span/>}
     </Box>
     </>
   )

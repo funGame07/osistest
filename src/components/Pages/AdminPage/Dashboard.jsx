@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, createContext, useState} from 'react'
 import { 
     Box,
     Text,
@@ -15,15 +15,30 @@ import {
  } from '@chakra-ui/react'
  import "./../admin.css"
  import { osis } from '../../../App'
- import Courses from './Courses';
-import ShowMapel from './ShowMapel';
+ import Courses from './dashboardContent/Courses';
+import ShowMapel from './dashboardContent/ShowMapel';
 
+export const quizContext = createContext()
 
 function Dashboard() {
   const {colorMode} = useContext(osis)
+  const [createMapel, setCreateMapel] = useState(false)
+  const [createQuestion, setCreateQuestion] = useState(false)
+  const [inAll, setInAll] = useState(true)
+
   const myColor = colorMode == "light" ? "gray.500" : " gray.500"
 
+  const provider = {
+    setCreateQuestion,
+    createQuestion,
+    createMapel,
+    setCreateMapel,
+    inAll,
+    setInAll
+  }
+
   return (
+    <quizContext.Provider value={provider}>
     <Box w={"full"}>
         <Box display={"flex"} gap={2}>
             <Tabs w={"full"}>
@@ -36,13 +51,13 @@ function Dashboard() {
               <TabIndicator mt='-1px' height='4px' bg="blue.600" borderRadius='2px' />
               <TabPanels>
                 {/* semua */}
-                <TabPanel>
+                <TabPanel onClick={()=> setInAll(true)}>
                   <Text py={2} opacity={0.5}>Di bagian ini anda hanya dapat melihat preview soal-soal saja. (Tidak bisa mengedit)</Text>
                   <ShowMapel />
                 </TabPanel>
 
                 {/* matapelajaran */}
-                <TabPanel>
+                <TabPanel onClick={()=> setInAll(false)}>
                   <Courses />
                 </TabPanel>
 
@@ -54,6 +69,7 @@ function Dashboard() {
             </Tabs>
         </Box>
     </Box>
+    </quizContext.Provider>
   )
 }
 
