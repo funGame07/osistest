@@ -1,108 +1,146 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
     useDisclosure,
     Button,
+    Flex,
+    ButtonGroup,
     Input,
     FormLabel,
     Box,
     Divider,
-    Text
+    Text,
+    Textarea,
+    InputRightAddon,
+    InputRightElement,
+    InputGroup,
+    RadioGroup,
+    Radio,
+    Stack
   } from '@chakra-ui/react'
   import { IoIosAddCircleOutline } from "react-icons/io";
+  import { CiEdit } from "react-icons/ci";
 
+function Question({jawaban="tiga puluh 1"}) {
+    const [isEditing, setIsEditing] = useState(false)
+    const [question, setQuestion] = useState("Jika 1+1 = 2, maka f(x)=...")
+    const [total, setTotal] = useState("20")
+    const [time, setTime] = useState("20")
+    const [ans, setAns] = useState("99")
+    const [pilganAns, setPilganAns] = useState(99)
 
-function Question() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const btnRef = React.useRef()
+    const answer = jawaban.split("..**..")
+    const isPilgan = answer.length > 1
+
+    useEffect(()=>{
+        isPilgan && setPilganAns(Number(answer[4]))
+    }, [])
     
-    return (
-        <>
-        <Button ref={btnRef} colorScheme='yellow' onClick={onOpen} display={"flex"} 
-        flexDir={"column"} py={3} gap={2} minH={"fit-content"} bgGradient={"linear(to-br, orange, gold)"} 
-        opacity={0.8} border={"1px solid black"}>
-            <Text>Tambah Pertanyaan</Text>
-            <IoIosAddCircleOutline size={26}/>
 
-        </Button>
-        <Drawer
-            isOpen={isOpen}
-            placement='right'
-            onClose={onClose}
-            finalFocusRef={btnRef}
-            size={{base: "sm", lg: "xl"}}
-        >
-            <DrawerOverlay />
-            <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>Buat Pertanyaan</DrawerHeader>
-    
-            <DrawerBody display={"flex"} gap={2} flexDir={"column"}>
-                <Box>
-                    <FormLabel htmlFor='question'>Pertanyaan</FormLabel>
-                    <Input
-                    id='question'
-                    placeholder='1+1 = ?'
-                    />
-                </Box>
-                <Box>
-                    <FormLabel htmlFor='score'>Nilai Soal</FormLabel>
-                    <Input
-                    id='score'
-                    placeholder='score soal'
-                    />
-                </Box>
+    async function handleSaveEdit(){
+        // update question
+    }
 
-                <Divider m={3}/>
+    return(
+        <Box w={"full"} px={3} py={1} rounded={"xl"} boxShadow={"0 0 10px rgba(0,0,0, 0.2)"} pb={2}>
+            <Flex justifyContent={"space-between"} w={"100%"} flexDir={"column"} gap={2}>
+                <Flex gap={1} alignItems={"center"}>
+                    <Text w={{base:"15%", md:"5%"}}>No. 1</Text>
+                    {
+                        isEditing ? 
+                        <Flex justifyContent={"space-between"} flexGrow={1}>
+                            <ButtonGroup>
+                                <Button variant={"outline"} colorScheme={"blue"}
+                                size={"xs"} rounded={"full"} onClick={()=> setIsEditing(false)}>
+                                    Cancel
+                                </Button>
+                                <Button variant={"outline"} colorScheme={"blue"}
+                                size={"xs"} rounded={"full"} onClick={handleSaveEdit}>
+                                    Update
+                                </Button>
+                            </ButtonGroup>
+                            <Flex w={{base: "50%", lg: "30%"}}>
+                                <InputGroup size={"xs"}>
+                                    <Input type='tel' value={total} onChange={(e) => setTotal(e.target.value)}/>
+                                    <InputRightAddon>Poin</InputRightAddon>
+                                </InputGroup>
+                                <InputGroup size={"xs"} >
+                                    <Input type='tel' value={time} onChange={(e) => setTime(e.target.value)}/>
+                                    <InputRightAddon>Detik</InputRightAddon>
+                                </InputGroup>  
+                            </Flex>
+                               
+                        </Flex>
+                        :
+                        <Flex justifyContent={"space-between"} w={"full"}>
+                        <Button variant={"outline"} colorScheme={"blue"} leftIcon={<CiEdit/>}
+                         size={"xs"} rounded={"full"} onClick={() => setIsEditing(true)}>
+                            Edit
+                        </Button>
+                        <Flex w={{base: "50%", lg: "30%"}}>
+                            <InputGroup size={"xs"}>
+                                <Input type='tel' value={"20"} disabled/>
+                                <InputRightAddon>Poin</InputRightAddon>
+                            </InputGroup>
+                            <InputGroup size={"xs"}>
+                                <Input type='tel' value={"20"} disabled/>
+                                <InputRightAddon>Detik</InputRightAddon>
+                            </InputGroup>  
+                        </Flex>
+                                            
+                        </Flex>                    
+                    }
+                </Flex>
 
-                <Box>
-                    <FormLabel htmlFor='option1'>Option 1</FormLabel>
-                    <Input
-                    id='option1'
-                    placeholder='Pilihan 1'
-                    />
-                </Box>
-                <Box>
-                    <FormLabel htmlFor='option2'>Option 2</FormLabel>
-                    <Input
-                    id='option2'
-                    placeholder='Pilihan 2'
-                    />
-                </Box>
-                <Box>
-                    <FormLabel htmlFor='option3'>Option 3</FormLabel>
-                    <Input
-                    id='option3'
-                    placeholder='Pilihan 3'
-                    />
-                </Box>
-                <Box>
-                    <FormLabel htmlFor='option4'>Option 4</FormLabel>
-                    <Input
-                    id='option4'
-                    placeholder='Pilihan 4'
-                    />
-                </Box>
-
-                <DrawerFooter>
-                    <Button variant='outline' mr={3} onClick={onClose}>
-                    Cancel
-                    </Button>
-                    <Button colorScheme='yellow'>Save</Button>
-                </DrawerFooter>
-            </DrawerBody>
-                <DrawerFooter>
+                <Flex flexDir={"column"} gap={2}>
+                {
+                    isEditing?
+                    <>
+                        <Input fontSize={"sm"} variant={"flushed"} value={question} rounded={"lg"}
+                        as={Textarea} onChange={(e) => setQuestion(e.target.value)} p={2} px={4}/>
+                        {isPilgan ?
+                                <RadioGroup value={pilganAns}>
+                                    <Stack>
+                                        <Radio value={0} onClick={() => setPilganAns(0)}>{answer[0]}</Radio>
+                                        <Radio value={1} onClick={() => setPilganAns(1)}>{answer[1]}</Radio>
+                                        <Radio value={2} onClick={() => setPilganAns(2)}>{answer[2]}</Radio>
+                                        <Radio value={3} onClick={() => setPilganAns(3)}>{answer[3]}</Radio>
+                                    </Stack>
+                                    
+                                </RadioGroup>
+                            :
+                            <InputGroup gap={1} alignItems={"center"}>
+                                <Text>Jawaban: </Text>
+                                <Input fontSize={"sm"} variant={"flushed"} value={ans} rounded={"lg"}
+                                onChange={(e) => setQuestion(e.target.value)} p={0} size={"xs"}/>
+                            </InputGroup>
+                        } 
+                        
+                    </>
                     
-                </DrawerFooter>
-            </DrawerContent>
-        </Drawer>
-        </>
+                    :
+                    <>
+                        <Textarea fontSize={"sm"}>Jika 1+1 = 2, maka f(x)=...</Textarea>
+                        {isPilgan ?
+                            <RadioGroup value={pilganAns}>
+                                <Stack>
+                                    <Radio value={0}>{answer[0]}</Radio>
+                                    <Radio value={1}>{answer[1]}</Radio>
+                                    <Radio value={2}>{answer[2]}</Radio>
+                                    <Radio value={3}>{answer[3]}</Radio>
+                                </Stack>
+                                
+                            </RadioGroup>
+                        :
+                        <Flex gap={1}>
+                            <Text>Jawaban: </Text>
+                            <Text>99</Text>
+                        </Flex>
+                        } 
+                    </>
+                }
+                </Flex>
+            </Flex>
+        </Box>
     )
 }
 

@@ -25,6 +25,11 @@ function Cepat() {
         <Input type='text' size={"sm"} rounded={"xl"} placeholder='soal' as={Textarea}/>
     </FormControl>
 
+    <FormControl>
+        <FormLabel>Jawaban</FormLabel>
+        <Input type='text' size={"sm"} rounded={"xl"} placeholder='jawaban'/>
+    </FormControl>
+
     <Flex gap={2} mt={5}>
         <FormControl>
         <FormLabel>Poin</FormLabel>

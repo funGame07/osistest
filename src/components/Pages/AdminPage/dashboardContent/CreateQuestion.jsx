@@ -8,11 +8,11 @@ import {
     Divider
  } from '@chakra-ui/react'
  import { osis } from '../../../../App'
- import Pilgan from './questions/Pilgan';
- import Isian from './questions/Isian';
- import Lct from './questions/Lct';
- import Cepat from './questions/Cepat';
- import Otomatis from './questions/Otomatis';
+ import Pilgan from './createQuestions/Pilgan';
+ import Isian from './createQuestions/Isian';
+ import Lct from './createQuestions/Lct';
+ import Cepat from './createQuestions/Cepat';
+ import Otomatis from './createQuestions/Otomatis';
  import Mapel from './Mapel';
 
 function CreateQuestion({setCreateQuestion}){
@@ -56,9 +56,9 @@ function CreateQuestion({setCreateQuestion}){
                 </Button>
               </Flex>
               
-              <Box mx={"auto"} py={5}>
+              {/* <Box mx={"auto"} py={5}>
                 <Mapel />
-              </Box>
+              </Box> */}
 
             </Flex>
             <Divider orientation={{base:"horizontal", lg: "vertical"}}/>

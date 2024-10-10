@@ -17,6 +17,7 @@ import {
    } from '@chakra-ui/react'
 
 import CreateQuestion from './CreateQuestion';
+import Question from '../Question';
 
 import { IoIosAddCircleOutline } from "react-icons/io";
 
@@ -34,18 +35,22 @@ function ShowMapelDetail({comp, onOpen, isOpen, onClose}) {
             <ModalCloseButton />
           <ModalBody>
             <Flex gap={2} flexDir={{base: "column", lg: "row"}}>
-                <Box>
+                <Box mx={{base: "auto", lg: "0"}}>
                     {comp}
                 </Box>
 
-                <Box display={"flex"} flexDir={{base: "column", lg: "row"}}>
+                <Box display={"flex"} flexDir={{base: "column", lg: "column"}} w={"full"}>
                 {!inAll ? <Button leftIcon={<IoIosAddCircleOutline size={15}/>} colorScheme='blue' variant={"outline"} mb={3} 
-                rounded={"full"} fontSize={"10px"} size={"xs"} onClick={()=> setCreateQuestion(true)}>
+                rounded={"full"} fontSize={"10px"} w={"120px"} mx={{base: "auto", lg: "0"}} size={"xs"} onClick={()=> setCreateQuestion(true)}>
                     <Text fontSize={"9px"}>Buat Pertanyaan</Text>
                 </Button>: <span />}
                 {createQuestion? <CreateQuestion setCreateQuestion={setCreateQuestion} />:<span />}
                 {/* question will be shown here no matter what */}
-                Question will be shown here
+                <Flex flexDir={"column"} gap={4}>
+                  <Question />
+                  <Question jawaban='55..**..77..**..11..**..99..**..1'/>
+                </Flex>
+                
                 </Box>
             </Flex>
           </ModalBody>
