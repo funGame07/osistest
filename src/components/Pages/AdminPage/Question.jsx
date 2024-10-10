@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import {
     useDisclosure,
     Button,
@@ -20,7 +20,10 @@ import {
   import { IoIosAddCircleOutline } from "react-icons/io";
   import { CiEdit } from "react-icons/ci";
 
+import { quizContext } from './Dashboard';
+
 function Question({jawaban="tiga puluh 1"}) {
+    const {inAll} = useContext(quizContext)
     const [isEditing, setIsEditing] = useState(false)
     const [question, setQuestion] = useState("Jika 1+1 = 2, maka f(x)=...")
     const [total, setTotal] = useState("20")
@@ -46,7 +49,7 @@ function Question({jawaban="tiga puluh 1"}) {
                 <Flex gap={1} alignItems={"center"}>
                     <Text w={{base:"15%", md:"5%"}}>No. 1</Text>
                     {
-                        isEditing ? 
+                        isEditing && !inAll ? 
                         <Flex justifyContent={"space-between"} flexGrow={1}>
                             <ButtonGroup>
                                 <Button variant={"outline"} colorScheme={"blue"}
@@ -71,12 +74,12 @@ function Question({jawaban="tiga puluh 1"}) {
                                
                         </Flex>
                         :
-                        <Flex justifyContent={"space-between"} w={"full"}>
+                        <Flex justifyContent={inAll? "end" :"space-between"} w={"full"}>
                         <Button variant={"outline"} colorScheme={"blue"} leftIcon={<CiEdit/>}
-                         size={"xs"} rounded={"full"} onClick={() => setIsEditing(true)}>
+                         size={"xs"} rounded={"full"} onClick={() => setIsEditing(true)} display={inAll? "none" : "block"}>
                             Edit
                         </Button>
-                        <Flex w={{base: "50%", lg: "30%"}}>
+                        <Flex w={{base: "50%", lg: "30%"}} >
                             <InputGroup size={"xs"}>
                                 <Input type='tel' value={"20"} disabled/>
                                 <InputRightAddon>Poin</InputRightAddon>
@@ -93,7 +96,7 @@ function Question({jawaban="tiga puluh 1"}) {
 
                 <Flex flexDir={"column"} gap={2}>
                 {
-                    isEditing?
+                    isEditing && !inAll?
                     <>
                         <Input fontSize={"sm"} variant={"flushed"} value={question} rounded={"lg"}
                         as={Textarea} onChange={(e) => setQuestion(e.target.value)} p={2} px={4}/>

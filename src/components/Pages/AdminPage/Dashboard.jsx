@@ -24,7 +24,7 @@ function Dashboard() {
   const {colorMode} = useContext(osis)
   const [createMapel, setCreateMapel] = useState(false)
   const [createQuestion, setCreateQuestion] = useState(false)
-  const [inAll, setInAll] = useState(false)
+  const [inAll, setInAll] = useState(true)
 
   const myColor = colorMode == "light" ? "gray.500" : " gray.500"
 
@@ -41,7 +41,7 @@ function Dashboard() {
     <quizContext.Provider value={provider}>
     <Box w={"full"}>
         <Box display={"flex"} gap={2}>
-            <Tabs w={"full"} defaultIndex={1}>
+            <Tabs w={"full"}>
               <TabList pl={"18px"}>
                 <Tab fontWeight={"600"}>ALL</Tab>
                 <Tab fontWeight={"600"}>COURSES</Tab>
