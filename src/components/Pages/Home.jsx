@@ -20,13 +20,14 @@ import { useContext } from "react";
 import { osis } from "../../App";
 
 // ### Import package 
-import { FaExchangeAlt } from "react-icons/fa";
+import { FaExchangeAlt, FaWhatsapp } from "react-icons/fa";
 import { IoMailOutline } from "react-icons/io5";
 import { BsInstagram } from "react-icons/bs";
 import { MdSettings } from "react-icons/md";
 import { RxDividerVertical } from "react-icons/rx";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import { GoDotFill } from "react-icons/go";
+
 
 
 import "./home.css"
@@ -45,7 +46,10 @@ function Home() {
       opacity: 0.1
     }
   `
-
+  function handleWhatsApp(){
+    const url = "https://wa.me/6281396716769?text=halo"
+    window.open(url, '_blank')
+  }
 
   return(
     <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "6%"}} pos={"relative"} overflow={"hidden"}>
@@ -80,6 +84,9 @@ function Home() {
         
         
       </Flex>
+      {/* <Box bg={"yellow.400"} w={"130%"}>
+        <Heading textAlign={"center"} fontWeight={800}>WELCOME TO OSIS</Heading>
+      </Box> */}
       
       <Carousel />
 
@@ -132,18 +139,22 @@ function Home() {
         <Flex flexDir={"column"} gap={1}>
           <Text className="font-link" fontSize={"lg"} fontWeight={"800"}>HUBUNGI KAMI</Text>
           <Link style={{display: "flex", alignItems: "center", gap:"1em"}} to={"mailto:elbertchen007@gmail.com"}>
-            <Box as={IoMailOutline} size={"21px"} color={colorMode == "dark"? "blue.600": "blue.700"}/>
+            <Box as={IoMailOutline} size={"21px"} color={"red.800"}/>
             sultanosis09090@gmail.com
+          </Link>
+          <Link style={{display: "flex", alignItems: "center", gap:"1em"}} onClick={handleWhatsApp}>
+            <Box as={FaWhatsapp} size={"21px"} color={"green"}/>
+            081396716769
           </Link>
         </Flex>
         <Flex flexDir={"column"} gap={2}>
           <Text className="font-link" fontSize={"lg"} fontWeight={"800"}>IKUTI KAMI</Text>
           <Link to={"https://www.instagram.com/smassa24.25/"} style={{display: "flex", alignItems: "center", gap:"1em"}}>
-            <Box as={BsInstagram} size={"20px"} color={colorMode == "dark"? "blue.600": "blue.700"}/>
+            <Box as={BsInstagram} size={"20px"} color={"pink.500"}/>
             @smassa24.25
           </Link>
           <Link to={"https://www.instagram.com/smassultanagung.psa/"} style={{display: "flex", alignItems: "center", gap:"1em"}}>
-            <Box as={BsInstagram} size={"20px"} color={colorMode == "dark"? "blue.600": "blue.700"}/>
+            <Box as={BsInstagram} size={"20px"} color={"pink.500"}/>
             @smassultanagung.psa
           </Link>
         </Flex>

@@ -9,7 +9,8 @@ import {
     FormLabel,
     Input,
     Textarea,
-    Button
+    Button,
+    useToast
 } from '@chakra-ui/react'
 
 import { quizContext } from '../../Dashboard'
@@ -18,6 +19,8 @@ import { saveQuestion } from '../../../../../../lib/libs'
 
 function Cepat() {
     const {setCreateQuestion} = useContext(quizContext)
+    const toast = useToast()
+    const [isLoading, setIsLoading] = useState(false)
     const [soal, setSoal] = useState("")
     const [jawaban, setJawaban] = useState("")
     const [poin, setPoin] = useState("")
@@ -25,18 +28,41 @@ function Cepat() {
     const [waktu, setWaktu] = useState("")
 
     function handleSaveQuestion(){
-        if(!soal || !jawaban || !poin || !minusPoin){
+        if(!soal || !jawaban || !poin || !minusPoin || !waktu){
             return false
         }else{
-            saveQuestion({
+            const toastPromise = saveQuestion({
                 idMapel: "blm buat",
                 soal,
                 jawaban,
                 poin,
-                kurangPoin,
                 minusPoin,
                 waktu,
                 metode: "cepat"
+            }, setIsLoading, setCreateQuestion)
+
+            toast.promise(toastPromise, {
+                success: value => ({ 
+                  title: 'Success', 
+                  description: value,
+                  isClosable: true,
+                  position: 'top',
+                  containerStyle: {
+                    zIndex: 9999
+                  },
+                  duration: 2000
+                }),
+                error: value => ({ 
+                  title: 'Oops!', 
+                  description: value,
+                  isClosable: true,
+                  position: 'top',
+                  containerStyle: {
+                    zIndex: 9999
+                  },
+                  duration: 2000
+                }),
+                loading: { title: 'Loading', description: "Tunggu sebentar", position: "top", isClosable: true},
             })
         }
     }
@@ -75,7 +101,7 @@ function Cepat() {
             Cancel
         </Button>
         <Button className="font-link" variant={"outline"} colorScheme={"blue"} 
-        w={"full"} size={"md"} rounded={"full"} onClick={handleSaveQuestion}>
+        w={"full"} size={"md"} rounded={"full"} onClick={handleSaveQuestion} isLoading={isLoading}>
             Save
         </Button>
     </Flex>

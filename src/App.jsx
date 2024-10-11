@@ -69,9 +69,6 @@ function App() {
           {/* <Route path="/voting" element={<Hexa />}/> */}
         </Routes>
         <BottomNav/>
-        <audio autoPlay controls={false} loop>
-          <source src="music.mp3" type="audio/mp3"/>
-        </audio>
       </osis.Provider>
     </Box>
   )

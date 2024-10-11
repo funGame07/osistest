@@ -61,7 +61,7 @@ function AuthPopover() {
                     reject(data.message)
                 }
             } catch (error) {
-                reject(data.message)
+                reject("couldn't login")
             } finally{
                 useNavigate('/login')
                 setIsLoading(false)
