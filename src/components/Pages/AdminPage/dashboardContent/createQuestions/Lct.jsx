@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react'
 
 import { quizContext } from '../../Dashboard'
+import { saveQuestion } from '../../../../../../lib/libs'
 
 
 function Lct() {
@@ -23,6 +24,10 @@ function Lct() {
     <FormControl>
         <FormLabel>Soal</FormLabel>
         <Input type='text' size={"sm"} rounded={"xl"} placeholder='soal' as={Textarea}/>
+    </FormControl>
+    <FormControl>
+        <FormLabel>Gambaran Jawaban</FormLabel>
+        <Input type='text' size={"sm"} rounded={"xl"} placeholder='gambaran jawaban' as={Textarea}/>
     </FormControl>
 
     <Flex gap={2} mt={5}>

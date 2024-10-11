@@ -32,7 +32,7 @@ function Login() {
     const toastPromise = new Promise(async (resolve, reject) => {
       setIsLoading(true)
       try {
-        const res = await fetch("http://localhost:3000/api/auth/login", {
+        const res = await fetch(import.meta.env.VITE_SERVER_URI + "/api/auth/login", {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },

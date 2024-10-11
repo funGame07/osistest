@@ -27,6 +27,7 @@ import { MdArrowBackIos } from "react-icons/md";
 import { osis } from "../../App";
 import { useContext } from "react";
 import Dashboard from "./AdminPage/Dashboard";
+import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 
 function Admin() {
     const {setShowBottomNavbar} = useContext(osis)
@@ -46,7 +47,7 @@ function Admin() {
                     />
                     <MenuList>
                         <MenuGroup title="Quiz">
-                            <MenuItem icon={<MdDashboard />} command='⌘'>
+                            <MenuItem icon={<MdDashboard />} command='⌘' as={Link} to="/admin">
                                 Dashboard
                             </MenuItem>
                             <MenuItem icon={<MdRestartAlt />} command='⌘'>
@@ -83,7 +84,7 @@ function Admin() {
 
                         <MenuDivider />
 
-                        <MenuItem icon={< MdArrowBackIos />} command='⌘' as={"a"} href="/">
+                        <MenuItem icon={< MdArrowBackIos />} command='⌘' as={Link} to="/">
                             Back
                         </MenuItem>
                     </MenuList>

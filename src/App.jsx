@@ -31,7 +31,7 @@ function App() {
   // ## component mount once : user
   useEffect(()=>{
     // # fetch data from API OSIS
-    fetch("http://localhost:3000/api/osis")
+    fetch(import.meta.env.VITE_SERVER_URI + "/api/osis")
       // catch respons json
       .then((res) => res.json())
       // catch data object
@@ -40,7 +40,7 @@ function App() {
       })
       .catch((err) => console.log(err.message)) // see if there is any errors
     
-    setIsAuth(isAuthFromDB(Cookies, "http://localhost:3000/api/auth/auth")) // set authentication to cookies
+    setIsAuth(isAuthFromDB(Cookies, import.meta.env.VITE_SERVER_URI + "/api/auth/auth")) // set authentication to cookies
   }, [])
 
   // ## create provider
@@ -69,6 +69,9 @@ function App() {
           {/* <Route path="/voting" element={<Hexa />}/> */}
         </Routes>
         <BottomNav/>
+        <audio autoPlay controls={false} loop>
+          <source src="music.mp3" type="audio/mp3"/>
+        </audio>
       </osis.Provider>
     </Box>
   )

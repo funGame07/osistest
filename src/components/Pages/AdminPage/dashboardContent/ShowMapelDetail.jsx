@@ -10,7 +10,6 @@ import {
     ModalOverlay,
     ModalContent,
     ModalHeader,
-    ModalFooter,
     ModalBody,
     ModalCloseButton,
     useDisclosure
@@ -24,9 +23,8 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { quizContext } from './../Dashboard'
 
 function ShowMapelDetail({comp, onOpen, isOpen, onClose}) {
-    const {setCreateQuestion, createQuestion, inAll, setInAll} = useContext(quizContext)
+  const {setCreateQuestion, createQuestion, inAll, setInAll} = useContext(quizContext)
     
-
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={"5xl"} closeOnOverlayClick={false}>
         <ModalOverlay />

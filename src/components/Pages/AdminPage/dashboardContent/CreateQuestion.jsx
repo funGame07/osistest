@@ -17,21 +17,13 @@ import {
 
 function CreateQuestion({setCreateQuestion}){
     const [method, setMethod] = useState("")
-    // const [methodField, setMethodField] = useState("") // field shown based on method choosed
     const {colorMode} = useContext(osis)
     const cardBg = colorMode =="light"? "white": "gray.700"
-    async function handleSave(){
-  
-    }
-
+    
     function handleMethod(e){
       setMethod(e.target.value)
     }
 
-    // useEffect(()=>{
-    //   const checkMethodField = method == 
-    // }, [method])
-  
     return (
       <Flex pb={5} pt={4} minW={"90%"} flexDir={{base: "column"}} gap={{base: 5}} pos={"relative"} alignItems={"center"} minH={"fit-content"} >
         
@@ -55,10 +47,6 @@ function CreateQuestion({setCreateQuestion}){
                   Soal Otomatis (Khusus berhitung)
                 </Button>
               </Flex>
-              
-              {/* <Box mx={"auto"} py={5}>
-                <Mapel />
-              </Box> */}
 
             </Flex>
             <Divider orientation={{base:"horizontal", lg: "vertical"}}/>

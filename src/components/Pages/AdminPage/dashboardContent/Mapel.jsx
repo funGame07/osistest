@@ -4,7 +4,6 @@ import {
     Box,
     Text,
     Flex,
-    Button,
     Badge,
  } from '@chakra-ui/react';
 

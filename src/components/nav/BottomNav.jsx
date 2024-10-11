@@ -20,7 +20,8 @@ function BottomNav() {
   return (
     <Box className='bottom-nav' position={"fixed"}
     bg={"transparent"} 
-    zIndex={9999} 
+    opacity={0.8}
+    zIndex={1} 
     display={{base: showBottomNavbar ? "" : "none", lg: ""}}
     >
         <BottomNavContent />   

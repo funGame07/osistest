@@ -20,7 +20,14 @@ import {
     AccordionPanel,
     AccordionIcon,
     Button,
-    Text
+    Text,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure
  } from '@chakra-ui/react'
 
 //  import icons 
@@ -33,16 +40,17 @@ import { quizContext } from '../Dashboard';
 
 function Courses() {
     // Declaration Hooks
-    const {createMapel, createQuestion, setCreateMapel, setCreateQuestion, inAll, setInAll} = useContext(quizContext)
-
+    const {createMapel, setCreateMapel, allMapel, setInAll} = useContext(quizContext)
+    const {isOpen, onOpen, onClose} = useDisclosure()
 
     // How to make Quiz Steps
     const steps = [
         { title: 'Pertama', description: 'Buat mata pelajaran dulu' },
-        { title: 'Kedua', description: 'Klik tambah soal' },
-        { title: 'Ketiga', description: 'Pilih metode menjawab (isian/pilgan)' },
-        { title: "Keempat", description: "Ketik soal dan jawaban sesuai kolom"},
-        { title: "Kelima", description: "Klik submit"}
+        { title: "Kedua", description: "Klik mata pelajaran yg sudah dibuat"},
+        { title: 'Ketiga', description: 'Klik tambah soal' },
+        { title: 'Keempat', description: 'Pilih metode menjawab (isian/pilgan)' },
+        { title: "Kelima", description: "Ketik soal dan jawaban sesuai kolom"},
+        { title: "Keenam", description: "Klik submit"}
       ]
       const { activeStep } = useSteps({
         index: -1,
@@ -88,8 +96,29 @@ function Courses() {
         rounded={"full"} fontSize={"10px"} size={"sm"} onClick={()=> setCreateMapel(true)}>
             <Text fontSize={"10px"}>Buat Mata Pelajaran</Text>
         </Button>
-        <ShowMapel />
-        {createMapel? <CreateMapel setCreateMapel={setCreateMapel} />: <span/>}
+        {allMapel.map((data, i) => {
+                    //CHANGE THIS
+                    return <ShowMapel key={i}
+                            customColor="cyan" 
+                            mapel="MATEMATIKA" 
+                            jumlah="10" 
+                            judul="BEGINNER MTK QUIZ" 
+                            note=" salah 1 denda 5000" 
+                            img="quizbg3.png"/>
+                  })}
+        {createMapel && 
+        <Modal isOpen={createMapel} closeOnOverlayClick={false} size={"5xl"}>
+            <ModalOverlay />
+            <ModalContent>
+                <ModalHeader>
+                    <ModalCloseButton onClick={()=> setCreateMapel(false)}/>
+                </ModalHeader>
+                <ModalBody>
+                    <CreateMapel />
+                </ModalBody>
+                
+            </ModalContent>    
+        </Modal>}
     </Box>
     </>
   )

@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react'
 
 import { quizContext } from '../../Dashboard'
+import { saveQuestion } from '../../../../../../lib/libs'
 
 
 function Pilgan() {

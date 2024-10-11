@@ -13,10 +13,12 @@ import {
   Image
  } from '@chakra-ui/react'
  import { osis } from '../../../../App'
+ import { quizContext } from '../Dashboard';
  import { AiOutlinePicture } from "react-icons/ai";
  import Mapel from './Mapel';
 
-function CreateMapel({setCreateMapel}) {
+function CreateMapel() {
+  const {setOnSave, setCreateMapel} = useContext(quizContext)
   const [mapel, setMapel] = useState("")
   const [jumlah, setJumlah] = useState("")
   const [judul, setJudul] = useState("")
@@ -26,6 +28,21 @@ function CreateMapel({setCreateMapel}) {
   const {colorMode} = useContext(osis)
   const cardBg = colorMode =="light"? "white": "black"
   const pickColor =  ["Default", "Blue", "Cyan", "Green", "Yellow", "Red"]
+
+  async function handleSaveMapel(){
+    const response = await fetch(import.meta.env.VITE_SERVER_URI + "",{
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        //add this field later
+      })
+    })
+    const data = await response.json()
+    if(data.success){
+      setOnSave(prev => !prev)
+      setCreateMapel(false)
+    }
+  }
 
   function handleImage(){
     const imageContainer = document.getElementById("inputContainer")
@@ -40,9 +57,9 @@ function CreateMapel({setCreateMapel}) {
   }
 
   return (
-    <Flex pb={5} pt={4} flexDir={{base: "column"}} gap={{base: 5}} pos={"relative"} alignItems={"center"} minH={"fit-content"}>
+    <Flex pt={4} flexDir={{base: "column"}} gap={{base: 5}} pos={"relative"} alignItems={"center"} minH={"fit-content"}>
       
-      <Flex bg={cardBg} w={{base: "100%", lg: "80%"}} rounded={"2xl"} overflow={"hidden"} gap={{base:0, lg: 5}} h={"fit-content"} boxShadow={"lg"} flexDir={{base:"column", lg:"row"}}>
+      <Flex bg={cardBg} w={{base: "100%", lg: "100%"}} rounded={"2xl"} overflow={"hidden"} gap={{base:0, lg: 5}} h={"fit-content"} boxShadow={"lg"} flexDir={{base:"column", lg:"row"}}>
           <Flex p={4} flexDir={"column"} w={{lg: "40%"}}>
             <Heading fontSize={"2xl"}>Buat Mata Pelajaran</Heading>
             <Flex flexWrap={"wrap"} mt={3} gap={8}>
@@ -95,10 +112,10 @@ function CreateMapel({setCreateMapel}) {
               <Mapel customColor={customColor} mapel={mapel} jumlah={jumlah} judul={judul} note={note} img={img}/>
             </Box>
             <Flex w={"full"} h={"full"} px={4} py={5} gap={2}>
-              <Button mt={5} bg={"teal.600"} colorScheme='teal.600' 
-                color={"white"} w={"full"} rounded={"full"} onClick={()=> setCreateMapel(false)}>Cancel</Button>
-              <Button mt={5} bg={"teal.600"} colorScheme='teal.600' 
-                color={"white"} w={"full"} rounded={"full"}>Save</Button>
+              <Button mt={5} colorScheme='red' variant={"outline"}
+                w={"full"} rounded={"full"} onClick={()=> setCreateMapel(false)}>Cancel</Button>
+              <Button mt={5} colorScheme='blue' variant={"outline"}
+                w={"full"} rounded={"full"} onClick={handleSaveMapel}>Save</Button>
             </Flex>
           </Flex>
             

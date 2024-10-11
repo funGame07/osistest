@@ -120,7 +120,7 @@ function Home() {
             <ListKegiatan text={"OSIS Cup"} date={"9/20/2024"} />
             <ListKegiatan text={"Traktir siswa makan"} date={"10/9/2024"} />
             <ListKegiatan text={"Traktir siswa makan"} date={"10/10/2024"} />
-            <ListKegiatan text={"Pentas seni berteme kebebasan"} date={"10/11/2024"} />
+            <ListKegiatan text={"Pentas seni bertema kebebasan"} date={"10/11/2024"} />
             <ListKegiatan text={"Pesta merayakan natal"} date={"12/25/2024"} />
             <ListKegiatan text={"Bagi-bagi duit 100.000.000"} date={"1/1/2025"} />
           </List>
@@ -131,7 +131,7 @@ function Home() {
       <Flex w={{base: "full", lg: "100%"}} flexDir={"column"} textAlign={"start"} px={5} bg={colorMode == "light" ? "white" : "black"} mt={10} py={5} pb={"5em"} gap={4}>        
         <Flex flexDir={"column"} gap={1}>
           <Text className="font-link" fontSize={"lg"} fontWeight={"800"}>HUBUNGI KAMI</Text>
-          <Link style={{display: "flex", alignItems: "center", gap:"1em"}}>
+          <Link style={{display: "flex", alignItems: "center", gap:"1em"}} to={"mailto:elbertchen007@gmail.com"}>
             <Box as={IoMailOutline} size={"21px"} color={colorMode == "dark"? "blue.600": "blue.700"}/>
             sultanosis09090@gmail.com
           </Link>

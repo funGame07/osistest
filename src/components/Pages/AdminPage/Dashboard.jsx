@@ -1,4 +1,4 @@
-import React, {useContext, createContext, useState} from 'react'
+import React, {useContext, createContext, useState, useEffect} from 'react'
 import { 
     Box,
     Text,
@@ -25,8 +25,20 @@ function Dashboard() {
   const [createMapel, setCreateMapel] = useState(false)
   const [createQuestion, setCreateQuestion] = useState(false)
   const [inAll, setInAll] = useState(true)
+  const [onSave, setOnSave] = useState(false)
+  const [allMapel, setAllMapel] = useState(["remove me"])
 
   const myColor = colorMode == "light" ? "gray.500" : " gray.500"
+
+  useEffect(()=>{
+    async function getAllMapel(){
+      const response = await fetch(import.meta.env.VITE_SERVER_URI + "/")
+      const data = await response.json()
+      setAllMapel(data)
+    } 
+    getAllMapel()
+    
+  }, [onSave])
 
   const provider = {
     setCreateQuestion,
@@ -34,7 +46,9 @@ function Dashboard() {
     createMapel,
     setCreateMapel,
     inAll,
-    setInAll
+    setInAll,
+    setOnSave,
+    allMapel
   }
 
   return (
@@ -53,7 +67,16 @@ function Dashboard() {
                 {/* semua */}
                 <TabPanel onClick={()=> setInAll(true)}>
                   <Text py={2} opacity={0.5}>Di bagian ini anda hanya dapat melihat preview soal-soal saja. (Tidak bisa mengedit)</Text>
-                  <ShowMapel />
+                  {allMapel.map((data, i) => {
+                    //CHANGE THIS
+                    return <ShowMapel key={i}
+                            customColor="cyan" 
+                            mapel="MATEMATIKA" 
+                            jumlah="10" 
+                            judul="BEGINNER MTK QUIZ" 
+                            note=" salah 1 denda 5000" 
+                            img="quizbg3.png"/>
+                  })}
                 </TabPanel>
 
                 {/* matapelajaran */}

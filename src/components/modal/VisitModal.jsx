@@ -30,7 +30,6 @@ function VisitModal({isOpen, onOpen, onClose}){
 
     return (
           <>
-      
             <Modal isOpen={isOpen} onOpen={onOpen} onClose={onClose} isCentered size={"sm"}>
               <ModalOverlay />
               <ModalContent>
@@ -48,7 +47,7 @@ function VisitModal({isOpen, onOpen, onClose}){
                 </ModalBody>
       
                 <ModalFooter display={"flex"} flexDir={"column"} alignItems={"start"} gap={1}>
-                  <Text fontWeight={800}>Our School Web:</Text>
+                  <Text fontWeight={800}>Website Sultan Agung</Text>
                   <Button colorScheme='teal' leftIcon={<FaBusAlt />} minW={"100%"}>
                     <Link>
                       Goo!

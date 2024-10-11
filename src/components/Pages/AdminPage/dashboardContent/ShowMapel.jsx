@@ -17,7 +17,7 @@ import {
 import Mapel from './Mapel'
 import ShowMapelDetail from './ShowMapelDetail'
 
-function ShowMapel() {
+function ShowMapel({customColor, mapel, jumlah, judul, note, img}) {
   const [displayDetail, setDisplayDetail] = useState(false)
   const [idMapelDetail, setIdMapelDetail] = useState("")
   const {isOpen, onOpen, onClose} = useDisclosure()
@@ -30,15 +30,23 @@ function ShowMapel() {
   return (
     <Flex flexWrap={"wrap"} gap={{sm: 5}} justifyContent={{base: "space-between", sm: "start"}} rowGap={5}>
       <Box onClick={handleDetail}> 
-        <Mapel customColor="cyan" mapel="MATEMATIKA" jumlah="10" 
-        judul="BEGINNER MTK QUIZ" note=" salah 1 denda 5000" 
+        <Mapel 
+        customColor="cyan" 
+        mapel="MATEMATIKA" 
+        jumlah="10" 
+        judul="BEGINNER MTK QUIZ" 
+        note=" salah 1 denda 5000" 
         img="quizbg3.png"/>
       </Box>
 
     {displayDetail ? <ShowMapelDetail onOpen={onOpen} isOpen={isOpen} onClose={onClose}
-                    comp={<Mapel customColor="cyan" mapel="MATEMATIKA" jumlah="10" 
-                    judul="BEGINNER MTK QUIZ" note=" salah 1 denda 5000" 
-                    img="quizbg3.png"/>}
+                    comp={<Mapel 
+                      customColor="cyan" 
+                      mapel="MATEMATIKA" 
+                      jumlah="10" 
+                      judul="BEGINNER MTK QUIZ" 
+                      note=" salah 1 denda 5000" 
+                      img="quizbg3.png"/>}
                     /> 
     : <span/>}
 
