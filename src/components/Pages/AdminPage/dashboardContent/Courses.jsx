@@ -93,7 +93,7 @@ function Courses() {
     </Accordion>
     <Box mt={3}>
         <Button leftIcon={<IoIosAddCircleOutline size={15}/>} colorScheme='blue' variant={"outline"} mb={3} 
-        rounded={"full"} fontSize={"10px"} size={"sm"} onClick={()=> setCreateMapel(true)}>
+        rounded={"lg"} fontSize={"10px"} size={"sm"} onClick={()=> setCreateMapel(true)}>
             <Text fontSize={"10px"}>Buat Mata Pelajaran</Text>
         </Button>
         {allMapel.map((data, i) => {

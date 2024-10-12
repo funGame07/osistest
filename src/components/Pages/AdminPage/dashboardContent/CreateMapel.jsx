@@ -10,38 +10,75 @@ import {
   FormLabel,
   Input,
   FormHelperText,
-  Image
+  Image,
+  useToast
  } from '@chakra-ui/react'
  import { osis } from '../../../../App'
  import { quizContext } from '../Dashboard';
  import { AiOutlinePicture } from "react-icons/ai";
  import Mapel from './Mapel';
+import { saveSomething } from '../../../../../lib/libs';
 
 function CreateMapel() {
   const {setOnSave, setCreateMapel} = useContext(quizContext)
+  const toast = useToast()
+  const [isLoading, setIsLoading] = useState(false)
   const [mapel, setMapel] = useState("")
   const [jumlah, setJumlah] = useState("")
   const [judul, setJudul] = useState("")
   const [note, setNote] = useState("")
   const [img, setImg] = useState("")
-  const [customColor, setCustomColor] = useState("")
+  const [customColor, setCustomColor] = useState("default")
   const {colorMode} = useContext(osis)
   const cardBg = colorMode =="light"? "white": "black"
   const pickColor =  ["Default", "Blue", "Cyan", "Green", "Yellow", "Red"]
 
   async function handleSaveMapel(){
-    const response = await fetch(import.meta.env.VITE_SERVER_URI + "",{
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        //add this field later
+    if(!mapel || !jumlah || !judul || !note || !img){
+      return toast({
+        title: "Warning",
+        status: "warning",
+        description: "Seluruh kolom harus diisi",
+        isClosable: true,
+        position: "top"
       })
-    })
-    const data = await response.json()
-    if(data.success){
-      setOnSave(prev => !prev)
-      setCreateMapel(false)
     }
+    const toastPromise = saveSomething(
+      "",
+      {
+        mapel,
+        jumlah,
+        judul,
+        note,
+        img,
+        customColor
+      },
+      setIsLoading, setCreateMapel, setOnSave
+    )
+
+    toast.promise(toastPromise, {
+      success: value => ({ 
+        title: 'Success', 
+        description: value,
+        isClosable: true,
+        position: 'top',
+        containerStyle: {
+          zIndex: 9999
+        },
+        duration: 2000
+      }),
+      error: value => ({ 
+        title: 'Oops!', 
+        description: value,
+        isClosable: true,
+        position: 'top',
+        containerStyle: {
+          zIndex: 9999
+        },
+        duration: 2000
+      }),
+      loading: { title: 'Loading', description: "Tunggu sebentar", position: "top", isClosable: true},
+    })
   }
 
   function handleImage(){
@@ -97,7 +134,7 @@ function CreateMapel() {
               </FormControl>
               <Flex flexWrap={"wrap"} gap={2} m={"auto"} mt={3}>
                 {pickColor.map((item, i) =>{
-                  return <Button key={i} colorScheme='blue' variant={"outline"} size={"sm"} rounded={"2xl"} onClick={(e) => setCustomColor(item.toLowerCase())}>
+                  return <Button key={i} colorScheme='blue' variant={"outline"} size={"sm"} rounded={"lg"} onClick={(e) => setCustomColor(item.toLowerCase())}>
                     {item}
                   </Button>
                 })}
@@ -113,9 +150,9 @@ function CreateMapel() {
             </Box>
             <Flex w={"full"} h={"full"} px={4} py={5} gap={2}>
               <Button mt={5} colorScheme='red' variant={"outline"}
-                w={"full"} rounded={"full"} onClick={()=> setCreateMapel(false)}>Cancel</Button>
+                w={"full"} rounded={"lg"} onClick={()=> setCreateMapel(false)}>Cancel</Button>
               <Button mt={5} colorScheme='blue' variant={"outline"}
-                w={"full"} rounded={"full"} onClick={handleSaveMapel}>Save</Button>
+                w={"full"} rounded={"lg"} onClick={handleSaveMapel} isLoading={isLoading}>Save</Button>
             </Flex>
           </Flex>
             

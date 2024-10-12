@@ -39,7 +39,7 @@ function ShowMapelDetail({comp, onOpen, isOpen, onClose}) {
 
                 <Box display={"flex"} flexDir={{base: "column", lg: "column"}} w={"full"}>
                 {!inAll ? <Button leftIcon={<IoIosAddCircleOutline size={15}/>} colorScheme='blue' variant={"outline"} mb={3} 
-                rounded={"full"} fontSize={"10px"} w={"120px"} mx={{base: "auto", lg: "0"}} size={"xs"} onClick={()=> setCreateQuestion(true)}>
+                rounded={"lg"} fontSize={"10px"} w={"120px"} mx={{base: "auto", lg: "0"}} size={"xs"} onClick={()=> setCreateQuestion(true)}>
                     <Text fontSize={"9px"}>Buat Pertanyaan</Text>
                 </Button>: <span />}
                 {createQuestion? <CreateQuestion setCreateQuestion={setCreateQuestion} />:<span />}

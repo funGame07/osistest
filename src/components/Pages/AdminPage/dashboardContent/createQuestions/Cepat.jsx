@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react'
 
 import { quizContext } from '../../Dashboard'
-import { saveQuestion } from '../../../../../../lib/libs'
+import { saveSomething } from '../../../../../../lib/libs'
 
 
 function Cepat() {
@@ -29,9 +29,17 @@ function Cepat() {
 
     function handleSaveQuestion(){
         if(!soal || !jawaban || !poin || !minusPoin || !waktu){
-            return false
+            return toast({
+                title: "Warning",
+                status: "warning",
+                description: "Seluruh kolom harus diisi",
+                isClosable: true,
+                position: "top"
+              })
         }else{
-            const toastPromise = saveQuestion({
+            const toastPromise = saveSomething(
+            "",
+            {
                 idMapel: "blm buat",
                 soal,
                 jawaban,
@@ -96,12 +104,12 @@ function Cepat() {
     </FormControl>
 
     <Flex gap={2} mt={3}>
-        <Button className="font-link" variant={"outline"} colorScheme={"blue"} 
-        w={"full"} size={"md"} rounded={"full"} onClick={() => setCreateQuestion(false)}>
+        <Button className="font-link" variant={"outline"} colorScheme={"red"} 
+        w={"full"} size={"sm"} rounded={"lg"} onClick={() => setCreateQuestion(false)}>
             Cancel
         </Button>
         <Button className="font-link" variant={"outline"} colorScheme={"blue"} 
-        w={"full"} size={"md"} rounded={"full"} onClick={handleSaveQuestion} isLoading={isLoading}>
+        w={"full"} size={"sm"} rounded={"lg"} onClick={handleSaveQuestion} isLoading={isLoading}>
             Save
         </Button>
     </Flex>

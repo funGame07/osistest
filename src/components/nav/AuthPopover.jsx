@@ -32,6 +32,7 @@ function AuthPopover() {
     // Declaration Hooks
     const {colorMode, isAuth, setIsAuth} = useContext(osis) // context from osis
     const [isLoading, setIsLoading] = useState(false) // loading
+    const [user, setUser] = useState({name: "Guest", nis: "______"})
     const authRef = useRef(null)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const toast = useToast() // toast
@@ -39,6 +40,16 @@ function AuthPopover() {
     // check authentication
     function checkIsAuth(){
         isAuthFromCookie("auth", setIsAuth, Cookies) // get function from libs
+        const cookieName = Cookies.get("name")
+        const cookieNis = Cookies.get("nis")
+        if(cookieName == cookieNis) return setUser({
+            name: "Guest",
+            nis: "______"
+        })
+        return setUser({
+            name: cookieName,
+            nis: cookieNis
+        })
     }
     
     async function handleLogout(){
@@ -51,19 +62,16 @@ function AuthPopover() {
                 })
                 const data = await res.json()
                 if(data.success){
-                    Cookies.remove("auth")
-                    setIsAuth(false)
-                    setIsLoading(false)
                     resolve(data.message)
                 }else{
-                    Cookies.remove("auth")
-                    setIsAuth(false)
                     reject(data.message)
                 }
             } catch (error) {
                 reject("couldn't login")
             } finally{
-                useNavigate('/login')
+                const toRemove = ["name", "auth", "nis", "role"]
+                toRemove.map(cookie => Cookies.remove(cookie))
+                setIsAuth(false)
                 setIsLoading(false)
                 onClose()
             }
@@ -108,8 +116,8 @@ function AuthPopover() {
     <PopoverContent className='authpopover'>
         <Flex w={"full"} p={2} flexDir={"column"} gap={3}>
             <Box color={colorMode == "light" ? "black" : "white"}>
-                <Text fontSize={{base: "sm", lg: "lg"}} fontWeight={"700"}>{isAuth? "Elbert Austen" : "Guest"}</Text>
-                <Text fontSize={{base:"xs", lg:"md"}}>NIS: {isAuth? "2409001" : "_______"}</Text>
+                <Text fontSize={{base: "sm", lg: "lg"}} fontWeight={"700"}>{user.name}</Text>
+                <Text fontSize={{base:"xs", lg:"md"}}>NIS: {user.nis}</Text>
             </Box>
 
             <Link to={!isAuth? "/login": "/"}>

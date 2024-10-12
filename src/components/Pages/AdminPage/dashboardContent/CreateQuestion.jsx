@@ -31,19 +31,19 @@ function CreateQuestion({setCreateQuestion}){
             <Flex p={4} flexDir={"column"} w={{lg: "50%"}}>
               <Heading fontSize={"2xl"}>Buat Pertanyaan</Heading>
               <Flex flexWrap={"wrap"} mt={3} gap={2}>
-                <Button colorScheme='blue' variant={"outline"} size={"sm"} rounded={"2xl"} onClick={handleMethod} value={"pilgan"}>
+                <Button colorScheme='blue' variant={"outline"} size={"xs"} rounded={"lg"} onClick={handleMethod} value={"pilgan"}>
                   Pilihan Berganda
                 </Button>
-                <Button colorScheme='blue' variant={"outline"} size={"sm"} rounded={"2xl"} onClick={handleMethod} value={"isian"}>
+                <Button colorScheme='blue' variant={"outline"} size={"xs"} rounded={"lg"} onClick={handleMethod} value={"isian"}>
                   Isian
                 </Button>
-                <Button colorScheme='blue' variant={"outline"} size={"sm"} rounded={"2xl"} onClick={handleMethod} value={"lct"}>
+                <Button colorScheme='blue' variant={"outline"} size={"xs"} rounded={"lg"} onClick={handleMethod} value={"lct"}>
                   Pencet Tombol Tercepat
                 </Button>
-                <Button colorScheme='blue' variant={"outline"} size={"sm"} rounded={"2xl"} onClick={handleMethod} value={"cepat"}>
+                <Button colorScheme='blue' variant={"outline"} size={"xs"} rounded={"lg"} onClick={handleMethod} value={"cepat"}>
                   Siapa Cepat Dia Dapat
                 </Button>
-                <Button colorScheme='blue' variant={"outline"} size={"sm"} rounded={"2xl"} onClick={handleMethod} value={"otomatis"}>
+                <Button colorScheme='blue' variant={"outline"} size={"xs"} rounded={"lg"} onClick={handleMethod} value={"otomatis"}>
                   Soal Otomatis (Khusus berhitung)
                 </Button>
               </Flex>

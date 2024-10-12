@@ -27,6 +27,8 @@ import { MdSettings } from "react-icons/md";
 import { RxDividerVertical } from "react-icons/rx";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import { GoDotFill } from "react-icons/go";
+import { GiCycle } from "react-icons/gi";
+
 
 
 
@@ -135,7 +137,7 @@ function Home() {
       </Flex>
 
 
-      <Flex w={{base: "full", lg: "100%"}} flexDir={"column"} textAlign={"start"} px={5} bg={colorMode == "light" ? "white" : "black"} mt={10} py={5} pb={"5em"} gap={4}>        
+      <Flex w={{base: "full", lg: "100%"}} flexDir={{base: "column", lg: "row"}} justifyContent={"space-between"} textAlign={"start"} px={5} bg={colorMode == "light" ? "white" : "black"} mt={10} py={5} pb={"5em"} gap={4}>        
         <Flex flexDir={"column"} gap={1}>
           <Text className="font-link" fontSize={"lg"} fontWeight={"800"}>HUBUNGI KAMI</Text>
           <Link style={{display: "flex", alignItems: "center", gap:"1em"}} to={"mailto:elbertchen007@gmail.com"}>
@@ -159,10 +161,11 @@ function Home() {
           </Link>
         </Flex>
 
-        <Flex h={"60px"} animation={`${dissapear} 10s ease-in infinite`} alignItems={"center"} mt={3} gap={4} 
+        <Flex h={"60px"} animation={`${dissapear} 10s ease-in infinite`} alignItems={"center"} gap={4} pr={{base: 0, lg:10}}
         placeSelf={"center"} justifySelf={"self-end"} opacity={0.5}>
           <Image src="sultan.png" maxW={"30px"} maxH={"30px"} rounded={"full"}/>
-          <FaExchangeAlt size={20}/>
+          {/* <FaExchangeAlt size={20}/> */}
+          <GiCycle size={20}/>
           <Image src="logoosis.png" maxW={"40px"} maxH={"40px"}/>
         </Flex>
       </Flex>

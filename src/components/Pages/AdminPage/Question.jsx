@@ -52,17 +52,17 @@ function Question({jawaban="tiga puluh 1"}) {
                         {isEditing && !inAll ?
                             <ButtonGroup>
                                 <Button variant={"outline"} colorScheme={"red"}
-                                size={"xs"} rounded={"full"} onClick={()=> setIsEditing(false)}>
+                                size={"xs"} rounded={"lg"} onClick={()=> setIsEditing(false)}>
                                     Cancel
                                 </Button>
                                 <Button variant={"outline"} colorScheme={"blue"}
-                                size={"xs"} rounded={"full"} onClick={handleSaveEdit}>
+                                size={"xs"} rounded={"lg"} onClick={handleSaveEdit}>
                                     Update
                                 </Button>
                             </ButtonGroup>
                             :
                             <Button variant={"outline"} colorScheme={"blue"} leftIcon={<CiEdit/>}
-                            size={"xs"} rounded={"full"} onClick={() => setIsEditing(true)} display={inAll? "none" : "block"}>
+                            size={"xs"} rounded={"lg"} onClick={() => setIsEditing(true)} display={inAll? "none" : "block"}>
                                 Edit
                             </Button>
                         }

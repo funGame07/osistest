@@ -8,7 +8,6 @@ import {
   Input,
   Image
  } from '@chakra-ui/react'
- import { FaRegUser } from "react-icons/fa6";
  import { useToast } from '@chakra-ui/react'
  import { useNavigate } from 'react-router-dom';
  import Cookies from 'js-cookie';
@@ -39,13 +38,16 @@ function Login() {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ nis, password, username })
+          body: JSON.stringify({ nis, password })
         });
         const data = await res.json();
     
         if (data.success) {
             resolve(data.message)
             Cookies.set("auth", data.osis.id, {expires: 60})
+            Cookies.set("nis", data.osis.nis, {expires: 60})
+            Cookies.set("name", data.osis.name, {expires: 60})
+            Cookies.set("role", data.osis.role, {expires: 60})
             navigate('/')
         } else {
           reject(data.message)

@@ -31,14 +31,14 @@ function App() {
   // ## component mount once : user
   useEffect(()=>{
     // # fetch data from API OSIS
-    fetch(import.meta.env.VITE_SERVER_URI + "/api/osis")
-      // catch respons json
-      .then((res) => res.json())
-      // catch data object
-      .then((data) => {
-        setOsisUser(data.data) // catch data OSIS
-      })
-      .catch((err) => console.log(err.message)) // see if there is any errors
+    // fetch(import.meta.env.VITE_SERVER_URI + "/api/osis")
+    //   // catch respons json
+    //   .then((res) => res.json())
+    //   // catch data object
+    //   .then((data) => {
+    //     setOsisUser(data.data) // catch data OSIS
+    //   })
+    //   .catch((err) => console.log(err.message)) // see if there is any errors
     
     setIsAuth(isAuthFromDB(Cookies, import.meta.env.VITE_SERVER_URI + "/api/auth/auth")) // set authentication to cookies
   }, [])
