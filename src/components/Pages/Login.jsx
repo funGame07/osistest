@@ -95,12 +95,7 @@ function Login() {
         Untuk mengikuti acara dan berita terbaru dari OSIS
       </Text>
       
-      <InputGroup w={"70%"}>
-        <InputLeftElement pointerEvents='none'>
-          <FaRegUser />
-        </InputLeftElement>
-        <Input type='text' placeholder='Username' onChange={(e) => setUsername(e.target.value)}/>
-      </InputGroup>
+      
       <InputGroup w={"70%"}>
         <InputLeftElement pointerEvents='none'>
           <PiNumpadLight />
