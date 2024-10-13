@@ -11,6 +11,7 @@ import {
   List,
   ListItem,
   Heading,
+  AspectRatio,
  } from "@chakra-ui/react"
 
 // ### Import package from node_modules 
@@ -56,6 +57,10 @@ function Home() {
   return(
     <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "6%"}} pos={"relative"} overflow={"hidden"}>
       <Image src="schoolbg.png" pos={"absolute"} w={"full"} objectFit={"cover"} h={"100vh"} filter={"auto"} brightness={"0.4"}/>
+      <Box pos={"absolute"} w={"110%"} mx={"auto"} h={"100vh"} filter={"auto"} brightness={"0.9"} top={"100vh"} overflow={"hidden"}>
+        {/* <Box bg={"#edd846"} w={"100%"} h={"full"} rounded={"20%"} transform={{base: "rotate(-8deg) translateY(-120px)"}} display={"flex"} alignItems={'center'} justifyContent={"center"}>
+        </Box> */}
+      </Box>
     
       <Flex pt={{base: "120px", lg: "0"}} minH={"100vh"} flexDir={{base: "column", lg: "row"}} color={"white"}
       alignItems={"center"} gap={{base: 3, lg:1}} pos={"relative"} minW={"full"}>
@@ -78,7 +83,7 @@ function Home() {
           Selamat Mengeksplore
           </Text>
           <Link to={"/explore"} style={{width: "40%"}}>
-            <Button className="font-link" color={"white"} mt={7} bgColor={"rgba(66, 153, 225, 0.4)"} variant={"outline"} colorScheme={"blue"} w={"full"} size={"md"} rounded={"full"}>
+            <Button className="font-link" color={"white"} mt={7} bgColor={"rgba(66, 153, 225, 0.4)"} variant={"outline"} colorScheme={"yellow"} w={"full"} size={"md"} rounded={"full"}>
               Explore
             </Button>
           </Link>
@@ -86,8 +91,9 @@ function Home() {
         
         
       </Flex>
+
       {/* <Box bg={"yellow.400"} w={"130%"}>
-        <Heading textAlign={"center"} fontWeight={800}>WELCOME TO OSIS</Heading>
+        <Heading textAlign={"center"} fontWeight={900} lineHeight={1.5} color={"white"}>WELCOME TO OSIS</Heading>
       </Box> */}
       
       <Carousel />
@@ -95,7 +101,7 @@ function Home() {
       <Division text={""} colorMode={colorMode}/>
 
       <Flex flexDir={{base: "column", lg:"row"}} h={"fit-content"} w={"100%"} gap={{base: 0, lg: 10}} mt={{base: 10, lg: "5em"}} justifyContent={"space-between"} pb={10}>
-        <Flex w={{base:"90%", lg:"60%"}}  placeSelf={"start"} roundedRight={{base:"80%", lg:"80%"}} px={5} flexDir={"column"} pb={{base: 20, lg: 3}}
+        <Flex w={{base:"90%", lg:"60%"}}  placeSelf={"start"} roundedRight={{base:"80%", lg:"20%"}} px={5} flexDir={"column"} pb={{base: 20, lg: 3}}
         border={"1px solid rgba(66, 153, 225, 0.5)"} borderStart={"none"} boxShadow={"0 0 20px rgba(66, 153, 225, 0.2)"} justifyContent={"center"}>
           <Heading lineHeight={"80px"}>VISI</Heading>
           <Text w={{base: "70%", lg:"80%"}} fontSize={{lg: "md"}}>
@@ -116,7 +122,7 @@ function Home() {
           </UnorderedList>
         </Flex>
 
-        <Flex w={{base:"95%", lg: "40%"}} minH={{base: "fit-content", lg:"full"}} placeSelf={"center"} flexDir={{base: "column", lg: "row"}} display={{base: "block", lg:"block"}} rounded={"3xl"} p={4}
+        <Flex w={{base:"95%", lg: "40%"}} minH={{base: "fit-content", lg:"full"}} placeSelf={"center"} flexDir={{base: "column", lg: "row"}} display={{base: "block", lg:"block"}} rounded={"2xl"} p={4}
         boxShadow={"0 0 20px rgba(66, 153, 225, 0.3)"} border={"1px solid rgba(66, 153, 225, 0.1)"} mt={{base: 10, lg: 0}}>
           <Heading textAlign={"center"} fontSize={"2xl"}>DAFTAR RENCANA TAHUN 2024.2025</Heading>
           <Division text={""} colorMode={colorMode} pt={0} ptlg={'1em'}/>
@@ -135,9 +141,9 @@ function Home() {
           </List>
         </Flex>
       </Flex>
-
-
-      <Flex w={{base: "full", lg: "100%"}} flexDir={{base: "column", lg: "row"}} justifyContent={"space-between"} textAlign={"start"} px={5} bg={colorMode == "light" ? "white" : "black"} mt={10} py={5} pb={"5em"} gap={4}>        
+  
+      <Flex w={{base: "full", lg: "120%"}} flexDir={{base: "column", lg: "row"}} justifyContent={"space-around"} textAlign={"start"} mt={8} px={5} bg={colorMode == "light" ? "white" : "black"} py={5} pb={"5em"} gap={4}> 
+           
         <Flex flexDir={"column"} gap={1}>
           <Text className="font-link" fontSize={"lg"} fontWeight={"800"}>HUBUNGI KAMI</Text>
           <Link style={{display: "flex", alignItems: "center", gap:"1em"}} to={"mailto:elbertchen007@gmail.com"}>
@@ -152,11 +158,11 @@ function Home() {
         <Flex flexDir={"column"} gap={2}>
           <Text className="font-link" fontSize={"lg"} fontWeight={"800"}>IKUTI KAMI</Text>
           <Link to={"https://www.instagram.com/smassa24.25/"} style={{display: "flex", alignItems: "center", gap:"1em"}}>
-            <Box as={BsInstagram} size={"20px"} color={"pink.500"}/>
+            <Box as={BsInstagram} size={"20px"} color={"rgb(193, 53, 132)"}/>
             @smassa24.25
           </Link>
           <Link to={"https://www.instagram.com/smassultanagung.psa/"} style={{display: "flex", alignItems: "center", gap:"1em"}}>
-            <Box as={BsInstagram} size={"20px"} color={"pink.500"}/>
+            <Box as={BsInstagram} size={"20px"} color={"rgb(193, 53, 132)"}/>
             @smassultanagung.psa
           </Link>
         </Flex>

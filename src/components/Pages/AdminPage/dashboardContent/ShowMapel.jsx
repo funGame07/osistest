@@ -39,7 +39,7 @@ function ShowMapel({customColor, mapel, jumlah, judul, note, img}) {
         img="quizbg3.png"/>
       </Box>
 
-    {displayDetail ? <ShowMapelDetail onOpen={onOpen} isOpen={isOpen} onClose={onClose}
+    {displayDetail ? <ShowMapelDetail onOpen={onOpen} isOpen={isOpen} onClose={onClose} 
                     comp={<Mapel 
                       customColor="cyan" 
                       mapel="MATEMATIKA" 

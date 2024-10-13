@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaFolderOpen } from "react-icons/fa6";
 import { 
     Box,
@@ -8,7 +8,9 @@ import {
  } from '@chakra-ui/react';
 
 
-function Mapel({customColor, mapel="", jumlah="", judul="", note="", img=""}){
+function Mapel({customColor, mapel="", jumlah="", judul="", note="", img="", fromLive}){
+    const [selected, setSelected] = useState(false)
+
     const blue = ["#3558c3", "linear(to-b, transparent, rgba(53, 94, 219, 0.6), #3558c3)", "blue"]
     const cyan = ["#31aed9", "linear(to-b, transparent, rgba(49, 90, 217,0.6), #31aed9)", "blue"]
     const green = ["#366d33", "linear(to-b, transparent, rgba(61, 133, 94,0.6), #366d33)", "green"]
@@ -23,9 +25,20 @@ function Mapel({customColor, mapel="", jumlah="", judul="", note="", img=""}){
                     customColor == "red" ? red : 
                     noColor
 
+    function handleSelected(){
+      if(fromLive){
+        return setSelected(prev => !prev)
+      }
+      return
+    }
+
     return(
-      <Box color={"white"} pos={"relative"} rounded={"xl"} _hover={{filter: "auto", brightness: "0.7"}}
-      w={"160px"} h={"260px"} className='font-link' bgImage={img} bgPosition={"center"} bgSize={"cover"}>
+      <Box color={"white"} pos={"relative"} rounded={"xl"} _hover={{filter: "auto", brightness: "0.7"} }
+      w={"160px"} h={"260px"} className='font-link' bgImage={img} bgPosition={"center"} bgSize={"cover"}
+      onClick={handleSelected}>
+        <Flex display={!selected ? "none" : "flex"} justifyContent={"center"} alignItems={"center"} pos={"absolute"} w={"full"} h={"full"} bg={"gray.800"} opacity={0.8} zIndex={99} rounded={"xl"}>
+          SELECTED
+        </Flex>
         <Box bg={customColor[0]} h={"8%"} display={"flex"} justifyContent={"space-between"} alignItems={"center"} px={1} roundedTop={"xl"} >
           <Box display={"flex"} alignItems={"center"} gap={1} px={1}>
             <FaFolderOpen size={10}/>

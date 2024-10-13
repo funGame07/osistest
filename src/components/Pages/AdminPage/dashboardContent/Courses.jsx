@@ -27,7 +27,8 @@ import {
     ModalHeader,
     ModalBody,
     ModalCloseButton,
-    useDisclosure
+    useDisclosure,
+    Flex
  } from '@chakra-ui/react'
 
 //  import icons 
@@ -96,7 +97,8 @@ function Courses() {
         rounded={"lg"} fontSize={"10px"} size={"sm"} onClick={()=> setCreateMapel(true)}>
             <Text fontSize={"10px"}>Buat Mata Pelajaran</Text>
         </Button>
-        {allMapel.map((data, i) => {
+        <Flex flexWrap={"wrap"} gap={5} justifyContent={{base: "center", lg: "start"}}>
+            {allMapel.map((data, i) => {
                     //CHANGE THIS
                     return <ShowMapel key={i}
                             customColor="cyan" 
@@ -106,6 +108,8 @@ function Courses() {
                             note=" salah 1 denda 5000" 
                             img="quizbg3.png"/>
                   })}
+        </Flex>
+        
         {createMapel && 
         <Modal isOpen={createMapel} closeOnOverlayClick={false} size={"5xl"}>
             <ModalOverlay />

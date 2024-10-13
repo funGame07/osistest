@@ -48,7 +48,8 @@ function Carousel() {
   }, [structureOrg])
 
   return (
-    <Box className="container" pos={"relative"} mt={20} display={"flex"} flexDir={{base:"column", lg: "row"}} maxW={{base:"100%", lg:"100%"}} h={"fit-content"} gap={{base:5, lg:3}}>
+    <Box className="container" pos={"relative"} mt={20} display={"flex"} flexDir={{base:"column", lg: "row"}} 
+    maxW={{base:"100%", lg:"100%"}} h={"fit-content"} gap={{base:5, lg:2}}>
       <Flex w={{base: "100%", lg: "60%"}} flexDir={"column"} gap={{base:4, lg: 2}} pos={"relative"}>
         <Heading fontSize={"2xl"} textAlign={"center"} className='font-link'>
           STRUKTUR ORGANISASI
@@ -56,6 +57,15 @@ function Carousel() {
         <AspectRatio ratio={2/1.15} w={"95%"} placeSelf={"center"} rounded={"2xl"} boxShadow='0 0 20px rgba(66, 153, 225, 0.3)' overflowX={"auto"}>
           <Image src='structureorg.png' objectFit={"initial"} rounded={"2xl"} filter={"auto"} brightness={0.9} _hover={{brightness: "0.7"}}  onClick={()=> setShowStructureOrg(true)}/>        
         </AspectRatio>
+        {/* <Button size={"lg"} w={"90%"} colorScheme={"yellow"} rounded={0} mx={"auto"} mb={0}>
+          Explore
+        </Button>
+        <Button size={"lg"} w={"90%"} colorScheme={"yellow"} rounded={0} mx={"auto"} mb={0}>
+          Voting
+        </Button>
+        <Button size={"lg"} w={"90%"} colorScheme={"yellow"} rounded={0} mx={"auto"} mb={0}>
+          Event
+        </Button> */}
       </Flex>
 
       <AbsoluteCenter pos={"absolute"} top={"50%"} w={"85%"} m={'auto'} rounded={"2xl"} overflow={"hidden"} ref={structureOrg} zIndex={999} display={{base: "none", lg: showStructureOrg? "block" : "none"}}>
@@ -63,6 +73,7 @@ function Carousel() {
       </AbsoluteCenter>
 
       <Swiper
+        // style={{background: colorMode == "light" ? "#EAEAEA" :"gray.900"}}
         className='swiper-container'
         effect={'coverflow'}
         grabCursor={true}

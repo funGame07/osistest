@@ -3,8 +3,6 @@ import {
     Box,
     Text,
     Flex,
-    Button,
-    Badge,
     Tabs, 
     TabList, 
     TabPanels, 
@@ -17,6 +15,7 @@ import {
  import { osis } from '../../../App'
  import Courses from './dashboardContent/Courses';
 import ShowMapel from './dashboardContent/ShowMapel';
+import Live from './dashboardContent/Live';
 
 export const quizContext = createContext()
 
@@ -26,7 +25,7 @@ function Dashboard() {
   const [createQuestion, setCreateQuestion] = useState(false)
   const [inAll, setInAll] = useState(true)
   const [onSave, setOnSave] = useState(false)
-  const [allMapel, setAllMapel] = useState(["remove me"])
+  const [allMapel, setAllMapel] = useState(["remove me", "me too"])
 
   const myColor = colorMode == "light" ? "gray.500" : " gray.500"
 
@@ -55,7 +54,7 @@ function Dashboard() {
     <quizContext.Provider value={provider}>
     <Box w={"full"}>
         <Box display={"flex"} gap={2}>
-            <Tabs w={"full"}>
+            <Tabs w={"full"} defaultIndex={2}>
               <TabList pl={"18px"}>
                 <Tab fontWeight={"600"}>ALL</Tab>
                 <Tab fontWeight={"600"}>COURSES</Tab>
@@ -67,16 +66,18 @@ function Dashboard() {
                 {/* semua */}
                 <TabPanel onClick={()=> setInAll(true)}>
                   <Text py={2} opacity={0.5}>Di bagian ini anda hanya dapat melihat preview soal-soal saja. (Tidak bisa mengedit)</Text>
-                  {allMapel.map((data, i) => {
-                    //CHANGE THIS
-                    return <ShowMapel key={i}
-                            customColor="cyan" 
-                            mapel="MATEMATIKA" 
-                            jumlah="10" 
-                            judul="BEGINNER MTK QUIZ" 
-                            note=" salah 1 denda 5000" 
-                            img="quizbg3.png"/>
-                  })}
+                  <Flex flexWrap={"wrap"} gap={5} justifyContent={{base: "center", lg: "start"}}>
+                    {allMapel.map((data, i) => {
+                      //CHANGE THIS
+                      return <ShowMapel key={i}
+                              customColor="cyan" 
+                              mapel="MATEMATIKA" 
+                              jumlah="10" 
+                              judul="BEGINNER MTK QUIZ" 
+                              note=" salah 1 denda 5000" 
+                              img="quizbg3.png"/>
+                    })}
+                  </Flex>
                 </TabPanel>
 
                 {/* matapelajaran */}
@@ -86,7 +87,7 @@ function Dashboard() {
 
                 {/* live */}
                 <TabPanel>
-
+                    <Live />
                 </TabPanel>
               </TabPanels>
             </Tabs>
