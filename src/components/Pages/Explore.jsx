@@ -84,7 +84,7 @@ function Explore() {
         </Flex>
       </Flex>
 
-      <Flex w={"full"} justifyContent={{base: "center", lg: "start"}} py={10}>
+      <Flex w={"full"} justifyContent={{base: "center", lg: "start"}} py={10} pt={5}>
         <Flex w={{base: "full", lg: "30%"}} flexDir={"column"} justifyContent={"center"} boxShadow={"0px 1px 15px -10px rgba(0,0,0,0.5)"}>
           <Flex pos={"relative"} w={"full"} justifyContent={"center"} borderBottom={"1px solid rgba(0,0,0,0.5)"}>
             <Image src='quizbg1.png' roundedTop={"xl"}/>
