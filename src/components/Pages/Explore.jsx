@@ -49,7 +49,7 @@ function Explore() {
     const {colorMode} = useContext(osis)
 
   return (
-    <Flex mt={20} px={5} flexDir={"column"} alignItems={"center"} justifyContent={"center"}>
+    <Flex mt={20} px={5} flexDir={"column"} alignItems={"center"} justifyContent={"center"} overflowX={"hidden"}>
       <InputGroup w={{base: "70%", lg: "50%"}} boxShadow={"0px 6px 15px -10px rgba(0,0,0,0.5)"} rounded={"lg"}>
         <InputLeftElement pointerEvents='none' display={"flex"} h={"full"} alignItems={"center"}>
           <CiSearch color='gray.400' size={25} />
@@ -59,8 +59,8 @@ function Explore() {
       <Text lineHeight={"250%"} textAlign={"center"} placeSelf={"center"} fontStyle={"italic"} fontWeight={500} fontSize={{ base: "lg", lg:"2xl"}} className='roboto'>Explore</Text>
       <Text size={"sm"} className='roboto-' opacity={0.5}>Jelajahi kegiatan terkini kami</Text>
 
-      <Flex w={"full"} alignItems={"center"} gap={2} >
-        <Flex>
+      <Flex w={"full"} alignItems={"center"} gap={2} mt={3}>
+        <Flex >
           <Menu>
             <MenuButton as={Button} variant={"outline"} rightIcon={<IoChevronDownSharp />}>
               Actions
@@ -75,15 +75,31 @@ function Explore() {
         </Flex>
         
         
-        <Flex gap={3} overflowX={"scroll"} w="full" shrink={1}>
-            <Button size={"sm"} variant={"outline"} shrink={0} w={"fit-content"} px={{base:"4em", lg: 5}}>Prestasi</Button>
-            <Button size={"sm"} variant={"outline"} shrink={0} w={"fit-content"} px={{base:"4em", lg: 5}}>Dokumentasi</Button>
-            <Button size={"sm"} variant={"outline"} shrink={0} w={"fit-content"} px={{base:"4em", lg: 5}}>Prestasi</Button>
-            <Button size={"sm"} variant={"outline"} shrink={0} w={"fit-content"} px={{base:"4em", lg: 5}}>Dokumentasi</Button>
-            <Button size={"sm"} variant={"outline"} shrink={0} w={"fit-content"} px={{base:"4em", lg: 5}}>Prestasi</Button>
-            <Button size={"sm"} variant={"outline"} shrink={0} w={"fit-content"} px={{base:"4em", lg: 5}}>Dokumentasi</Button>
+        <Flex gap={3} overflowX={"scroll"} w={"full"}>
+            <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Prestasi</Button>
+            <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Dokumentasi</Button>
+            <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Daftar Kegiatan</Button>
+            <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Daily</Button>
+            <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Memes</Button>
         </Flex>
       </Flex>
+
+      <Flex w={"full"} justifyContent={{base: "center", lg: "start"}} py={10}>
+        <Flex w={{base: "full", lg: "30%"}} flexDir={"column"} justifyContent={"center"} boxShadow={"0px 1px 15px -10px rgba(0,0,0,0.5)"}>
+          <Flex pos={"relative"} w={"full"} justifyContent={"center"} borderBottom={"1px solid rgba(0,0,0,0.5)"}>
+            <Image src='quizbg1.png' roundedTop={"xl"}/>
+          </Flex>
+          <Heading fontSize={"3xl"} fontWeight={600} px={2} letterSpacing={-0.5} lineHeight={"150%"}>
+            Congratulations
+          </Heading>
+          <Text fontSize={"sm"} textIndent={10} className='roboto-flex' opacity={0.5} fontWeight={700} textAlign={"justify"} px={2}>
+            Congratulations on your incredible achievement! Your hard work, dedication, and perseverance have truly paid off. 
+            This accomplishment is a testament to your talent and abilities. We're so proud of everything you've achieved.
+          </Text>
+        </Flex>
+      </Flex>
+      
+
 
         {/* <Accordion display={"flex"} flexDir={"column"} gap={1} w={"95%"} allowToggle>
           <AccordionItem >
