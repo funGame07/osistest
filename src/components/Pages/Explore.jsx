@@ -76,7 +76,7 @@ function Explore() {
         
         
         <Flex gap={3} overflowX={"scroll"} w={"full"}>
-            <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Prestasi</Button>
+            <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}} onClick={()=> location.assign("/join")}>Prestasi</Button>
             <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Dokumentasi</Button>
             <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Daftar Kegiatan</Button>
             <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Daily</Button>
@@ -96,7 +96,7 @@ function Explore() {
             Congratulations on your incredible achievement! Your hard work, dedication, and perseverance have truly paid off. 
             This accomplishment is a testament to your talent and abilities. We're so proud of everything you've achieved.
           </Text>
-          <Text fontSize={"sm"} lineHeight={2} className='roboto-flex' opacity={0.5} fontWeight={700} textAlign={"justify"} px={2}>
+          <Text fontSize={"xs"} lineHeight={2} className='roboto-flex' opacity={0.3} fontWeight={700} textAlign={"justify"} px={2}>
             - 17 Januari 2023
           </Text>
         </Flex>

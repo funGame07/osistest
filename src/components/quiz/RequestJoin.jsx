@@ -13,7 +13,7 @@ import {
 function RequestJoin() {
     const socket = io("localhost:3000")
 
-    const [Accepted, setAccepted] = useState(true)
+    const [Accepted, setAccepted] = useState(false)
     const [ready, setReady] = useState(false)
 
     useEffect(()=>{
