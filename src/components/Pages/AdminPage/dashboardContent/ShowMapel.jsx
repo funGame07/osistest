@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, createContext } from 'react'
 
 import { 
   Flex, 
@@ -17,9 +17,11 @@ import {
 import Mapel from './Mapel'
 import ShowMapelDetail from './ShowMapelDetail'
 
-function ShowMapel({customColor, mapel, jumlah, judul, note, img}) {
+export const idMapel = createContext()
+
+function ShowMapel({id_subject, customColor, name, totalQuestion, title, note, image}) {
   const [displayDetail, setDisplayDetail] = useState(false)
-  const [idMapelDetail, setIdMapelDetail] = useState("")
+  // const [idMapelDetail, setIdMapelDetail] = useState(id_subject)
   const {isOpen, onOpen, onClose} = useDisclosure()
 
   function handleDetail(){
@@ -28,29 +30,34 @@ function ShowMapel({customColor, mapel, jumlah, judul, note, img}) {
   }
 
   return (
-    <Flex flexWrap={"wrap"} gap={{sm: 5}} justifyContent={{base: "space-between", sm: "start"}} rowGap={5}>
-      <Box onClick={handleDetail}> 
-        <Mapel 
-        customColor="cyan" 
-        mapel="MATEMATIKA" 
-        jumlah="10" 
-        judul="BEGINNER MTK QUIZ" 
-        note=" salah 1 denda 5000" 
-        img="quizbg3.png"/>
-      </Box>
+    <idMapel.Provider value={{id_subject}}>
+      <Flex flexWrap={"wrap"} gap={{sm: 0}} justifyContent={{base: "space-between", sm: "start"}} rowGap={5}>
+        <Box onClick={handleDetail}> 
+          <Mapel 
+          id_subject={id_subject}
+          customColor={customColor} 
+          name={name}
+          totalQuestion={totalQuestion} 
+          title={title}
+          note={note} 
+          image={image}/>
+        </Box>
 
-    {displayDetail ? <ShowMapelDetail onOpen={onOpen} isOpen={isOpen} onClose={onClose} 
-                    comp={<Mapel 
-                      customColor="cyan" 
-                      mapel="MATEMATIKA" 
-                      jumlah="10" 
-                      judul="BEGINNER MTK QUIZ" 
-                      note=" salah 1 denda 5000" 
-                      img="quizbg3.png"/>}
-                    /> 
-    : <span/>}
+      {displayDetail ? <ShowMapelDetail isOpen={isOpen} onClose={onClose}
+                      comp={<Mapel 
+                        id_subject={id_subject}
+                        customColor={customColor} 
+                        name={name}
+                        totalQuestion={totalQuestion} 
+                        title={title}
+                        note={note} 
+                        image={image}/>}
+                      /> 
+      : <span/>}
 
-    </Flex>
+      </Flex>
+    </idMapel.Provider>
+    
   )
 }
 

@@ -21,20 +21,22 @@ import { saveSomething } from '../../../../../lib/libs';
 
 function CreateMapel() {
   const {setOnSave, setCreateMapel} = useContext(quizContext)
+  const {colorMode} = useContext(osis)
   const toast = useToast()
   const [isLoading, setIsLoading] = useState(false)
-  const [mapel, setMapel] = useState("")
-  const [jumlah, setJumlah] = useState("")
-  const [judul, setJudul] = useState("")
+
+  const [name, setName] = useState("")
+  const [totalQuestion, setTotalQuestion] = useState("")
+  const [title, setTitle] = useState("")
   const [note, setNote] = useState("")
-  const [img, setImg] = useState("")
+  const [image, setImage] = useState("")
   const [customColor, setCustomColor] = useState("default")
-  const {colorMode} = useContext(osis)
+
   const cardBg = colorMode =="light"? "white": "black"
   const pickColor =  ["Default", "Blue", "Cyan", "Green", "Yellow", "Red"]
 
   async function handleSaveMapel(){
-    if(!mapel || !jumlah || !judul || !note || !img){
+    if(!name || !totalQuestion || !title || !note || !image){
       return toast({
         title: "Warning",
         status: "warning",
@@ -44,16 +46,16 @@ function CreateMapel() {
       })
     }
     const toastPromise = saveSomething(
-      "",
+      "/api/games/subject", "POST",
       {
-        mapel,
-        jumlah,
-        judul,
+        name,
+        totalQuestion,
+        title,
         note,
-        img,
-        customColor
+        image,
+        color: customColor
       },
-      setIsLoading, setCreateMapel, setOnSave
+      setIsLoading, setCreateMapel, () => setOnSave(prev => !prev)
     )
 
     toast.promise(toastPromise, {
@@ -89,8 +91,7 @@ function CreateMapel() {
     imageContainer.style.display = "block"
     const imageURL = URL.createObjectURL(image.files[0])
     imageContainer.src = imageURL
-    console.log(imageURL)
-    setImg(imageURL)
+    setImage(imageURL)
   }
 
   return (
@@ -102,17 +103,17 @@ function CreateMapel() {
             <Flex flexWrap={"wrap"} mt={3} gap={8}>
               <FormControl isRequired>
                 <FormLabel>Nama Mata Pelajaran</FormLabel>
-                <Input type='text' size={"sm"} rounded={"xl"} placeholder='ex: MATEMATIKA/FISIKA/dll' onChange={(e) => setMapel(e.target.value)}/>
+                <Input type='text' size={"sm"} rounded={"xl"} placeholder='ex: MATEMATIKA/FISIKA/dll' onChange={(e) => setName(e.target.value)}/>
               </FormControl>
 
               <FormControl isRequired>
                 <FormLabel>Jumlah Soal</FormLabel>
-                <Input type='tel' size={"sm"} rounded={"xl"} placeholder='ex: 10' onChange={(e) => setJumlah(e.target.value)}/>
+                <Input type='tel' size={"sm"} rounded={"xl"} placeholder='ex: 10' onChange={(e) => setTotalQuestion(e.target.value)}/>
               </FormControl>
 
               <FormControl isRequired>
                 <FormLabel>Judul</FormLabel>
-                <Input type='text' size={"sm"} rounded={"xl"} placeholder='ex: QUIZ MTK UNTUK SEMUA' onChange={(e) => setJudul(e.target.value)}/>
+                <Input type='text' size={"sm"} rounded={"xl"} placeholder='ex: QUIZ MTK UNTUK SEMUA' onChange={(e) => setTitle(e.target.value)}/>
               </FormControl>
 
               <FormControl isRequired>
@@ -146,7 +147,7 @@ function CreateMapel() {
           <Flex flexDir={"column"}>
             <Box mt={9} px={4}>
               <Text fontSize={"xl"} fontWeight={700}>Hasil Akhir</Text>
-              <Mapel customColor={customColor} mapel={mapel} jumlah={jumlah} judul={judul} note={note} img={img}/>
+              <Mapel customColor={customColor} name={name} totalQuestion={totalQuestion} title={title} note={note} image={image}/>
             </Box>
             <Flex w={"full"} h={"full"} px={4} py={5} gap={2}>
               <Button mt={5} colorScheme='red' variant={"outline"}

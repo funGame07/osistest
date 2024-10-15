@@ -97,16 +97,17 @@ function Courses() {
         rounded={"lg"} fontSize={"10px"} size={"sm"} onClick={()=> setCreateMapel(true)}>
             <Text fontSize={"10px"}>Buat Mata Pelajaran</Text>
         </Button>
-        <Flex flexWrap={"wrap"} gap={5} justifyContent={{base: "center", lg: "start"}}>
+        <Flex flexWrap={"wrap"} gap={2} justifyContent={{base: "center", lg: "start"}}>
             {allMapel.map((data, i) => {
                     //CHANGE THIS
                     return <ShowMapel key={i}
-                            customColor="cyan" 
-                            mapel="MATEMATIKA" 
-                            jumlah="10" 
-                            judul="BEGINNER MTK QUIZ" 
-                            note=" salah 1 denda 5000" 
-                            img="quizbg3.png"/>
+                                id_subject={data.id_subject}
+                                customColor={data.color} 
+                                name={data.name}
+                                totalQuestion={data.totalQuestion} 
+                                title={data.title}
+                                note={data.note} 
+                                image={data.image}/>
                   })}
         </Flex>
         

@@ -57,9 +57,8 @@ function Home() {
   return(
     <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "6%"}} pos={"relative"} overflow={"hidden"}>
       <Image src="schoolbg.png" pos={"absolute"} w={"full"} objectFit={"cover"} h={"100vh"} filter={"auto"} brightness={"0.4"}/>
-      <Box pos={"absolute"} w={"110%"} mx={"auto"} h={"100vh"} filter={"auto"} brightness={"0.9"} top={"100vh"} overflow={"hidden"}>
-        {/* <Box bg={"#edd846"} w={"100%"} h={"full"} rounded={"20%"} transform={{base: "rotate(-8deg) translateY(-120px)"}} display={"flex"} alignItems={'center'} justifyContent={"center"}>
-        </Box> */}
+      <Box pos={"absolute"} w={"120%"} mx={"auto"} h={"100vh"} filter={"auto"} brightness={"0.9"} top={"100vh"} overflow={"hidden"}>
+        
       </Box>
     
       <Flex pt={{base: "120px", lg: "0"}} minH={"100vh"} flexDir={{base: "column", lg: "row"}} color={"white"}
@@ -142,7 +141,7 @@ function Home() {
         </Flex>
       </Flex>
   
-      <Flex w={{base: "full", lg: "120%"}} flexDir={{base: "column", lg: "row"}} justifyContent={"space-around"} textAlign={"start"} mt={8} px={5} bg={colorMode == "light" ? "white" : "black"} py={5} pb={"5em"} gap={4}> 
+      <Flex w={{base: "full", lg: "120%"}} h={{lg: "250px"}} flexDir={{base: "column", lg: "row"}} justifyContent={"space-around"} textAlign={"start"} mt={8} px={5} bg={"black"} color={"white"} py={{base: 5, lg: 8}} pb={"5em"} gap={4}> 
            
         <Flex flexDir={"column"} gap={1}>
           <Text className="font-link" fontSize={"lg"} fontWeight={"800"}>HUBUNGI KAMI</Text>
@@ -168,7 +167,7 @@ function Home() {
         </Flex>
 
         <Flex h={"60px"} animation={`${dissapear} 10s ease-in infinite`} alignItems={"center"} gap={4} pr={{base: 0, lg:10}}
-        placeSelf={"center"} justifySelf={"self-end"} opacity={0.5}>
+         placeSelf={{base: "center", lg: "start"}} justifySelf={"self-end"} opacity={0.5}>
           <Image src="sultan.png" maxW={"30px"} maxH={"30px"} rounded={"full"}/>
           {/* <FaExchangeAlt size={20}/> */}
           <GiCycle size={20}/>

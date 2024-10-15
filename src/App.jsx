@@ -12,7 +12,12 @@ import Login from "./components/Pages/Login"
 import Admin from "./components/Pages/Admin"
 import Navbar from "./components/nav/Navbar"
 import BottomNav from "./components/nav/BottomNav"
-import Event from "./components/event/Event.jsx"
+import Event from "./components/event/Event"
+import AcceptJoin from "./components/quiz/AcceptJoin"
+import RequestJoin from "./components/quiz/RequestJoin"
+import QuizInvitation from "./components/quiz/QuizInvitation"
+import Explore from "./components/Pages/Explore.jsx"
+import data from "../lib/dataOsis.json"
 
 // ### Import library from libs
 import { isAuthFromDB, toggleFs } from "../lib/libs.js"
@@ -25,7 +30,7 @@ function App() {
   // ## Declaration hooks
   const [isAuth, setIsAuth] = useState(false) // used to navbar, event, voting
   const [showBottomNavbar, setShowBottomNavbar] = useState(true) // used when quiz begins
-  const [osisUser, setOsisUser] = useState(["quizbg2.png", "testosis3.jpg", "testosis2.jpg", "testosis1.jpg", "testosis4.jpg", "testosis5.jpg", "testosis11.jpg"]) // used for carousel 
+  const [osisUser, setOsisUser] = useState(data) // used for carousel 
   const {colorMode, toggleColorMode} = useColorMode() // used for color mode in navbar
 
   // ## component mount once : user
@@ -39,7 +44,7 @@ function App() {
     //     setOsisUser(data.data) // catch data OSIS
     //   })
     //   .catch((err) => console.log(err.message)) // see if there is any errors
-    
+
     setIsAuth(isAuthFromDB(Cookies, import.meta.env.VITE_SERVER_URI + "/api/auth/auth")) // set authentication to cookies
   }, [])
 
@@ -57,7 +62,7 @@ function App() {
   }
 
   return (
-    <Box minH={"100vh"} maxH={"100vh"} id="fullscreen" overflowY={"auto"} bg={colorMode == "light" ? "#EAEAEA" :"gray.900"}>
+    <Box minH={"100vh"} maxH={"100vh"} id="fullscreen" overflowY={"auto"} bg={colorMode == "light" ? "#FFFFFF" :"gray.900"}>
       <osis.Provider value={provider}>
       <Navbar/> 
         <Routes>
@@ -65,7 +70,10 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/admin" element={<Admin />}/>
           <Route path="/event" element={<Event />}/>
-          {/* <Route path="/explore" element={<Square />}/> */}
+          <Route path="/quizinvitation" element={<QuizInvitation />}/>
+          <Route path="/join" element={<RequestJoin />}/>
+          <Route path="/explore" element={<Explore />}/>
+          {/* <Route path="/adminjoin" element={<AcceptJoin />}/> */}
           {/* <Route path="/voting" element={<Hexa />}/> */}
         </Routes>
         <BottomNav/>
@@ -75,3 +83,4 @@ function App() {
 }
 
 export default App
+

@@ -29,7 +29,7 @@ function BottomNavContent() {
     
   return (
     <Box className='nav' px={{base: 4, lg: 3}} gap={{base: 7, lg: 5}} py={{base: 0.5, lg:1}}  alignItems={{base: "center", lg: "start"}} display={{base: "flex", lg: "none"}}
-        rounded={"3xl"} fontWeight={900} h={{base: "fit-content", lg: "40px"}} bgGradient={colorMode == "light"? "linear(to-r, gray.100, white, gray.100)" : "linear(to-r, black, gray.800, black)"}>
+        rounded={"3xl"} fontWeight={700} h={{base: "fit-content", lg: "40px"}} bgGradient={colorMode == "light"? "linear(to-r, gray.100, white, gray.100)" : "linear(to-r, black, gray.800, black)"}>
         <Link to={"/"}>
             <Box display={"flex"} flexDir={"column"} alignItems={"center"}>
                 <GoHome size={23} className='navicon'/>

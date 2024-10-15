@@ -22,7 +22,7 @@ function BottomNav() {
     bg={"transparent"} 
     opacity={0.9}
     zIndex={1} 
-    display={{base: showBottomNavbar ? "" : "none", lg: ""}}
+    display={showBottomNavbar ? "" : "none"}
     >
         <BottomNavContent />   
     </Box>

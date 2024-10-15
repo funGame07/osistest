@@ -1,5 +1,5 @@
-import React, {useContext, useState} from 'react'
-
+import React, {createContext, useContext, useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import { 
     Button,
     Flex,
@@ -7,38 +7,47 @@ import {
     Heading
  } from '@chakra-ui/react'
 
+ import "./scrollbar.css"
+
  import { quizContext } from '../Dashboard'
  import Mapel from './Mapel'
 
 function Live() {
-    const {allMapel} = useContext(quizContext)
+    const {allMapel, selectedMapelId} = useContext(quizContext)
+    const navigate = useNavigate()
+
+    async function handleLive(){
+        // send subject to database
+        navigate("/quizinvitation", {state: {isAdmin: true, uuid:"admin"}})
+    }
 
   return (
-    <Flex gap={3} flexDir={"column"}>
+        <Flex gap={3} flexDir={"column"}>
             <Heading fontSize={"md"} opacity={0.6}>
                 Pilih mata pelajaran yang akan di uji
             </Heading>
-            <Flex flexWrap={"wrap"} gap={5} justifyContent={{base: "center", lg: "start"}}>
+            <Flex flexWrap={"wrap"} gap={2} justifyContent={{base: "center", lg: "start"}} h={"60vh"} overflowY={"scroll"}>
+                
                 {allMapel.map((data, i) => {
-                    //CHANGE THIS
                     return  (
                                 <Mapel key={i}
-                                customColor="cyan" 
-                                mapel="MATEMATIKA" 
-                                jumlah="10" 
-                                judul="BEGINNER MTK QUIZ" 
-                                note=" salah 1 denda 5000" 
-                                img="quizbg3.png"
+                                id_subject={data.id_subject}
+                                customColor={data.color} 
+                                name={data.name}
+                                totalQuestion={data.totalQuestion} 
+                                title={data.title}
+                                note={data.note} 
+                                image={data.image}
                                 fromLive={true}/>
                             )
                         
                   })}
             </Flex>
             
-            <Button colorScheme='red' variant={"solid"} w={"full"} size={{base: "md", g: "xl"}}>
+            <Button colorScheme='red' variant={"solid"} w={"50%"} mx={"auto"}  h={10} onClick={handleLive}>
                 Start Live Quiz
             </Button>
-    </Flex>
+        </Flex>
   )
 }
 

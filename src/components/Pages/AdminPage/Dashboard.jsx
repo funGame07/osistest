@@ -25,21 +25,24 @@ function Dashboard() {
   const [createQuestion, setCreateQuestion] = useState(false)
   const [inAll, setInAll] = useState(true)
   const [onSave, setOnSave] = useState(false)
-  const [allMapel, setAllMapel] = useState(["remove me", "me too"])
+  const [allMapel, setAllMapel] = useState([])
+  const [selectedMapelId, setSelectedMapelId] = useState([])
 
   const myColor = colorMode == "light" ? "gray.500" : " gray.500"
 
   useEffect(()=>{
     async function getAllMapel(){
-      const response = await fetch(import.meta.env.VITE_SERVER_URI + "/")
+      const response = await fetch(import.meta.env.VITE_SERVER_URI + "/api/games/subject")
       const data = await response.json()
-      setAllMapel(data)
+      setAllMapel(data.data)
     } 
     getAllMapel()
     
   }, [onSave])
 
   const provider = {
+    setSelectedMapelId,
+    selectedMapelId,
     setCreateQuestion,
     createQuestion,
     createMapel,
@@ -54,7 +57,7 @@ function Dashboard() {
     <quizContext.Provider value={provider}>
     <Box w={"full"}>
         <Box display={"flex"} gap={2}>
-            <Tabs w={"full"} defaultIndex={2}>
+            <Tabs w={"full"} defaultIndex={0}>
               <TabList pl={"18px"}>
                 <Tab fontWeight={"600"}>ALL</Tab>
                 <Tab fontWeight={"600"}>COURSES</Tab>
@@ -66,16 +69,17 @@ function Dashboard() {
                 {/* semua */}
                 <TabPanel onClick={()=> setInAll(true)}>
                   <Text py={2} opacity={0.5}>Di bagian ini anda hanya dapat melihat preview soal-soal saja. (Tidak bisa mengedit)</Text>
-                  <Flex flexWrap={"wrap"} gap={5} justifyContent={{base: "center", lg: "start"}}>
+                  <Flex flexWrap={"wrap"} gap={2} justifyContent={{base: "center", lg: "start"}}>
                     {allMapel.map((data, i) => {
                       //CHANGE THIS
                       return <ShowMapel key={i}
-                              customColor="cyan" 
-                              mapel="MATEMATIKA" 
-                              jumlah="10" 
-                              judul="BEGINNER MTK QUIZ" 
-                              note=" salah 1 denda 5000" 
-                              img="quizbg3.png"/>
+                              id_subject={data.id_subject}
+                              customColor={data.color} 
+                              name={data.name}
+                              totalQuestion={data.totalQuestion}
+                              title={data.title}
+                              note={data.note}
+                              image={data.image}/>
                     })}
                   </Flex>
                 </TabPanel>
