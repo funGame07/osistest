@@ -84,7 +84,7 @@ function Explore() {
         </Flex>
       </Flex>
 
-      <Flex w={"full"} justifyContent={{base: "center", lg: "start"}} py={10} pt={5}>
+      <Flex w={"full"} justifyContent={{base: "center", lg: "start"}} py={10} pt={0}>
         <Flex w={{base: "full", lg: "30%"}} flexDir={"column"} justifyContent={"center"} boxShadow={"0px 1px 15px -10px rgba(0,0,0,0.5)"}>
           <Flex pos={"relative"} w={"full"} justifyContent={"center"} borderBottom={"1px solid rgba(0,0,0,0.5)"}>
             <Image src='quizbg1.png' roundedTop={"xl"}/>
@@ -95,6 +95,9 @@ function Explore() {
           <Text fontSize={"sm"} textIndent={10} className='roboto-flex' opacity={0.5} fontWeight={700} textAlign={"justify"} px={2}>
             Congratulations on your incredible achievement! Your hard work, dedication, and perseverance have truly paid off. 
             This accomplishment is a testament to your talent and abilities. We're so proud of everything you've achieved.
+          </Text>
+          <Text fontSize={"sm"} lineHeight={2} className='roboto-flex' opacity={0.5} fontWeight={700} textAlign={"justify"} px={2}>
+            - 17 Januari 2023
           </Text>
         </Flex>
       </Flex>
