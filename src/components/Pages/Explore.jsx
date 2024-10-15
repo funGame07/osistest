@@ -48,13 +48,55 @@ import "./home.css"
 function Explore() {
     const {colorMode} = useContext(osis)
 
+    function inputExplore(e) {
+      console.log("hihi")
+      const searchTerm = e.target.value;
+      if (searchTerm) {
+        const textNodes = document.body.textContent.match(new RegExp(searchTerm, 'gi'));
+        if (textNodes) {
+          console.log(textNodes)
+          highlightMatches(textNodes);
+        } else {
+          alert(`No matches found for "${searchTerm}"`);
+        }
+      }
+    };
+    
+    function highlightMatches(matches) {
+      const highlights = [];
+      for (const match of matches) {
+        const wrapper = document.createElement('span');
+        wrapper.className = 'highlight';
+        wrapper.textContent = match;
+        const textNode = document.createTextNode(match);
+        wrapper.appendChild(textNode);
+        highlights.push(wrapper);
+      }
+      for (const node of document.body.childNodes) {
+        if (node.nodeType === 3) { // Text node
+          const text = node.textContent;
+          for (const match of matches) {
+            const index = text.indexOf(match);
+            if (index !== -1) {
+              const highlight = highlights.find((h) => h.textContent === match);
+              const newNode = document.createElement('span');
+              newNode.className = 'highlight';
+              newNode.textContent = match;
+              node.parentNode.replaceChild(newNode, node);
+              node.parentNode.insertBefore(highlight, newNode);
+            }
+          }
+        }
+      }
+    }
+
   return (
     <Flex mt={20} pt={{base: 5, lg: 0}} pb={20} px={5} flexDir={"column"} alignItems={"center"} justifyContent={"center"} overflowX={"hidden"}>
       <InputGroup w={{base: "70%", lg: "50%"}} boxShadow={"0px 6px 15px -10px rgba(0,0,0,0.5)"} rounded={"lg"}>
         <InputLeftElement pointerEvents='none' display={"flex"} h={"full"} alignItems={"center"}>
           <CiSearch color='gray.400' size={25} />
         </InputLeftElement>
-        <Input type="search" placeholder='search' py={{base: 4, lg: 8}} px={2}/>
+        <Input type="search"  placeholder='search' py={{base: 4, lg: 8}} px={2} onChange={inputExplore}/>
       </InputGroup>
       <Text lineHeight={"250%"} textAlign={"center"} placeSelf={"center"} fontStyle={"italic"} fontWeight={{base: 600, lg: 500}} fontSize={{ base: "lg", lg:"2xl"}} className='roboto'>Explore</Text>
       <Text size={"sm"} className='roboto-' opacity={0.5}>Jelajahi kegiatan terkini kami</Text>

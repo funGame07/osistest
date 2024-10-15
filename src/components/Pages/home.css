@@ -49,6 +49,12 @@
     }
 }
 
+.highlight {
+    background-color: #ffff00; /* Yellow highlight color */
+    padding: 2px;
+    border-radius: 2px;
+  }
+
 
 ::-webkit-scrollbar{
     width: 0;
