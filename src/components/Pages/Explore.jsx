@@ -49,7 +49,7 @@ function Explore() {
     const {colorMode} = useContext(osis)
 
   return (
-    <Flex mt={20} pb={20} px={5} flexDir={"column"} alignItems={"center"} justifyContent={"center"} overflowX={"hidden"}>
+    <Flex mt={20} pt={{base: 5, lg: 0}} pb={20} px={5} flexDir={"column"} alignItems={"center"} justifyContent={"center"} overflowX={"hidden"}>
       <InputGroup w={{base: "70%", lg: "50%"}} boxShadow={"0px 6px 15px -10px rgba(0,0,0,0.5)"} rounded={"lg"}>
         <InputLeftElement pointerEvents='none' display={"flex"} h={"full"} alignItems={"center"}>
           <CiSearch color='gray.400' size={25} />
