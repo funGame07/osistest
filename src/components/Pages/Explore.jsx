@@ -54,7 +54,7 @@ function Explore() {
         <InputLeftElement pointerEvents='none' display={"flex"} h={"full"} alignItems={"center"}>
           <CiSearch color='gray.400' size={25} />
         </InputLeftElement>
-        <Input type="search" placeholder='search' py={{base: 7, lg: 8}} px={2}/>
+        <Input type="search" placeholder='search' py={{base: 4, lg: 8}} px={2}/>
       </InputGroup>
       <Text lineHeight={"250%"} textAlign={"center"} placeSelf={"center"} fontStyle={"italic"} fontWeight={500} fontSize={{ base: "lg", lg:"2xl"}} className='roboto'>Explore</Text>
       <Text size={"sm"} className='roboto-' opacity={0.5}>Jelajahi kegiatan terkini kami</Text>
