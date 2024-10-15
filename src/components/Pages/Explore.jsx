@@ -63,7 +63,7 @@ function Explore() {
         <Flex >
           <Menu>
             <MenuButton as={Button} variant={"outline"} rightIcon={<IoChevronDownSharp />}>
-              Actions
+              Filter
             </MenuButton>
             <MenuList>
             <MenuOptionGroup defaultValue='asc' type='radio'>
