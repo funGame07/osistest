@@ -81,7 +81,7 @@ function Home() {
           <Text fontSize={{base: "sm", lg: "md"}} fontWeight={"400"} opacity={0.8}>
           Selamat Mengeksplore
           </Text>
-          <Link to={"/explore"} style={{width: "40%"}}>
+          <Link to={"/join"} style={{width: "40%"}}>
             <Button className="font-link" color={"white"} mt={7} bgColor={"rgba(66, 153, 225, 0.4)"} variant={"outline"} colorScheme={"yellow"} w={"full"} size={"md"} rounded={"full"}>
               Explore
             </Button>
