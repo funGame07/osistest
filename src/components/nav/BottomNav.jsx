@@ -21,7 +21,7 @@ function BottomNav() {
     <Box className='bottom-nav' position={"fixed"}
     bg={"transparent"} 
     opacity={0.9}
-    zIndex={1} 
+    zIndex={9999} 
     display={showBottomNavbar ? "" : "none"}
     >
         <BottomNavContent />   
