@@ -18,6 +18,7 @@ import RequestJoin from "./components/quiz/RequestJoin"
 import QuizInvitation from "./components/quiz/QuizInvitation"
 import Explore from "./components/Pages/Explore.jsx"
 import data from "../lib/dataOsis.json"
+import Voting from "./components/Pages/Voting.jsx"
 
 // ### Import library from libs
 import { isAuthFromDB, toggleFs } from "../lib/libs.js"
@@ -74,7 +75,7 @@ function App() {
           <Route path="/join" element={<RequestJoin />}/>
           <Route path="/explore" element={<Explore />}/>
           {/* <Route path="/adminjoin" element={<AcceptJoin />}/> */}
-          {/* <Route path="/voting" element={<Hexa />}/> */}
+          <Route path="/voting" element={<Voting />}/>
         </Routes>
         <BottomNav/>
       </osis.Provider>

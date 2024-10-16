@@ -18,7 +18,15 @@ import {
     Button,
     Box,
     keyframes,
-    Heading
+    Heading,
+    Input,
+    InputLeftElement,
+    InputGroup,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuOptionGroup,
+    MenuItemOption
 } from '@chakra-ui/react'
 
 
@@ -27,6 +35,9 @@ import "./event.css"
 
 // import context osis from App.jsx
 import { osis } from '../../App';
+
+import { CiSearch } from "react-icons/ci";
+import { IoChevronDownSharp } from "react-icons/io5";
 
 
 function YesEvent() {
@@ -47,15 +58,101 @@ function YesEvent() {
     }
     `
 
+    let currentMatchIndex = -1;
+    let matchElements = [];
+
+function findText(e) {
+  clearHighlights();
+
+  const searchInput = e.target.value.trim();
+  if (!searchInput) {
+      return;
+  }
+
+  const regex = new RegExp(searchInput, "gi");
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+
+  let node;
+  while ((node = walker.nextNode())) {
+      const matches = node.textContent.match(regex);
+      if (matches) {
+          const spanWrapper = document.createElement("span");
+          spanWrapper.innerHTML = node.textContent.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+          node.parentNode.replaceChild(spanWrapper, node);
+      }
+  }
+
+    matchElements = document.querySelectorAll("span.highlight");
+    if (matchElements.length > 0) {
+        currentMatchIndex = 0;
+        scrollToMatch(currentMatchIndex);
+    }
+    }
+
+    function clearHighlights() {
+    const highlights = document.querySelectorAll("span.highlight");
+    highlights.forEach((highlight) => {
+        const parent = highlight.parentNode;
+        parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+        parent.normalize(); // Merge adjacent text nodes
+    });
+    }
+
+    function scrollToMatch(index) {
+        if (matchElements.length > 0 && index >= 0 && index < matchElements.length) {
+            matchElements[index].scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    }
+
   return (
-    <Flex px={2} pb={5} pt={8} flexDir={{base: "column"}} gap={{base: 5}} pos={"relative"} alignItems={"center"} minH={"fit-content"}>
-        <Text fontSize={{base: "3xl", lg: "3xl"}} fontWeight={900} letterSpacing={1} animation={`${fade} 5s linear infinite`}
+    <Flex pt={{base: 5, lg: 0}} pb={20} px={5} flexDir={"column"} alignItems={"center"} justifyContent={"center"} overflowX={"hidden"}>
+
+    {/* <Flex px={2} pb={5} pt={8} flexDir={{base: "column"}} gap={{base: 5}} pos={"relative"} alignItems={"center"} minH={"fit-content"}> */}
+        
+      <InputGroup w={{base: "70%", lg: "50%"}} boxShadow={"0px 6px 15px -10px rgba(0,0,0,0.5)"} rounded={"lg"}>
+        <InputLeftElement pointerEvents='none' display={"flex"} h={"full"} alignItems={"center"}>
+          <CiSearch color='gray.400' size={25} />
+        </InputLeftElement>
+        <Input type="search"  placeholder='search' py={{base: 4, lg: 8}} px={2} onChange={findText}/>
+        {/* <InputRightElement>
+          <Button onClick={nextMatch}>Next</Button>
+          <Button onClick={previousMatch}>Previous</Button>
+        </InputRightElement> */}
+      </InputGroup>
+      <Text lineHeight={"250%"} textAlign={"center"} placeSelf={"center"} fontStyle={"italic"} fontWeight={{base: 600, lg: 500}} fontSize={{ base: "lg", lg:"2xl"}} className='roboto'>Event</Text>
+      <Text size={"sm"} className='roboto-' opacity={0.5}>Jelajahi Event terkini kami</Text>
+
+      <Flex w={"full"} alignItems={"center"} gap={2} mt={3}>
+        <Flex >
+          <Menu>
+            <MenuButton as={Button} variant={"outline"} rightIcon={<IoChevronDownSharp />}>
+              Filter
+            </MenuButton>
+            <MenuList>
+            <MenuOptionGroup defaultValue='asc' type='radio'>
+              <MenuItemOption value='asc'>Terbaru</MenuItemOption>
+              <MenuItemOption value='desc'>Terlama</MenuItemOption>
+            </MenuOptionGroup>
+            </MenuList>
+          </Menu>
+        </Flex>
+        
+        
+        <Flex gap={3} overflowX={"scroll"} w={"full"}>
+            <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Semua</Button>
+            <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Event OSIS</Button>
+            <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Event Sekolah</Button>
+            <Button size={"sm"} variant={"outline"} w={"fit-content"} px={{base:"4em", lg: 5}}>Event Luar</Button>
+        </Flex>
+      </Flex>
+        {/* <Text fontSize={{base: "3xl", lg: "3xl"}} fontWeight={900} letterSpacing={1} animation={`${fade} 5s linear infinite`}
         bgGradient={"linear(to-r, teal.700, teal, teal.700)"} bgClip={"text"} textShadow={"0 0 60px gray"} textAlign={"center"}
-        >NEW EVENT IS BACK!!</Text>
-        <Flex bg={cardBg} w={{base: "97%", lg: "70%"}} rounded={"2xl"} overflow={"hidden"} h={"fit-content"} boxShadow={"lg"} flexDir={{base:"column", lg:"row"}}>
-            <AspectRatio ratio={3/4} w={{base: "full", lg: "50%"}}>
+        >NEW EVENT IS BACK!!</Text> */}
+    <Flex flexDir={"column"} w={"full"} alignItems={"center"} py={5}>
+        <Flex bg={cardBg} maxW={{base: "98%", lg: "80%"}} rounded={"2xl"} overflow={"hidden"} h={"fit-content"} boxShadow={"lg"} flexDir={{base:"column", lg:"row"}} >
+            <Flex w={"fit-content"} alignItems={"center"}>
                 <Image src="poster3.png"  boxShadow={"dark-lg"} filter={"brightness(0.9)"}/>
-            </AspectRatio>
+            </Flex>
             <Box w={"full"} h={"full"} px={4} py={5}>
                 <Text fontSize={"sm"} color={"teal"} fontWeight={800}>ONE DAY CHALLENGE</Text>
                 <Heading fontWeight={900}>Creative Badass Challenge</Heading>
@@ -71,12 +168,48 @@ function YesEvent() {
                     <Rule text={'Dilarang bermain curang :v'} icon={<IoWarningOutline className='icon-yellow' size={20}/>}/>
                     <Rule text={'Hadiah diberikan kepada juara 1 2 3 saja'} icon={<FaRegStar className='icon-yellow' size={20}/>}/>
                 </Box>
-                <Button mt={5} bg={"teal.600"} colorScheme='teal.600' color={"white"} w={"full"} rounded={"full"}>Ikuti Challenge</Button>
+
+                <Box w={"full"} h={"full"} py={5}>
+                    <Flex  alignItems={"center"} gap={2} mt={3}>
+                        <GoGift className='icon-teal' size={25}/> 
+                        <Text fontSize={"xl"} fontWeight={800}>Hadiah</Text>
+                    </Flex>
+                    <Box flexBasis={0}>
+                        <Rule text={'Piala + Rp. 30.000.000'} icon={<TbNumber1Small className='icon-yellow' size={30}/>}/>
+                        <Rule text={'Piala + Rp. 20.000.000'} icon={<TbNumber2Small className='icon-yellow' size={30}/>}/>
+                        <Rule text={'Piala + Rp. 10.000.000'} icon={<TbNumber3Small className='icon-yellow' size={30}/>}/>
+                    </Box>
+                    <Flex mt={4} gap={2}>
+                        <Button leftIcon={<BsFire className='icon-red'/>} flexGrow={1} border={"1px solid gray"} rounded={"xl"}>
+                            12
+                        </Button>
+                        <Button leftIcon={<FaRegThumbsUp className='icon-red'/>} flexGrow={1} border={"1px solid gray"} rounded={"xl"}>
+                            34
+                        </Button>
+                    </Flex>
+                </Box>
+                <Button bg={"teal.600"} colorScheme='teal.600' color={"white"} w={"full"} rounded={"full"}>Ikuti Challenge</Button>
             </Box>
         </Flex>
+    </Flex>
+        
+    </Flex>
+  )
+}
 
-        <Flex bg={cardBg} w={{base: "97%", lg: "70%"}} rounded={"2xl"} overflow={"hidden"} h={"fit-content"} boxShadow={"lg"} flexDir={{base:"column", lg:"row"}}>
-            
+function Rule({text, icon}){
+    return(
+        <Flex alignItems={"center"} gap={2} mt={3}>
+            {icon}
+            <Text fontSize={"sm"} fontWeight={600}>{text}</Text>
+        </Flex>
+    )
+}
+
+export default YesEvent
+
+
+{/* <Flex bg={cardBg} w={{base: "97%", lg: "70%"}} rounded={"2xl"} overflow={"hidden"} h={"fit-content"} boxShadow={"lg"} flexDir={{base:"column", lg:"row"}}>
             <Box w={"full"} h={"full"} px={4} py={5}>
                 <Text fontSize={"sm"} color={"teal"} fontWeight={800}>ONE DAY CHALLENGE</Text>
                 <Heading fontWeight={900}>Creative Badass Challenge</Heading>
@@ -99,19 +232,4 @@ function YesEvent() {
                     </Button>
                 </Flex>
             </Box>
-        </Flex>
-    </Flex>
-  )
-}
-
-function Rule({text, icon}){
-    return(
-        <Flex alignItems={"center"} gap={2} mt={3}>
-            {icon}
-            <Text fontSize={"sm"} fontWeight={600}>{text}</Text>
-        </Flex>
-    )
-}
-
-export default YesEvent
-
+        </Flex> */}

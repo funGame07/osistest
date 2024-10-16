@@ -29,6 +29,8 @@ import { RxDividerVertical } from "react-icons/rx";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import { GoDotFill } from "react-icons/go";
 import { GiCycle } from "react-icons/gi";
+import { MdLabelImportantOutline } from "react-icons/md";
+
 
 
 
@@ -37,6 +39,37 @@ import "./home.css"
 
 function Home() {
   const {colorMode} = useContext(osis)
+  const borderColor = "rgba(155,155,155, 0.5)"
+  const visiMisi = colorMode == "light" ? "gray.100" : "gray.600"
+
+  const fadeIn =keyframes`
+  0%{
+      transform: translateX(-200px);
+      opacity: 0.2
+    }
+    50%{
+      transform: translateX(0px);
+      opacity: 0.7
+    }
+    100%{
+      transform: translateX(0px);
+      opacity: 1
+    }
+  `
+
+  const fadeInReverse =keyframes`
+  0%{
+      transform: translateX(250px);
+      opacity: 0.2
+    }
+    50%{
+      opacity: 0.7
+    }
+    100%{
+      transform: translateX(0px);
+      opacity: 1
+    }
+  `
 
   const dissapear = keyframes`
     0%{
@@ -55,20 +88,20 @@ function Home() {
   }
 
   return(
-    <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "6%"}} pos={"relative"} overflow={"hidden"}>
+    <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "0"}} pos={"relative"} overflow={"hidden"}>
       <Image src="schoolbg.png" pos={"absolute"} w={"full"} objectFit={"cover"} h={"100vh"} filter={"auto"} brightness={"0.4"}/>
       <Box pos={"absolute"} w={"120%"} mx={"auto"} h={"100vh"} filter={"auto"} brightness={"0.9"} top={"100vh"} overflow={"hidden"}>
         
       </Box>
     
       <Flex pt={{base: "120px", lg: "0"}} minH={"100vh"} flexDir={{base: "column", lg: "row"}} color={"white"}
-      alignItems={"center"} gap={{base: 3, lg:1}} pos={"relative"} minW={"full"}>
-        <Box order={{base: 0, lg: 1}} display={"flex"} flexDir={"column"} justifyContent={"center"} alignItems={"center"} h="230px" my={5} mx={"auto"} w={{base: "full" ,sm: "40%", lg: "50%"}} pos={"relative"}> 
+      alignItems={"center"} gap={{base: 3, lg:1}} pos={"relative"} minW={"full"} px={{lg: "6%"}}>
+        <Box order={{base: 0, lg: 1}} display={"flex"} flexDir={"column"} justifyContent={"center"} alignItems={"center"} h="230px" my={5} mx={"auto"} w={{base: "full" ,sm: "40%", lg: "50%"}} pos={"relative"} animation={`${fadeInReverse} 2s linear`}> 
           <Image src="sultanagung.png" rounded={"full"} maxW={{base: "230px", lg: "420px"}}transform={"rotate(13deg)"} pos={"absolute"} top={{base:"-2em", lg: "-6em"}} left={{base: "2em"}}/>
           <Image src="sultanagung2.png" rounded={"full"} maxW={{base: "230px", lg: "420px"}} transform={"rotate(-10deg)"} pos={"absolute"} top={{base: "5em", lg: "7em"}} right={{base: "0em"}} zIndex={10}/>
         </Box>
         
-        <Flex flexDir={"column"} w={{base: "full", lg:"50%"}} alignItems={{base: "center", lg: "start"}}>
+        <Flex flexDir={"column"} w={{base: "full", lg:"50%"}} alignItems={{base: "center", lg: "start"}} animation={`${fadeIn} 2.5s linear`}>
           <Text fontSize={{base: "xs", lg: "sm"}} fontWeight={"400"} opacity={0.8}>
             OSIS SMA #The best
           </Text>
@@ -94,51 +127,48 @@ function Home() {
       {/* <Box bg={"yellow.400"} w={"130%"}>
         <Heading textAlign={"center"} fontWeight={900} lineHeight={1.5} color={"white"}>WELCOME TO OSIS</Heading>
       </Box> */}
-      
-      <Carousel />
+      <Box w={"full"} px={{lg: "6%"}}>
+        <Carousel />
+      </Box>
+     
 
       <Division text={""} colorMode={colorMode}/>
 
-      <Flex flexDir={{base: "column", lg:"row"}} h={"fit-content"} w={"100%"} gap={{base: 0, lg: 10}} mt={{base: 10, lg: "5em"}} justifyContent={"space-between"} pb={10}>
-        <Flex w={{base:"90%", lg:"60%"}}  placeSelf={"start"} roundedRight={{base:"80%", lg:"20%"}} px={5} flexDir={"column"} pb={{base: 20, lg: 3}}
-        border={"1px solid rgba(66, 153, 225, 0.5)"} borderStart={"none"} boxShadow={"0 0 20px rgba(66, 153, 225, 0.2)"} justifyContent={"center"}>
-          <Heading lineHeight={"80px"}>VISI</Heading>
-          <Text w={{base: "70%", lg:"80%"}} fontSize={{lg: "md"}}>
-            Menjadikan OSIS SMA Swasta Sultan Agung sebagai wadah yang menampung seluruh aspirasi dan kreatif bagi siswa 
-            yang berintegritas, religius, berkarakter, inovatif, dan berprestasi. Kami berkomitmen untuk memberikan dampak 
-            positif di lingkungan sekolah dan masyarakat, dan juga mendorong kesadaran sosial dan tanggung jawab lingkungan sekitar.
-          </Text>
+      <Flex flexDir={"column"} h={"fit-content"} w={"100%"} gap={{base: 5, lg: 5}} mt={{base: "1em", lg: "1em"}} alignItems={"center"}
+      pos={"relative"} py={10} px={"6%"} color={"white"}>
+        <Image src="visimisi.webp" pos="absolute" w={"full"} h={"full"} objectFit={"cover"} zIndex={0} filter={"auto"} brightness={0.7}/>
+        <Heading fontSize={"2xl"} zIndex={9} py={8}>Visi dan Misi</Heading>
 
-          <Heading lineHeight={"80px"}>MISI</Heading>
-          <UnorderedList fontSize={{lg: "md"}}>
-            <ListItem w={{base: "75%", lg:"75%"}}>Menyelenggarakan berbagai kegiatan guna meningkatkan dan mengembangkan bakat, minat dan keterampilan prestasi siswa dari segi akademik maupun non akademik.</ListItem>
-            <ListItem w={{base: "75%", lg:"75%"}}>Meneruskan dan Mengembangkan program kerja OSIS dan membangun lingkungan sekolah yang sehat dan bersih.</ListItem>
-            <ListItem w={{base: "75%", lg:"75%"}}>Menyelenggarakan festival seni dan budaya, termasuk pameran karya siswa dan pentas seni.</ListItem>
-            <ListItem w={{base: "75%", lg:"75%"}}>Memperkuat solidaritas dan kebersamaan antar siswa dengan menyelenggarakan acara peringatan hari besar nasional yang melibatkan partisipasi seluruh siswa.</ListItem>
-            <ListItem w={{base: "75%", lg:"75%"}}>Mendukung kegiatan sosial dan kemanusiaan, mengorganisir kegiatan amal seperti bakti sosial.</ListItem>
-            <ListItem w={{base: "75%", lg:"75%"}}>Berkomitmen untuk menjalin kerjasama yang baik dengan berbagai pihak, baik antar sekolah maupun dengan pihak luar, guna meningkatkan prestasi sesuai dengan perkembangan teknologi.</ListItem>
+        <Flex w={"full"} gap={10} flexDir={{base: "column", lg: "row"}} zIndex={9}>
+          <Box border={`1px solid ${borderColor}`} rounded={"xl"} p={5} w={{base: "90%", lg:"30%"}} mx={"auto"} h={"fit-content"} boxShadow={"-2px 8px 15px -5px rgba(0,0,0,0.5)"}>
+            <Flex alignItems={"center"} rounded={"lg"} mb={4}>
+              <MdLabelImportantOutline size={30}/>
+              <Text className="roboto" fontSize={"2xl"}>Visi</Text>
+            </Flex>
+            <Text fontSize={{lg: "md"}}>
+              Menjadikan OSIS SMA Swasta Sultan Agung sebagai wadah yang menampung seluruh aspirasi dan kreatif bagi siswa 
+              yang berintegritas, religius, berkarakter, inovatif, dan berprestasi. Kami berkomitmen untuk memberikan dampak 
+              positif di lingkungan sekolah dan masyarakat, dan juga mendorong kesadaran sosial dan tanggung jawab lingkungan sekitar.
+            </Text>
+          </Box>
 
-          </UnorderedList>
+          <Box border={`1px solid ${borderColor}`} rounded={"xl"} p={5} w={{base: "90%", lg:"70%"}} mx={"auto"} h={"fit-content"} boxShadow={"-2px 8px 15px -5px rgba(0,0,0,0.5)"}>
+            <Flex alignItems={"center"} rounded={"lg"} mb={4}>
+              <MdLabelImportantOutline size={30}/>
+              <Text className="roboto" fontSize={"2xl"}>Misi</Text>
+            </Flex>
+            <UnorderedList fontSize={{lg: "md"}}>
+              <ListItem w={{base: "75%", lg:"75%"}}>Menyelenggarakan berbagai kegiatan guna meningkatkan dan mengembangkan bakat, minat dan keterampilan prestasi siswa dari segi akademik maupun non akademik.</ListItem>
+              <ListItem w={{base: "75%", lg:"75%"}}>Meneruskan dan Mengembangkan program kerja OSIS dan membangun lingkungan sekolah yang sehat dan bersih.</ListItem>
+              <ListItem w={{base: "75%", lg:"75%"}}>Menyelenggarakan festival seni dan budaya, termasuk pameran karya siswa dan pentas seni.</ListItem>
+              <ListItem w={{base: "75%", lg:"75%"}}>Memperkuat solidaritas dan kebersamaan antar siswa dengan menyelenggarakan acara peringatan hari besar nasional yang melibatkan partisipasi seluruh siswa.</ListItem>
+              <ListItem w={{base: "75%", lg:"75%"}}>Mendukung kegiatan sosial dan kemanusiaan, mengorganisir kegiatan amal seperti bakti sosial.</ListItem>
+              <ListItem w={{base: "75%", lg:"75%"}}>Berkomitmen untuk menjalin kerjasama yang baik dengan berbagai pihak, baik antar sekolah maupun dengan pihak luar, guna meningkatkan prestasi sesuai dengan perkembangan teknologi.</ListItem>
+            </UnorderedList>
+          </Box>
         </Flex>
-
-        <Flex w={{base:"95%", lg: "40%"}} minH={{base: "fit-content", lg:"full"}} placeSelf={"center"} flexDir={{base: "column", lg: "row"}} display={{base: "block", lg:"block"}} rounded={"2xl"} p={4}
-        boxShadow={"0 0 20px rgba(66, 153, 225, 0.3)"} border={"1px solid rgba(66, 153, 225, 0.1)"} mt={{base: 10, lg: 0}}>
-          <Heading textAlign={"center"} fontSize={"2xl"}>DAFTAR RENCANA TAHUN 2024.2025</Heading>
-          <Division text={""} colorMode={colorMode} pt={0} ptlg={'1em'}/>
-          <List spacing={3}>
-            {/* MM/DD/YY */}
-            <ListKegiatan text={"Pemilihan Ketua Osis"}date={"1/22/2024"} /> 
-            <ListKegiatan text={"Pelantikan Ketua OSIS"} date={"2/12/2024"} />
-            <ListKegiatan text={"Lomba 17 Agustus"} date={"5/20/2024"} />
-            <ListKegiatan text={"Batik Day"} date={"7/21/2024"} />
-            <ListKegiatan text={"OSIS Cup"} date={"9/20/2024"} />
-            <ListKegiatan text={"Traktir siswa makan"} date={"10/9/2024"} />
-            <ListKegiatan text={"Traktir siswa makan"} date={"10/10/2024"} />
-            <ListKegiatan text={"Pentas seni bertema kebebasan"} date={"10/11/2024"} />
-            <ListKegiatan text={"Pesta merayakan natal"} date={"12/25/2024"} />
-            <ListKegiatan text={"Bagi-bagi duit 100.000.000"} date={"1/1/2025"} />
-          </List>
-        </Flex>
+          
+          
       </Flex>
   
       <Flex w={{base: "full", lg: "120%"}} h={{lg: "250px"}} flexDir={{base: "column", lg: "row"}} justifyContent={"space-around"} textAlign={"start"} mt={8} px={5} bg={"black"} color={"white"} py={{base: 5, lg: 8}} pb={"5em"} gap={4}> 
@@ -225,3 +255,23 @@ function Division({text, colorMode, pt=7, ptlg="5em"}){
 }
 
 export default Home
+
+
+// <Flex w={{base:"95%", lg: "40%"}} minH={{base: "fit-content", lg:"full"}} placeSelf={"center"} flexDir={{base: "column", lg: "row"}} display={{base: "block", lg:"block"}} rounded={"2xl"} p={4}
+// boxShadow={"0 0 20px rgba(66, 153, 225, 0.3)"} border={"1px solid rgba(66, 153, 225, 0.1)"} mt={{base: 10, lg: 0}}>
+// <Heading textAlign={"center"} fontSize={"2xl"}>DAFTAR RENCANA TAHUN 2024.2025</Heading>
+// <Division text={""} colorMode={colorMode} pt={0} ptlg={'1em'}/>
+// <List spacing={3}>
+//   {/* MM/DD/YY */}
+//   <ListKegiatan text={"Pemilihan Ketua Osis"}date={"1/22/2024"} /> 
+//   <ListKegiatan text={"Pelantikan Ketua OSIS"} date={"2/12/2024"} />
+//   <ListKegiatan text={"Lomba 17 Agustus"} date={"5/20/2024"} />
+//   <ListKegiatan text={"Batik Day"} date={"7/21/2024"} />
+//   <ListKegiatan text={"OSIS Cup"} date={"9/20/2024"} />
+//   <ListKegiatan text={"Traktir siswa makan"} date={"10/9/2024"} />
+//   <ListKegiatan text={"Traktir siswa makan"} date={"10/10/2024"} />
+//   <ListKegiatan text={"Pentas seni bertema kebebasan"} date={"10/11/2024"} />
+//   <ListKegiatan text={"Pesta merayakan natal"} date={"12/25/2024"} />
+//   <ListKegiatan text={"Bagi-bagi duit 100.000.000"} date={"1/1/2025"} />
+// </List>
+// </Flex>

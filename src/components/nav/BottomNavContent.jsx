@@ -15,6 +15,7 @@ import { GrSearchAdvanced } from "react-icons/gr";
 import { HiOutlineTrophy } from "react-icons/hi2";
 import { MdHowToVote } from "react-icons/md";
 import { MdOutlineHowToVote } from "react-icons/md";
+import { RiSecurePaymentLine } from "react-icons/ri";
 
 
 // import context osis from App.jsx
@@ -49,7 +50,7 @@ function BottomNavContent() {
         </Link>
 
         <Link to={"/admin"}>
-            <CiSquarePlus size={40} className='navicon-mid' cursor={"pointer"}/>
+            <RiSecurePaymentLine size={40} className='navicon-mid' cursor={"pointer"}/>
         </Link>
 
         <Link to={"/voting"}> 
