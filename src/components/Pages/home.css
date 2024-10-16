@@ -49,6 +49,12 @@
     }
 }
 
+.map{
+    border: 0;
+    width: 80% !important;
+    height: 80%;
+}
+
 .highlight {
     background-color: #ffff00; /* Yellow highlight color */
     padding: 2px;
@@ -60,3 +66,9 @@
     width: 0;
     height: 0;
 }
+
+@media screen and (min-width: 922px) {
+    .map{
+        width: 50% !important;
+    }
+  }

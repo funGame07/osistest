@@ -18,7 +18,7 @@ function Live() {
 
     async function handleLive(){
         // send subject to database
-        navigate("/quizinvitation", {state: {isAdmin: true, uuid:"admin"}})
+        navigate("/quizinvitation", {state: {isAdmin: true, nis:"admin"}})
     }
 
   return (

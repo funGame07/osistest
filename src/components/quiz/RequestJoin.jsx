@@ -10,15 +10,19 @@ import {
     Heading
  } from '@chakra-ui/react'
 
+ import { socketContext } from './QuizInvitation'
+
 function RequestJoin() {
-    const socket = io("localhost:3000")
+    const {socket, nis} = useContext(socketContext)
 
     const [Accepted, setAccepted] = useState(false)
     const [ready, setReady] = useState(false)
 
     useEffect(()=>{
-        socket.on("accepted", (accepted)=>{
-            setAccepted(true)
+        socket.emit("requestJoin", nis)
+
+        socket.on("accepted", (socketNIS)=>{
+            socketNIS === nis && setAccepted(true)
         })
 
         // return () => {

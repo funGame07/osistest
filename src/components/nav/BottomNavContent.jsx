@@ -16,6 +16,7 @@ import { HiOutlineTrophy } from "react-icons/hi2";
 import { MdHowToVote } from "react-icons/md";
 import { MdOutlineHowToVote } from "react-icons/md";
 import { RiSecurePaymentLine } from "react-icons/ri";
+import { FiShieldOff } from "react-icons/fi";
 
 
 // import context osis from App.jsx
@@ -50,7 +51,7 @@ function BottomNavContent() {
         </Link>
 
         <Link to={"/admin"}>
-            <RiSecurePaymentLine size={40} className='navicon-mid' cursor={"pointer"}/>
+            <FiShieldOff size={40} className='navicon-mid' cursor={"pointer"}/>
         </Link>
 
         <Link to={"/voting"}> 

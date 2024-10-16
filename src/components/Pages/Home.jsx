@@ -15,7 +15,7 @@ import {
  } from "@chakra-ui/react"
 
 // ### Import package from node_modules 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Carousel from "../carousel/Carousel";
 import { useContext } from "react";
 import { osis } from "../../App";
@@ -38,9 +38,15 @@ import { MdLabelImportantOutline } from "react-icons/md";
 import "./home.css"
 
 function Home() {
+  const navigate = useNavigate()
   const {colorMode} = useContext(osis)
   const borderColor = "rgba(155,155,155, 0.5)"
   const visiMisi = colorMode == "light" ? "gray.100" : "gray.600"
+  
+  async function handleLive(){
+    // send subject to database
+    navigate("/quizinvitation", {state: {isAdmin: false, nis:"12345"}})
+  }
 
   const fadeIn =keyframes`
   0%{
@@ -132,7 +138,7 @@ function Home() {
       </Box>
      
 
-      <Division text={""} colorMode={colorMode}/>
+      {/* <Division text={""} colorMode={colorMode}/> */}
 
       <Flex flexDir={"column"} h={"fit-content"} w={"100%"} gap={{base: 5, lg: 5}} mt={{base: "1em", lg: "1em"}} alignItems={"center"}
       pos={"relative"} py={10} px={"6%"} color={"white"}>
@@ -167,42 +173,70 @@ function Home() {
             </UnorderedList>
           </Box>
         </Flex>
-          
-          
+      </Flex>
+
+      <Flex h={{lg:"500px"}} gap={{base: 5, lg: 0}} py={10} flexDir={{base: "column", lg: "row"}}  w={"full"} px={"6%"} alignItems={"center"} mt={20} bg={"gray.800"} color={"white"}>
+        <Flex flexDir={"column"} w={{lg: "50%"}} gap={2}>
+          <Heading>OUR LOCATION</Heading>
+          <Text fontSize={"xs"} opacity={0.5} w={"90%"}>
+          Our office is conveniently located at Jl. Surabaya No.19, Dwikora, Kec. Siantar Barat, Kota Pematang Siantar, Sumatera Utara, Indonesia. We are easily accessible by public 
+          transportation and have ample parking available for visitors. If you have any questions or would like to schedule a visit, please don't 
+          hesitate to contact us using the information provided on our Contact page.
+          </Text>
+        </Flex>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4316.547446693461!2d99.06208307532394!3d2.9571854970190166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031845c4ecc4f3f%3A0xec67e372810d4470!2sYayasan%20Pendidikan%20Sultan%20Agung!5e1!3m2!1sid!2sid!4v1729094305875!5m2!1sid!2sid" 
+        style={{border: 0, width: "50%", height: "80%"}} className="map"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </Flex>
   
-      <Flex w={{base: "full", lg: "120%"}} h={{lg: "250px"}} flexDir={{base: "column", lg: "row"}} justifyContent={"space-around"} textAlign={"start"} mt={8} px={5} bg={"black"} color={"white"} py={{base: 5, lg: 8}} pb={"5em"} gap={4}> 
-           
-        <Flex flexDir={"column"} gap={1}>
-          <Text className="font-link" fontSize={"lg"} fontWeight={"800"}>HUBUNGI KAMI</Text>
-          <Link style={{display: "flex", alignItems: "center", gap:"1em"}} to={"mailto:elbertchen007@gmail.com"}>
-            <Box as={IoMailOutline} size={"21px"} color={"red.800"}/>
-            sultanosis09090@gmail.com
-          </Link>
-          <Link style={{display: "flex", alignItems: "center", gap:"1em"}} onClick={handleWhatsApp}>
-            <Box as={FaWhatsapp} size={"21px"} color={"green"}/>
-            081396716769
-          </Link>
-        </Flex>
-        <Flex flexDir={"column"} gap={2}>
-          <Text className="font-link" fontSize={"lg"} fontWeight={"800"}>IKUTI KAMI</Text>
-          <Link to={"https://www.instagram.com/smassa24.25/"} style={{display: "flex", alignItems: "center", gap:"1em"}}>
-            <Box as={BsInstagram} size={"20px"} color={"rgb(193, 53, 132)"}/>
-            @smassa24.25
-          </Link>
-          <Link to={"https://www.instagram.com/smassultanagung.psa/"} style={{display: "flex", alignItems: "center", gap:"1em"}}>
-            <Box as={BsInstagram} size={"20px"} color={"rgb(193, 53, 132)"}/>
-            @smassultanagung.psa
-          </Link>
-        </Flex>
+      <Flex w={"full"} h={{lg: "300px"}} flexDir={{base: "column", lg: "row"}} justifyContent={"space-between"} textAlign={"start"} mt={8} px={5} bg={"blue.800"} color={"white"} py={{base: 5, lg: 8}} pb={"5em"} gap={4}>   
+        <Box w={{base: "70%", lg: "40%"}}>
+          <Heading>Let's Talk</Heading>
+          <Text fontSize={"xs"} opacity={0.5}>
+            Everything starts with a conversation. Reach out to us and let's start a dialogue that could lead to exciting opportunities, valuable connections, or simply a friendly chat.
+          </Text>
+          <Image src="logoosis-white.png" w={"30%"} py={5}/>
+        </Box>
 
-        <Flex h={"60px"} animation={`${dissapear} 10s ease-in infinite`} alignItems={"center"} gap={4} pr={{base: 0, lg:10}}
-         placeSelf={{base: "center", lg: "start"}} justifySelf={"self-end"} opacity={0.5}>
-          <Image src="sultan.png" maxW={"30px"} maxH={"30px"} rounded={"full"}/>
-          {/* <FaExchangeAlt size={20}/> */}
-          <GiCycle size={20}/>
-          <Image src="logoosis.png" maxW={"40px"} maxH={"40px"}/>
-        </Flex>
+        <Box w={{base: "70%" ,lg: "40%"}}>
+          <Flex w={"full"}>
+            <Flex w={"30%"} flexDir={"column"} gap={2}>
+              <Text>Email</Text>
+              <Text>Phone</Text>
+              <Text>Address</Text>
+            </Flex>
+
+            <Flex w={"70%"} flexDir={"column"} gap={2}>
+              <Link style={{display: "flex", alignItems: "center", gap:"1em"}} to={"mailto:elbertchen007@gmail.com"}>
+                sultanosis09090@gmail.com
+              </Link>
+
+              <Link style={{display: "flex", alignItems: "center", gap:"1em"}} onClick={handleWhatsApp}>
+                (+62) 81396716769
+              </Link>
+
+              <Link>
+                Jl. Surabaya No.19, Dwikora, Kec. Siantar Bar., Kota Pematang Siantar, Sumatera Utara 21118
+              </Link>
+            </Flex>
+          </Flex>
+
+          <Flex mt={5}>
+            <Text w={"30%"}>Socials</Text>
+            <Flex gap={1} flexDir={"column"}>
+              <Link to={"https://www.instagram.com/smassa24.25/"} style={{display: "flex", alignItems: "center", gap: "2px"}}>
+                <Box as={BsInstagram} size={"20px"}/>
+                @smassa24.25
+              </Link>
+
+              <Link to={"https://www.instagram.com/smassultanagung.psa/"} style={{display: "flex", alignItems: "center", gap: "2px"}}>
+                <Box as={BsInstagram} size={"20px"}/>
+                @smassultanagung.psa
+              </Link>
+            </Flex>
+            
+          </Flex>
+        </Box>
       </Flex>
     </Box>
   )

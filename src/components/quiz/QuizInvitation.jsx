@@ -7,27 +7,28 @@ import { useNavigate, useLocation } from 'react-router-dom'
 export const socketContext = createContext()
 
 function QuizInvitation(){
+  const socket = io(import.meta.env.VITE_SOCKET_DOMAIN) 
+
   const location = useLocation()
-  const {isAdmin, uuid} = location.state == undefined ? {isAdmin: false, uuid: false}: location.state
-  const socket = io(import.meta.env.DOMAIN) 
+  const {isAdmin, nis} = location.state == undefined ? {isAdmin: false, nis: false}: location.state
   const navigate = useNavigate()
 
   useEffect(()=>{
-    if(!uuid){
+    if(!nis){
       navigate("/", {replace: true})
     }
   }, [])
 
   const provider ={
     socket,
-    uuid
+    nis
   }
 
   return (
     <socketContext.Provider value={provider}>
-      {uuid &&
+      {nis &&
         <>
-          {isAdmin && uuid == "admin" ? <AcceptJoin /> : <RequestJoin />}
+          {isAdmin && nis == "admin" ? <AcceptJoin /> : <RequestJoin />}
         </>
       }
       
