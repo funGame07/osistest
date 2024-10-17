@@ -21,14 +21,12 @@ import { useContext } from "react";
 import { osis } from "../../App";
 
 // ### Import package 
-import { FaExchangeAlt, FaWhatsapp } from "react-icons/fa";
-import { IoMailOutline } from "react-icons/io5";
 import { BsInstagram } from "react-icons/bs";
 import { MdSettings } from "react-icons/md";
 import { RxDividerVertical } from "react-icons/rx";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import { GoDotFill } from "react-icons/go";
-import { GiCycle } from "react-icons/gi";
+
 import { MdLabelImportantOutline } from "react-icons/md";
 
 
@@ -175,10 +173,10 @@ function Home() {
         </Flex>
       </Flex>
 
-      <Flex h={{lg:"500px"}} gap={{base: 5, lg: 0}} py={10} flexDir={{base: "column", lg: "row"}}  w={"full"} px={"6%"} alignItems={"center"} mt={20} bg={"gray.800"} color={"white"}>
-        <Flex flexDir={"column"} w={{lg: "50%"}} gap={2}>
+      <Flex h={{lg:"500px"}} gap={{base: 5, lg: 0}} py={10} flexDir={{base: "column", lg: "row"}}  w={"full"} px={"6%"} alignItems={"center"} mt={20} >
+        <Flex flexDir={"column"} w={{base: "full",lg: "50%"}} gap={2} alignItems={{base: "center", lg: "start"}}>
           <Heading>OUR LOCATION</Heading>
-          <Text fontSize={"xs"} opacity={0.5} w={"90%"}>
+          <Text fontSize={"xs"} textAlign={{base: "center", lg: "start"}} opacity={0.7} w={"90%"}>
           Our office is conveniently located at Jl. Surabaya No.19, Dwikora, Kec. Siantar Barat, Kota Pematang Siantar, Sumatera Utara, Indonesia. We are easily accessible by public 
           transportation and have ample parking available for visitors. If you have any questions or would like to schedule a visit, please don't 
           hesitate to contact us using the information provided on our Contact page.

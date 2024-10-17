@@ -15,7 +15,7 @@ import { GrSearchAdvanced } from "react-icons/gr";
 import { HiOutlineTrophy } from "react-icons/hi2";
 import { MdHowToVote } from "react-icons/md";
 import { MdOutlineHowToVote } from "react-icons/md";
-import { RiSecurePaymentLine } from "react-icons/ri";
+import { GoShieldLock } from "react-icons/go";
 import { FiShieldOff } from "react-icons/fi";
 
 
@@ -51,7 +51,7 @@ function BottomNavContent() {
         </Link>
 
         <Link to={"/admin"}>
-            <FiShieldOff size={40} className='navicon-mid' cursor={"pointer"}/>
+            <GoShieldLock size={35} className='navicon-mid' cursor={"pointer"}/>
         </Link>
 
         <Link to={"/voting"}> 
