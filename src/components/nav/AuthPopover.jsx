@@ -69,7 +69,7 @@ function AuthPopover() {
             } catch (error) {
                 reject("couldn't login")
             } finally{
-                const toRemove = ["name", "auth", "nis", "role"]
+                const toRemove = ["name", "auth", "nis", "role", "isOsis"]
                 toRemove.map(cookie => Cookies.remove(cookie))
                 setIsAuth(false)
                 setIsLoading(false)
@@ -110,7 +110,7 @@ function AuthPopover() {
         initialFocusRef={authRef}
         >
     <PopoverTrigger>
-        <Image src='logoosis.png' maxW={{base:8, lg: 6}} maxH={{base:6}} 
+        <Image src='logoosis.webp' maxW={{base:8, lg: 6}} maxH={{base:6}} 
         borderRadius={"lg"} border={"1px solid black"} onClick={checkIsAuth}/>
     </PopoverTrigger>
     <PopoverContent className='authpopover'>

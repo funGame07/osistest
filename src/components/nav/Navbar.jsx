@@ -33,7 +33,7 @@ function Navbar() {
   return (
     <Box pos={"fixed"} w={"full"} zIndex={1000}>
         <Flex px={2} py={{base: 1, lg: "1px"}} bg={"#241a0e"} color={"white"}>
-            <Image src='logoosis-white.png' maxH={{base:8, lg: 8}}/>
+            <Image src='logoosis-white.webp' maxH={{base:8, lg: 8}}/>
             <Flex alignItems={"center"} flexGrow={1} justifyContent={"end"}>
                 {true ? <RxEnterFullScreen opacity={0.7} onClick={toggleFs} cursor={"pointer"}/>:
                         <RxExitFullScreen opacity={0.7} onClick={toggleFs} cursor={"pointer"} />}
@@ -52,7 +52,7 @@ function Navbar() {
         <Flex bgGradient={"linear(to-r, yellow.300, yellow.400)"} minH={{base: 9, lg: 6}} alignItems={"center"} px={2} py={1} justifyContent={'space-between'}>
             <Box display={"flex"} gap={2} fontSize={"sm"} alignItems={"center"} color={"black"}>
                 <Text fontWeight={700} fontSize={{base: "sm", lg: "10px"}}>Sekolah</Text>
-                <Image src='sultan.png' borderRadius={"full"} maxH={{base: 6, lg: 4}} maxW={{base: 6, lg: 4}}/>
+                <Image src='sultan.webp' borderRadius={"full"} maxH={{base: 6, lg: 4}} maxW={{base: 6, lg: 4}}/>
                 <Text fontWeight={600} fontSize={{base: "10px", lg: "7px"}}>SMA SWASTA SULTAN AGUNG</Text>
             </Box>
             <Button leftIcon={<MdOutlinePushPin style={{transform: "rotate(-45deg)", width: "12px"} } />} 

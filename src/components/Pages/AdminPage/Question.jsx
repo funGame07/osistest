@@ -22,9 +22,12 @@ import {
 
 import { quizContext } from './Dashboard';
 
-function Question({id_quest, quest, answer, point, minus_point, method, time, id_subject}) {
+import { saveSomething } from '../../../../lib/libs';
+
+function Question({id_quest, idx, quest, answer, point, minus_point, method, time, id_subject}) {
     const {inAll} = useContext(quizContext)
     const [isEditing, setIsEditing] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const [newQuest, setNewQuest] = useState(quest)
     const [newScore, setNewScore] = useState(point)
@@ -37,27 +40,50 @@ function Question({id_quest, quest, answer, point, minus_point, method, time, id
 
     useEffect(()=>{
         isPilgan && setPilganAns(Number(checkPilganAnswer[4]))
-    }, [])
+    }, [newAnswer])
     
+    function handleOpt(e, ans){
+        isEditing && setPilganAns(ans)
+        setNewAnswer(checkPilganAnswer.splice(-1, 1, pilganAns))
+    }
+
+    function handleCancel(){
+        setNewQuest(quest)
+        setNewScore(point)
+        setNewTime(time)
+        setNewAnswer(answer)
+        setIsEditing(false)
+    }
 
     async function handleSaveEdit(){
-        // update question
+        console.log(newQuest, newAnswer, newScore, newTime)
+        await saveSomething(
+            "/api/games/quest", "PUT", false,
+            {
+                id: id_quest,
+                quest: newQuest,
+                answer: newAnswer,
+                point: newScore,
+                time: newTime
+            },
+            setIsLoading, setIsEditing, ()=> {}
+        )
     }
 
     return(
         <Box w={"full"} px={3} py={1} rounded={"xl"} boxShadow={"0 0 10px rgba(0,0,0, 0.2)"} pb={2}>
             <Flex justifyContent={"space-between"} w={"100%"} flexDir={"column"} gap={2}>
                 <Flex gap={1} alignItems={"center"}>
-                    <Text>{id_quest}.</Text>
+                    <Text flexShrink={0}>{idx + 1}. {method}</Text>
                     <Flex justifyContent={inAll ? "end" : "space-between"} flexGrow={1}>
                         {isEditing && !inAll ?
                             <ButtonGroup>
                                 <Button variant={"outline"} colorScheme={"red"}
-                                size={"xs"} rounded={"lg"} onClick={()=> setIsEditing(false)}>
+                                size={"xs"} rounded={"lg"} onClick={handleCancel}>
                                     Cancel
                                 </Button>
                                 <Button variant={"outline"} colorScheme={"blue"}
-                                size={"xs"} rounded={"lg"} onClick={handleSaveEdit}>
+                                size={"xs"} rounded={"lg"} onClick={handleSaveEdit} isLoading={isLoading}>
                                     Update
                                 </Button>
                             </ButtonGroup>
@@ -69,11 +95,11 @@ function Question({id_quest, quest, answer, point, minus_point, method, time, id
                         }
                         <Flex w={{base: "70%", lg: "30%"}}>
                             <InputGroup size={"xs"}>
-                                <Input type='tel' value={point} readOnly={!isEditing} onChange={(e) => setNewScore(e.target.value)}/>
+                                <Input type='tel' value={newScore} readOnly={!isEditing} onChange={(e) => setNewScore(e.target.value)}/>
                                 <InputRightAddon>Poin</InputRightAddon>
                             </InputGroup>
                             <InputGroup size={"xs"} >
-                                <Input type='tel' value={time} readOnly={!isEditing} onChange={(e) => setNewTime(e.target.value)}/>
+                                <Input type='tel' value={newTime} readOnly={!isEditing} onChange={(e) => setNewTime(e.target.value)}/>
                                 <InputRightAddon>Detik</InputRightAddon>
                             </InputGroup>
                         </Flex>  
@@ -81,22 +107,22 @@ function Question({id_quest, quest, answer, point, minus_point, method, time, id
                 </Flex>
 
                 <Flex flexDir={"column"} gap={2}>
-                    <Input fontSize={"sm"} variant={"flushed"} value={quest} rounded={"lg"}
+                    <Input fontSize={"sm"} variant={"flushed"} value={newQuest} rounded={"lg"}
                     as={Textarea} readOnly={!isEditing} onChange={(e) => setNewQuest(e.target.value)} p={2} px={4}/>
                     {isPilgan ?
-                        <RadioGroup value={pilganAns} readOnly={!isEditing}>
+                        <RadioGroup value={pilganAns} >
                             <Stack>
-                                <Radio value={0} onClick={() => setPilganAns(0)}>{checkPilganAnswer[0]}</Radio>
-                                <Radio value={1} onClick={() => setPilganAns(1)}>{checkPilganAnswer[1]}</Radio>
-                                <Radio value={2} onClick={() => setPilganAns(2)}>{checkPilganAnswer[2]}</Radio>
-                                <Radio value={3} onClick={() => setPilganAns(3)}>{checkPilganAnswer[3]}</Radio>
+                                <Radio value={0} onClick={(e) => handleOpt(e, 0)}>{checkPilganAnswer[0]}</Radio>
+                                <Radio value={1} onClick={(e) => handleOpt(e, 1)}>{checkPilganAnswer[1]}</Radio>
+                                <Radio value={2} onClick={(e) => handleOpt(e, 2)}>{checkPilganAnswer[2]}</Radio>
+                                <Radio value={3} onClick={(e) => handleOpt(e, 3)}>{checkPilganAnswer[3]}</Radio>
                             </Stack>
                         </RadioGroup>
                         :
                         <InputGroup gap={1} alignItems={"center"}>
                             <Text>Jawaban: </Text>
-                            <Input fontSize={"sm"} variant={"flushed"} value={answer} rounded={"lg"} readOnly={!isEditing}
-                            onChange={(e) => setNewQuest(e.target.value)} p={0} size={"xs"}/>
+                            <Input fontSize={"sm"} variant={"flushed"} value={newAnswer} rounded={"lg"} readOnly={!isEditing}
+                            onChange={(e) => setNewAnswer(e.target.value)} p={0} size={"xs"}/>
                         </InputGroup>
                     }
                 </Flex>

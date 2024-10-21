@@ -16,6 +16,7 @@ import {
  import Courses from './dashboardContent/Courses';
 import ShowMapel from './dashboardContent/ShowMapel';
 import Live from './dashboardContent/Live';
+import { Spinner } from '@chakra-ui/react'
 
 export const quizContext = createContext()
 
@@ -27,14 +28,24 @@ function Dashboard() {
   const [onSave, setOnSave] = useState(false)
   const [allMapel, setAllMapel] = useState([])
   const [selectedMapelId, setSelectedMapelId] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const myColor = colorMode == "light" ? "gray.500" : " gray.500"
 
   useEffect(()=>{
     async function getAllMapel(){
-      const response = await fetch(import.meta.env.VITE_SERVER_URI + "/api/games/subject")
-      const data = await response.json()
-      setAllMapel(data.data)
+      setIsLoading(true)
+      try{
+        const response = await fetch(import.meta.env.VITE_SERVER_URI + "/api/games/subject")
+        const data = await response.json()
+        setAllMapel(data.data)
+        
+      }catch(err){
+        console.log(err)
+      }finally{
+        setIsLoading(false)
+      }
+      
     } 
     getAllMapel()
     
@@ -70,7 +81,11 @@ function Dashboard() {
                 <TabPanel onClick={()=> setInAll(true)}>
                   <Text py={2} opacity={0.5}>Di bagian ini anda hanya dapat melihat preview soal-soal saja. (Tidak bisa mengedit)</Text>
                   <Flex flexWrap={"wrap"} gap={2} justifyContent={{base: "center", lg: "start"}}>
-                    {allMapel.map((data, i) => {
+                    {isLoading && 
+                      <Spinner />
+                    }
+
+                    {!isLoading && allMapel.map((data, i) => {
                       //CHANGE THIS
                       return <ShowMapel key={i}
                               id_subject={data.id_subject}
@@ -79,7 +94,7 @@ function Dashboard() {
                               totalQuestion={data.totalQuestion}
                               title={data.title}
                               note={data.note}
-                              image={data.image}/>
+                              image={import.meta.env.VITE_SERVER_URI + data.image}/>
                     })}
                   </Flex>
                 </TabPanel>

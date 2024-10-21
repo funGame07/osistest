@@ -4,13 +4,14 @@ import {
     Button,
     Flex,
     Box,
-    Heading
+    Text
  } from '@chakra-ui/react'
 
  import "./scrollbar.css"
 
  import { quizContext } from '../Dashboard'
  import Mapel from './Mapel'
+ import Cookies from "js-cookie"
 
 function Live() {
     const {allMapel, selectedMapelId} = useContext(quizContext)
@@ -18,14 +19,20 @@ function Live() {
 
     async function handleLive(){
         // send subject to database
-        navigate("/quizinvitation", {state: {isAdmin: true, nis:"admin"}})
+        navigate("/quizinvitation", {
+            state: {
+                isAdmin: Cookies.get("isOsis") == "true",
+                nis: Cookies.get("nis"),
+                name: Cookies.get("name")
+            }
+        })
     }
 
   return (
         <Flex gap={3} flexDir={"column"}>
-            <Heading fontSize={"md"} opacity={0.6}>
+            <Text opacity={0.5}>
                 Pilih mata pelajaran yang akan di uji
-            </Heading>
+            </Text>
             <Flex flexWrap={"wrap"} gap={2} justifyContent={{base: "center", lg: "start"}} h={"60vh"} overflowY={"scroll"}>
                 
                 {allMapel.map((data, i) => {
@@ -37,7 +44,7 @@ function Live() {
                                 totalQuestion={data.totalQuestion} 
                                 title={data.title}
                                 note={data.note} 
-                                image={data.image}
+                                image={import.meta.env.VITE_SERVER_URI + data.image}
                                 fromLive={true}/>
                             )
                         

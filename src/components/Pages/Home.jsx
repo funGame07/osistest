@@ -8,10 +8,8 @@ import {
   StackDivider,
   Button,
   UnorderedList,
-  List,
   ListItem,
   Heading,
-  AspectRatio,
  } from "@chakra-ui/react"
 
 // ### Import package from node_modules 
@@ -26,7 +24,7 @@ import { MdSettings } from "react-icons/md";
 import { RxDividerVertical } from "react-icons/rx";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import { GoDotFill } from "react-icons/go";
-
+import { GiCycle } from "react-icons/gi";
 import { MdLabelImportantOutline } from "react-icons/md";
 
 
@@ -37,14 +35,7 @@ import "./home.css"
 
 function Home() {
   const navigate = useNavigate()
-  const {colorMode} = useContext(osis)
   const borderColor = "rgba(155,155,155, 0.5)"
-  const visiMisi = colorMode == "light" ? "gray.100" : "gray.600"
-  
-  async function handleLive(){
-    // send subject to database
-    navigate("/quizinvitation", {state: {isAdmin: false, nis:"12345"}})
-  }
 
   const fadeIn =keyframes`
   0%{
@@ -75,25 +66,14 @@ function Home() {
     }
   `
 
-  const dissapear = keyframes`
-    0%{
-      opacity: 0.1
-    }
-    50%{
-      opacity: 0.9
-    }
-    100%{
-      opacity: 0.1
-    }
-  `
   function handleWhatsApp(){
-    const url = "https://wa.me/6281396716769?text=halo"
+    const url = "https://wa.me/6281396716769?text=hai"
     window.open(url, '_blank')
   }
 
   return(
     <Box display={"flex"} flexDir={"column"} alignItems={"center"} px={{base: 0, md: 10, lg: "0"}} pos={"relative"} overflow={"hidden"}>
-      <Image src="schoolbg.png" pos={"absolute"} w={"full"} objectFit={"cover"} h={"100vh"} filter={"auto"} brightness={"0.4"}/>
+      <Image src="schoolbg.webp" pos={"absolute"} w={"full"} objectFit={"cover"} h={"100vh"} filter={"auto"} brightness={"0.4"}/>
       <Box pos={"absolute"} w={"120%"} mx={"auto"} h={"100vh"} filter={"auto"} brightness={"0.9"} top={"100vh"} overflow={"hidden"}>
         
       </Box>
@@ -101,8 +81,8 @@ function Home() {
       <Flex pt={{base: "120px", lg: "0"}} minH={"100vh"} flexDir={{base: "column", lg: "row"}} color={"white"}
       alignItems={"center"} gap={{base: 3, lg:1}} pos={"relative"} minW={"full"} px={{lg: "6%"}}>
         <Box order={{base: 0, lg: 1}} display={"flex"} flexDir={"column"} justifyContent={"center"} alignItems={"center"} h="230px" my={5} mx={"auto"} w={{base: "full" ,sm: "40%", lg: "50%"}} pos={"relative"} animation={`${fadeInReverse} 2s linear`}> 
-          <Image src="sultanagung.png" rounded={"full"} maxW={{base: "230px", lg: "420px"}}transform={"rotate(13deg)"} pos={"absolute"} top={{base:"-2em", lg: "-6em"}} left={{base: "2em"}}/>
-          <Image src="sultanagung2.png" rounded={"full"} maxW={{base: "230px", lg: "420px"}} transform={"rotate(-10deg)"} pos={"absolute"} top={{base: "5em", lg: "7em"}} right={{base: "0em"}} zIndex={10}/>
+          <Image src="sultanagung.webp" rounded={"full"} maxW={{base: "230px", lg: "420px"}}transform={"rotate(13deg)"} pos={"absolute"} top={{base:"-2em", lg: "-6em"}} left={{base: "2em"}}/>
+          <Image src="sultanagung2.webp" rounded={"full"} maxW={{base: "230px", lg: "420px"}} transform={"rotate(-10deg)"} pos={"absolute"} top={{base: "5em", lg: "7em"}} right={{base: "0em"}} zIndex={10}/>
         </Box>
         
         <Flex flexDir={"column"} w={{base: "full", lg:"50%"}} alignItems={{base: "center", lg: "start"}} animation={`${fadeIn} 2.5s linear`}>
@@ -122,15 +102,13 @@ function Home() {
             <Button className="font-link" color={"white"} mt={7} bgColor={"rgba(66, 153, 225, 0.4)"} variant={"outline"} colorScheme={"yellow"} w={"full"} size={"md"} rounded={"full"}>
               Explore
             </Button>
+            
           </Link>
         </Flex>
         
         
       </Flex>
 
-      {/* <Box bg={"yellow.400"} w={"130%"}>
-        <Heading textAlign={"center"} fontWeight={900} lineHeight={1.5} color={"white"}>WELCOME TO OSIS</Heading>
-      </Box> */}
       <Box w={"full"} px={{lg: "6%"}}>
         <Carousel />
       </Box>
@@ -182,9 +160,8 @@ function Home() {
           hesitate to contact us using the information provided on our Contact page.
           </Text>
         </Flex>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4316.547446693461!2d99.06208307532394!3d2.9571854970190166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031845c4ecc4f3f%3A0xec67e372810d4470!2sYayasan%20Pendidikan%20Sultan%20Agung!5e1!3m2!1sid!2sid!4v1729094305875!5m2!1sid!2sid" 
-        style={{border: 0, width: "50%", height: "80%"}} className="map"
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.5053354093393!2d99.06208307532394!3d2.9571854970190166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031845c4ecc4f3f%3A0xec67e372810d4470!2sYayasan%20Pendidikan%20Sultan%20Agung!5e0!3m2!1sid!2sid!4v1729155618680!5m2!1sid!2sid" 
+        style={{border: 0}} className="map" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
       </Flex>
   
       <Flex w={"full"} h={{lg: "300px"}} flexDir={{base: "column", lg: "row"}} justifyContent={"space-between"} textAlign={"start"} mt={8} px={5} bg={"blue.800"} color={"white"} py={{base: 5, lg: 8}} pb={"5em"} gap={4}>   
@@ -193,7 +170,7 @@ function Home() {
           <Text fontSize={"xs"} opacity={0.5}>
             Everything starts with a conversation. Reach out to us and let's start a dialogue that could lead to exciting opportunities, valuable connections, or simply a friendly chat.
           </Text>
-          <Image src="logoosis-white.png" w={"30%"} py={5}/>
+          <Image src="logoosis-white.webp" w={"30%"} py={5}/>
         </Box>
 
         <Box w={{base: "70%" ,lg: "40%"}}>

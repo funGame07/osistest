@@ -150,19 +150,19 @@ function scrollToMatch(index) {
       </Flex>
 
       <Flex w={"full"} flexWrap={"wrap"} flexDir={{base: "column", md: "row"}} justifyContent={{base: "center", lg: "start"}} py={10} pt={5} gap={{base: 3, md: 3}}>
-        <CardExplore img={"quizbg1.png"}/>
-        <CardExplore img={"quizbg2.png"}/>
-        <CardExplore img={"quizbg3.png"}/>
-        <CardExplore img={"quizbg1.png"}/>
-        <CardExplore img={"quizbg2.png"}/>
-        <CardExplore img={"quizbg3.png"}/>
+        <CardExplore img={"quizbg1.webp"}/>
+        <CardExplore img={"quizbg2.webp"}/>
+        <CardExplore img={"quizbg3.webp"}/>
+        <CardExplore img={"quizbg1.webp"}/>
+        <CardExplore img={"quizbg2.webp"}/>
+        <CardExplore img={"quizbg3.webp"}/>
  
  
       </Flex>
       
 
 
-        {/* <Accordion display={"flex"} flexDir={"column"} gap={1} w={"95%"} allowToggle>
+        <Accordion display={"flex"} flexDir={"column"} gap={1} w={"95%"} allowToggle>
           <AccordionItem >
             <h2>
               <AccordionButton as={Button}>
@@ -187,13 +187,13 @@ function scrollToMatch(index) {
                         <ListKegiatan text={"Traktir siswa makan"} date={"10/9/2024"} />
                         <ListKegiatan text={"Traktir siswa makan"} date={"10/10/2024"} />
                         <ListKegiatan text={"Pentas seni bertema kebebasan"} date={"10/11/2024"} />
-                        <ListKegiatan text={"Pesta merayakan natal"} date={"12/25/2024"} />
+                        <ListKegiatan text={"Pesta merayakan natal"} date={"11/17/2024"} />
                         <ListKegiatan text={"Bagi-bagi duit 100.000.000"} date={"1/1/2025"} />
                     </List>
                 </Flex>
             </AccordionPanel>
           </AccordionItem>
-        </Accordion> */}
+        </Accordion>
     </Flex>
   )
 }

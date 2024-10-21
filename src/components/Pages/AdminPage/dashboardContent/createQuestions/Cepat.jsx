@@ -41,7 +41,7 @@ function Cepat() {
               })
         }else{
             const toastPromise = saveSomething(
-            "/api/games/quest", "POST",
+            "/api/games/quest", "POST", false,
             {
                 id_subject,
                 quest,

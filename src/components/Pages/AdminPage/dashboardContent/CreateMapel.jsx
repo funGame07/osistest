@@ -31,6 +31,7 @@ function CreateMapel() {
   const [note, setNote] = useState("")
   const [image, setImage] = useState("")
   const [customColor, setCustomColor] = useState("default")
+  const [file, setFile] = useState(null)
 
   const cardBg = colorMode =="light"? "white": "black"
   const pickColor =  ["Default", "Blue", "Cyan", "Green", "Yellow", "Red"]
@@ -45,16 +46,18 @@ function CreateMapel() {
         position: "top"
       })
     }
+
+    const formData = new FormData()
+    formData.append("imageUpload", file.files[0])
+    formData.append("name", name)
+    formData.append("totalQuestion", totalQuestion)
+    formData.append("title", title)
+    formData.append("note", note)
+    formData.append("color", customColor)
+
     const toastPromise = saveSomething(
-      "/api/games/subject", "POST",
-      {
-        name,
-        totalQuestion,
-        title,
-        note,
-        image,
-        color: customColor
-      },
+      "/api/games/subject", "POST", true,
+      formData,
       setIsLoading, setCreateMapel, () => setOnSave(prev => !prev)
     )
 
@@ -92,6 +95,7 @@ function CreateMapel() {
     const imageURL = URL.createObjectURL(image.files[0])
     imageContainer.src = imageURL
     setImage(imageURL)
+    setFile(image)
   }
 
   return (

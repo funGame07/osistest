@@ -63,7 +63,7 @@ function Carousel() {
             STRUKTUR ORGANISASI
           </Heading> 
           <AspectRatio ratio={2/1.15} w={"95%"} placeSelf={"center"} rounded={"2xl"} boxShadow='0 0 20px rgba(66, 153, 225, 0.3)' overflowX={"auto"}>
-            <Image src='structureorg.png' objectFit={"initial"} rounded={"2xl"} filter={"auto"} brightness={0.9} _hover={{brightness: "0.7"}}  onClick={()=> setShowStructureOrg(true)}/>        
+            <Image src='structureorg.webp' objectFit={"initial"} rounded={"2xl"} filter={"auto"} brightness={0.9} _hover={{brightness: "0.7"}}  onClick={()=> setShowStructureOrg(true)}/>        
           </AspectRatio>
         </>}
 
@@ -79,7 +79,7 @@ function Carousel() {
             </h2>
             <AccordionPanel pb={4} h={"230px"}>
             <AspectRatio ratio={2/1.15} w={"95%"} placeSelf={"center"} rounded={"2xl"} boxShadow='0 0 20px rgba(66, 153, 225, 0.3)' overflowX={"auto"}>
-              <Image src='structureorg.png' objectFit={"initial"} rounded={"2xl"} filter={"auto"} brightness={0.9} _hover={{brightness: "0.7"}}  onClick={()=> setShowStructureOrg(true)}/>        
+              <Image src='structureorg.webp' objectFit={"initial"} rounded={"2xl"} filter={"auto"} brightness={0.9} _hover={{brightness: "0.7"}}  onClick={()=> setShowStructureOrg(true)}/>        
             </AspectRatio>
             </AccordionPanel>
           </AccordionItem>
@@ -138,7 +138,7 @@ function Carousel() {
       </Flex>
 
       <AbsoluteCenter pos={"absolute"} top={"50%"} w={"85%"} m={'auto'} rounded={"2xl"} overflow={"hidden"} ref={structureOrg} zIndex={999} display={{base: "none", lg: showStructureOrg? "block" : "none"}}>
-          <Image src='structureorg.png' objectFit={"cover"} w={"full"} h={"full"} filter={"auto"} brightness={0.9} border={"1px solid black"}/>
+          <Image src='structureorg.webp' objectFit={"cover"} w={"full"} h={"full"} filter={"auto"} brightness={0.9} border={"1px solid black"}/>
       </AbsoluteCenter>
 
       <Swiper
@@ -182,7 +182,7 @@ function Carousel() {
 
 
 
-function Content({img="quizbg2.png", division, colorMode, name="Unknown", role="Unknown", description, username="Unknown", link="https://www.instagram.com/"}){
+function Content({img="quizbg2.webp", division, colorMode, name="Unknown", role="Unknown", description, username="Unknown", link="https://www.instagram.com/"}){
     return (
         <Box
       width={{base: "230px", lg: "240px"}}

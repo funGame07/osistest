@@ -12,7 +12,8 @@ import {
     ModalHeader,
     ModalBody,
     ModalCloseButton,
-    useDisclosure
+    useDisclosure,
+    Spinner
    } from '@chakra-ui/react'
 
 import CreateQuestion from './CreateQuestion';
@@ -27,12 +28,21 @@ function ShowMapelDetail({comp, isOpen, onClose}) {
   const {setCreateQuestion, createQuestion, inAll, setInAll} = useContext(quizContext)
   const [allQuestions, setAllQuestions] = useState([])
   const {id_subject} = useContext(idMapel)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(()=>{
     async function getAllQuestion(){
-      const response = await fetch(import.meta.env.VITE_SERVER_URI + `/api/games/quest/subject/${id_subject}`)
-      const data = await response.json()
-      setAllQuestions(data.data)
+      setIsLoading(true)
+      try{
+        const response = await fetch(import.meta.env.VITE_SERVER_URI + `/api/games/quest/subject/${id_subject}`)
+        const data = await response.json()
+        setAllQuestions(data.data)
+      }catch(err){
+        console.log(err)
+      }finally{
+        setIsLoading(false)
+      }
+      
     }
     getAllQuestion()
   },[createQuestion])
@@ -57,9 +67,13 @@ function ShowMapelDetail({comp, isOpen, onClose}) {
                 {createQuestion? <CreateQuestion setCreateQuestion={setCreateQuestion}/>:<span />}
                 {/* question will be shown here no matter what */}
                 <Flex flexDir={"column"} gap={4}>
-                  { allQuestions.length > 0 &&
+                  {
+                    isLoading && <Spinner />
+                  }
+                  { allQuestions.length > 0 && !isLoading &&
                     allQuestions.map((data, i) => <Question
                                                     key={i}
+                                                    idx={i}
                                                     id_quest={data.id_quest}
                                                     quest={data.quest}
                                                     answer={data.answer}

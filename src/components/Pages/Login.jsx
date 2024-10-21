@@ -18,7 +18,7 @@ import {
 
 
 function Login() {
-  const {isAuthFromDB, colorMode} = useContext(osis)
+  const {isAuthFromDB, colorMode, setIsAuth} = useContext(osis)
   const [isLoading, setIsLoading] = useState(false)
   const [username, setUsername] = useState("")
   const [nis, setNis] = useState("")
@@ -48,6 +48,8 @@ function Login() {
             Cookies.set("nis", data.osis.nis, {expires: 60})
             Cookies.set("name", data.osis.name, {expires: 60})
             Cookies.set("role", data.osis.role, {expires: 60})
+            Cookies.set("isOsis", data.osis.isOsis, {expires: 60})
+            setIsAuth(true)
             navigate('/')
         } else {
           reject(data.message)
@@ -88,7 +90,7 @@ function Login() {
   return (
     <Box display={"flex"} flexDir={"column"} alignItems={"center"} w={{base: "80%" , lg:"40%"}} mx={"auto"} my={40} border={"1px solid rgba(66, 153, 225, 0.3)"} boxShadow={"0 0 20px rgba(66, 153, 225, 0.3)"}
     justifyContent={"center"} px={0} gap={3} py={{base: 20, lg: "7em"}} pos={"relative"} rounded={"xl"} bg={colorMode == "light"? "white": "black"}>
-        <Image src="logoosis.png" maxW={120} minH={110} pos={"absolute"} top={"-4em"} boxShadow={"-0px 15px 10px -8px rgba(66, 153, 225, 0.5)"} rounded={"full"}/>
+        <Image src="logoosis.webp" maxW={120} minH={110} pos={"absolute"} top={"-4em"} boxShadow={"-0px 15px 10px -8px rgba(66, 153, 225, 0.5)"} rounded={"full"}/>
 
       <Text  fontSize={{base: "4xl", lg: "4xl"}} fontWeight={700} color={"rgba(66, 120, 225,0.9)"}>
         Login

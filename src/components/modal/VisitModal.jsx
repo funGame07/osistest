@@ -35,10 +35,10 @@ function VisitModal({isOpen, onOpen, onClose}){
               <ModalContent>
                 <Flex alignItems={"center"} gap={1} p={2}>
                   <IoIosArrowBack size={"25px"} onClick={onClose} cursor={"pointer"}/>
-                  <Image src={colorMode == "light" ? "logoosis-black.png" : "logoosis-white.png"} maxW={"20"}/>
+                  <Image src={colorMode == "light" ? "logoosis-black.webp" : "logoosis-white.webp"} maxW={"20"}/>
                 </Flex>
                 <ModalBody display={"flex"} flexDir={"column"} gap={2}>
-                <Box h={"180px"} w={"100%"} bgImage={"school.png"} bgSize={"cover"} border={"1px solid gray"} rounded={"lg"}>
+                <Box h={"180px"} w={"100%"} bgImage={"school.webp"} bgSize={"cover"} border={"1px solid gray"} rounded={"lg"}>
                 </Box>
                   <Flex alignItems={"center"} gap={2}>
                     <SlLocationPin size={20} />

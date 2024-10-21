@@ -10,25 +10,26 @@ function QuizInvitation(){
   const socket = io(import.meta.env.VITE_SOCKET_DOMAIN) 
 
   const location = useLocation()
-  const {isAdmin, nis} = location.state == undefined ? {isAdmin: false, nis: false}: location.state
+  const {isAdmin, nis, name} = location.state == undefined ? {isAdmin: false, nis: false, name: false}: location.state
   const navigate = useNavigate()
 
   useEffect(()=>{
-    if(!nis){
-      navigate("/", {replace: true})
+    if(!nis || !name){
+      navigate("/event", {replace: true})
     }
   }, [])
 
   const provider ={
     socket,
-    nis
+    nis,
+    name
   }
 
   return (
     <socketContext.Provider value={provider}>
-      {nis &&
+      {nis && name &&
         <>
-          {isAdmin && nis == "admin" ? <AcceptJoin /> : <RequestJoin />}
+          {isAdmin? <AcceptJoin /> : <RequestJoin />}
         </>
       }
       

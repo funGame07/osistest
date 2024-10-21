@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useContext} from 'react'
-import io from "socket.io-client"
 
 import { 
     Flex,
@@ -7,23 +6,49 @@ import {
     Box,
     Text,
     Button,
-    Heading
  } from '@chakra-ui/react'
 
  import { socketContext } from './QuizInvitation'
 
 function RequestJoin() {
-    const {socket, nis} = useContext(socketContext)
+    const {socket, nis, name} = useContext(socketContext)
 
     const [Accepted, setAccepted] = useState(false)
-    const [ready, setReady] = useState(false)
+    const [ready, setReady] = useState(true)
 
     useEffect(()=>{
-        socket.emit("requestJoin", nis)
+        // user reconnect
+        socket.emit("user-reconnect", name, nis)
 
-        socket.on("accepted", (socketNIS)=>{
-            socketNIS === nis && setAccepted(true)
+        socket.on("is-reconnected", (isReconnect) =>{
+            if(!isReconnect){
+                // user requesting to join quiz
+                socket.emit("request-join", name, nis)
+            }else{
+                setAccepted(true)
+            }
         })
+        
+
+        // if host accept the request
+        socket.on("accepted", ()=>{
+            console.log("im accepetd")
+            setAccepted(true)
+        })
+
+        socket.on("started", room =>{
+            if(Accepted){
+                socket.emit("join-room", room)
+                
+            }   
+            console.log(Accepted)
+            socket.on("joined", message =>{
+                console.log(message)
+            })
+            console.log("dd")
+        })
+        
+
 
         // return () => {
         //     socket.disconnect();
@@ -31,7 +56,7 @@ function RequestJoin() {
     }, [])
 
   return (
-    <Flex minH={"100vh"} justifyContent={"center"} alignItems={"center"} flexDir={"column"} gap={3}>
+    <Flex minH={"100vh"} maxW={"100vw"} justifyContent={"center"} alignItems={"center"} flexDir={"column"} gap={3}>
 
         {!Accepted && <Flex alignItems={"center"} gap={3} flexDir={{base: "column", lg: "row"}}>
           <Spinner
@@ -43,14 +68,14 @@ function RequestJoin() {
             <Text fontSize={"xl"}>Menunggu panitia menerima anda</Text>  
         </Flex>}
 
-        {Accepted && <Flex justifyContent={"center"} alignItems={"center"} flexDir={{base: "column"}} gap={2}>
+        {Accepted && <Flex justifyContent={"center"} alignItems={"center"} flexDir={{base: "column"}} gap={2} maxW={"100vw"}>
             <Box>
-                <Text fontSize={"3xl"} fontWeight={"600"} textAlign={"center"}>Anda telah diterima sebagai peserta</Text>
-                <Text opacity={0.5} textAlign={"center"} fontWeight={"500"} fontSize={"lg"}>tekan ready</Text>
+                <Text fontSize={"1.5em"} fontWeight={"600"} textAlign={"center"}>Anda telah diterima sebagai peserta</Text>
+                {/* <Text opacity={0.5} textAlign={"center"} fontWeight={"500"} fontSize={"lg"}>tekan ready</Text> */}
             </Box>
             
             <Button bgColor={"red.500"} colorScheme='red' color={"white"} fontWeight={"700"} size={"lg"} 
-            p={20} fontSize={"2xl"} w={"90%"} onClick={()=> setReady(prev=> !prev)}
+            p={"2.5em"} fontSize={"2xl"} w={"90%"} onClick={()=> setReady(prev => true)}
             leftIcon={ready? <Spinner thickness='4px' speed='0.7s' color='blue.500' size='xl'/>: ""}>
                 {!ready ? "Ready" : "Menunggu Dimulai"}
             </Button>

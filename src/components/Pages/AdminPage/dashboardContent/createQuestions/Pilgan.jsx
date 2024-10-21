@@ -16,29 +16,31 @@ import {
 
 import { quizContext } from '../../Dashboard'
 import { saveSomething } from '../../../../../../lib/libs'
-
+import { idMapel } from '../ShowMapel'
 
 function Pilgan() {
-  const {setCreateQuestion} = useContext(quizContext)
-  const toast = useToast()
-  const [isLoading, setIsLoading] = useState(false)
-    const [soal, setSoal] = useState("")
+    const {id_subject} = useContext(idMapel)
+    const {setCreateQuestion} = useContext(quizContext)
+    const toast = useToast()
+    const [isLoading, setIsLoading] = useState(false)
+  
+    const [quest, setQuest] = useState("")
     const [opt, setOpt] = useState("")
     const [opt1, setOpt1] = useState("")
     const [opt2, setOpt2] = useState("")
     const [opt3, setOpt3] = useState("")
     const [opt4, setOpt4] = useState("")
-    const [jawaban, setJawaban] = useState([])
-    const [poin, setPoin] = useState("")
-    const [minusPoin, setMinusPoin] = useState("")
-    const [waktu, setWaktu] = useState("")
+    const [answer, setAnswer] = useState([])
+    const [point, setPoint] = useState("")
+    const [minusPoint, setMinusPoint] = useState("")
+    const [time, setTime] = useState("")
 
     useEffect(()=>{
-      setJawaban([opt1, opt2, opt3, opt4, opt].join("..**.."))
+      setAnswer([opt1, opt2, opt3, opt4, opt].join("..**.."))
     }, [opt, opt1, opt2, opt3, opt4])
 
     function handleSaveQuestion(){
-        if(!soal || !poin || !minusPoin || !waktu || !opt ||!opt1 ||!opt2 ||!opt3 ||!opt4){
+        if(!quest || !point || !minusPoint || !time || !opt ||!opt1 ||!opt2 ||!opt3 ||!opt4){
             return toast({
               title: "Warning",
               status: "warning",
@@ -48,15 +50,15 @@ function Pilgan() {
             })
         }else{
             const toastPromise = saveSomething(
-              "",
+              "/api/games/quest", "POST", false,
               {
-                idMapel: "blm buat",
-                soal,
-                jawaban,
-                poin,
-                minusPoin,
-                waktu,
-                metode: "pilgan"
+                id_subject,
+                quest,
+                answer,
+                point,
+                minus_point: minusPoint,
+                time,
+                method: "pilgan"
             }, setIsLoading, setCreateQuestion)
 
             toast.promise(toastPromise, {
@@ -89,7 +91,7 @@ function Pilgan() {
     <Flex flexDir={"column"} gap={3} w={{base: "full", lg: "100%"}}>
         <FormControl>
           <FormLabel>Soal</FormLabel>
-          <Input type='text' size={"sm"} rounded={"xl"} placeholder='soal' as={Textarea} onChange={(e)=> setSoal(e.target.value)}/>
+          <Input type='text' size={"sm"} rounded={"xl"} placeholder='soal' as={Textarea} onChange={(e)=> setQuest(e.target.value)}/>
         </FormControl>
 
         <Flex my={5} py={2} flexDir={"column"} gap={1} >
@@ -124,17 +126,17 @@ function Pilgan() {
         <Flex gap={2}>
           <FormControl>
             <FormLabel>Poin</FormLabel>
-            <Input type='number' size={"sm"} rounded={"xl"} placeholder='poin' onChange={(e)=> setPoin(e.target.value)}/>
+            <Input type='number' size={"sm"} rounded={"xl"} placeholder='poin' onChange={(e)=> setPoint(e.target.value)}/>
           </FormControl>
           <FormControl>
           <FormLabel>kurang Poin</FormLabel>
-            <Input type='number' size={"sm"} rounded={"xl"} placeholder='pengurangan poin' onChange={(e)=> setMinusPoin(e.target.value)}/>
+            <Input type='number' size={"sm"} rounded={"xl"} placeholder='pengurangan poin' onChange={(e)=> setMinusPoint(e.target.value)}/>
           </FormControl>
         </Flex>
         
         <FormControl>
           <FormLabel>Waktu pengerjaan</FormLabel>
-          <Input type='text' size={"sm"} rounded={"xl"} placeholder='waktu pengerjaan (detik)' onChange={(e)=> setWaktu(e.target.value)}/>
+          <Input type='text' size={"sm"} rounded={"xl"} placeholder='waktu pengerjaan (detik)' onChange={(e)=> setTime(e.target.value)}/>
         </FormControl>
 
         <Flex gap={2} mt={3}>

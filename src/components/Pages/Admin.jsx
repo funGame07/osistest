@@ -1,3 +1,6 @@
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import { 
     Box,
     Button,
@@ -25,16 +28,39 @@ import {
 import Question from "./AdminPage/Question";
 import { MdArrowBackIos } from "react-icons/md";
 import { osis } from "../../App";
-import { useContext } from "react";
 import Dashboard from "./AdminPage/Dashboard";
-import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Cookies from "js-cookie"
+
+import { isAuthFromDB } from "../../../lib/libs";
 
 function Admin() {
-    const {setShowBottomNavbar} = useContext(osis)
+    const {setShowBottomNavbar, isAuth, setIsAuth} = useContext(osis)
+    const [isOsis, setIsOsis] = useState(false)
+    const navigate = useNavigate()
 
-    setShowBottomNavbar(true)
+    useEffect( ()=>{
+        async function authFromDB(){
+            const response = await isAuthFromDB(Cookies, import.meta.env.VITE_SERVER_URI + "/api/auth/auth")
+            setIsAuth(response)
+
+            const isOsis = Cookies.get("isOsis")
+            if(isOsis == "true" && response){
+                setIsOsis(true)
+            }else{
+                setIsOsis(false)
+                navigate("/")
+        }
+        }
+        authFromDB()
+
+        setShowBottomNavbar(true)
+    }, [])
 
     return(
+        <>
+        {
+        isOsis &&
         <Box py={20}>
             <Box zIndex={999} mx={1}>
                 <Menu>
@@ -95,6 +121,9 @@ function Admin() {
                 <Dashboard />
             </Box>
         </Box>
+        }
+        </>
+        
     )
     
 }

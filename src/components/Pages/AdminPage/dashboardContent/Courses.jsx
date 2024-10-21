@@ -107,7 +107,7 @@ function Courses() {
                                 totalQuestion={data.totalQuestion} 
                                 title={data.title}
                                 note={data.note} 
-                                image={data.image}/>
+                                image={import.meta.env.VITE_SERVER_URI + data.image}/>
                   })}
         </Flex>
         
