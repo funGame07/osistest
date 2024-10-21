@@ -24,7 +24,7 @@ function BottomNav() {
     opacity={0.9}
     zIndex={9999} 
     >
-        <Button size={"sm"} rounded={"full"} pos={"absolute"} colorScheme='blackAlpha' variant={"solid"}
+        <Button size={"sm"} rounded={"full"} pos={"absolute"}  colorScheme={colorMode =="light" ? "blackAlpha" : "whiteAlpha"} color={"white"} variant={"solid"}
         right={5} top={"-50px"} onClick={()=> setShowBottomNavbar(prev => !prev)}>
           <BiHide />
         </Button>
