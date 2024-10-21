@@ -16,7 +16,7 @@ import "./navbar.css"
 
 function BottomNav() {
     // Declaration Hooks
-    const {setShowBottomNavbar} = useContext(osis)
+    const {setShowBottomNavbar, colorMode} = useContext(osis)
 
   return (
     <Box className='bottom-nav' position={"fixed"}
